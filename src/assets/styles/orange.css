@@ -1,0 +1,408 @@
+/*
+MAIN COLOR:#E37949; (orange)
+*/
+
+/* - ELEMENTS
+================================================*/
+.cnt-hero-content .cnt-btn,
+#services .btn-outlined:hover,
+#features .btn-outlined:hover,
+.hero-features .btn-outlined:hover,
+#showcase .btn-outlined,
+#workwithus  .cnt-btn:hover,
+#post-blog .btn-outlined,
+#post-blog #footer-blog .pager li a:hover,
+#post-blog #footer-blog-right .pager li a:hover,
+#post-blog #footer-blog-left .pager li a:hover,
+.hero-blog-post .btn-outlined:hover,
+#subscribe-blog .btn-subscribe,
+.blog-comment .btn.btn-comment,
+.hero-faq .btn-outlined:hover,
+.hero-privacy .btn-outlined:hover,
+.hero-comparisonchart .btn-outlined:hover,
+.hero-contact .btn-outlined:hover,
+ .main-navigation li a:hover,
+ #hero-4  .cnt-btn:hover,
+.container-right-sidebar .social-icon-holder-twitter:hover,
+.container-right-sidebar .social-icon-holder-facebook:hover,
+.container-right-sidebar .social-icon-holder-mail:hover,
+.container-right-sidebar .social-icon-holder-rss:hover,
+.container-left-sidebar .social-icon-holder-twitter:hover,
+.container-left-sidebar .social-icon-holder-facebook:hover,
+.container-left-sidebar .social-icon-holder-mail:hover,
+.container-left-sidebar .social-icon-holder-rss:hover,
+.pricing-content .price-block .button:hover,
+.pricing-content .price-block .button:focus,
+.btn-comparison:hover,
+.btn-comparison:focus,
+.cnt-contact-bg .data-contact i:hover,
+.cnt-contact-bg .data-contact-mobile i:hover,
+ .hero-services  .cnt-btn:hover,
+ .hero-services  .cnt-btn,
+.hero-error .btn-outlined:hover,
+#sblog .btn-outlined:hover,
+.main-navigation-mobile ul.mobile-content li a,
+#how-it-works .tab-nav a:hover,
+#how-it-works .tab-nav a.active,
+.container-left-sidebar .tag-cloud .tag:hover,
+.hero-careers .btn-outlined:hover,
+#hiring .job-position .button
+{
+color: #fff;
+}
+
+.site-links li a:hover,
+.cnt-btn,
+.cnt-btn:hover,
+#services .btn-outlined,
+#features .btn-outlined,
+#started .btn-outlined:hover,
+.hero-features .btn-outlined,
+#solutions h2.key-features,
+#solutions .item-feature i,
+#solutions .learn-more:hover,
+#solutions #feature-item-01 h2,
+.between-words,
+#services i,
+#features .container b,
+#features .icon-box .icon i:hover,
+.left-icon-text h2,
+#stats i,
+.subscribe-form input[type="text"]:focus,
+.subscribe-coming .subscribe-form input[type="text"]:focus,
+.widget ul li a:hover,
+#get-quote .btn-outlined:hover,
+#intro-about h3.what-we-do,
+.team-list .team-detail h2,
+.team-detail .social:hover,
+#workwithus  .cnt-btn.active-btn:hover,
+#login-form .btn.btn-signin:hover,
+#login-form .btn.btn-signin:active,
+#login-form .btn.btn-signin:focus,
+#login-form .forgot-password:hover,
+#login-form .forgot-password:active,
+#login-form .forgot-password:focus,
+#register .btn.btn-signup:hover,
+#register .btn.btn-signup:active,
+#register .btn.btn-signup:focus,
+#post-blog .btn:hover,
+.hero-blog-post .btn-outlined,
+.left-post i:hover,
+.right-post i:hover,
+#subscribe-blog .btn-subscribe:hover,
+.main-navigation li.highlight a,
+.main-navigation li a:hover,
+.main-navigation li.current a.current-sticky,
+.blog-comment .text-success,
+.blog-comment .media-body a,
+.blog-comment .btn.btn-comment:hover,
+.blog-comment .btn.btn-comment:active,
+.blog-comment .btn.btn-comment:focus,
+footer h4,
+footer h5,
+.footer-main ul a:hover,
+.footer-main ul a:focus,
+.hero-faq .btn-outlined,
+.hero-privacy .btn-outlined,
+.hero-comparisonchart .btn-outlined,
+.hero-contact .btn-outlined,
+#hero-4 .cnt-btn.active-btn:hover,
+#privacy ol li,
+#privacy ul li,
+.main-navigation li.current > a,
+.cnt-hero-content .cnt-btn:hover,
+.container-right-sidebar .social-icon-holder-twitter,
+.container-right-sidebar .social-icon-holder-facebook,
+.container-right-sidebar .social-icon-holder-mail,
+.container-right-sidebar .social-icon-holder-rss,
+.container-left-sidebar .social-icon-holder-twitter,
+.container-left-sidebar .social-icon-holder-facebook,
+.container-left-sidebar .social-icon-holder-mail,
+.container-left-sidebar .social-icon-holder-rss,
+.pricing-content .price-block .button,
+.btn-comparison,
+.contact-me .btn.btn-contact:hover,
+.contact-me .btn.btn-contact:active,
+.contact-me .btn.btn-contact:focus,
+.cnt-contact-bg .data-contact i,
+.cnt-contact-bg .data-contact ul.data-content,
+.cnt-contact-bg .data-contact-mobile i,
+.cnt-contact-bg .data-contact-mobile ul.data-content,
+.hero-services .cnt-btn.active-btn:hover,
+#showcase .btn-outlined:hover,
+.hero-error .btn-outlined,
+#sblog .btn-outlined,
+#services .container p.title-txt,
+#go-top a i:hover,
+.main-navigation-mobile li.mobile-title a,
+.main-navigation-mobile ul.mobile-content li a:hover,
+#sblog .cnt-post ul.data-post li.separator-post,
+#sblog .cnt-post ul.data-post li.category,
+#sblog .cnt-post  .read-more,
+.footer-main .footer-subscribe ul.contact li i,
+.footer-bottom .copyright span i,
+#allservices i,
+#how-it-works .tab-nav a,
+#how-it-works .tab-nav a.active:hover,
+.tab-content .tab-content-txt ul.list-slider li i,
+#showcase .showcase-content h2,
+#showcase .showcase-content ul.showcase-list li i,
+.searchbutton:hover, .searchbutton:focus,
+.searchbutton:active,
+.container-right-sidebar .archives div.cnt-sidebar li span,
+.container-left-sidebar .archives div.cnt-sidebar li span,
+.container-right-sidebar .popular-posts .top_post_right h2,
+.container-left-sidebar .popular-posts .top_post_left h2,
+.clicked-filter,
+#login-form .sign-now span,
+.container-right-sidebar ul.archive-children li a:hover,
+.container-left-sidebar ul.archive-children li a:hover,
+.hero-careers .btn-outlined,
+#hiring .job-position .button:hover,
+#register h4 span,
+.cnt-herocoming-content #clock p.clock,
+.cfeature-first i:hover,
+.cfeature i:hover
+{
+color: #E37949;
+}
+.main-header .btn-outlined,
+#services .btn-outlined,
+#features .btn-outlined,
+.hero-features .btn-outlined,
+#showcase .btn-outlined,
+#get-quote .btn-outlined,
+.subscribe-form input[type="text"]:focus,
+.subscribe-coming .subscribe-form input[type="text"]:focus,
+#login-form .btn.btn-signin:hover,
+#login-form .btn.btn-signin:active,
+#login-form .btn.btn-signin:focus,
+#register .btn.btn-signup:hover,
+#register .btn.btn-signup:active,
+#register .btn.btn-signup:focus,
+#post-blog .btn:hover,
+#subscribe-blog .btn-subscribe,
+.form-control-newsletter:focus,
+.tag li,
+.blog-comment textarea:focus,
+.blog-comment .btn.btn-comment:hover,
+.blog-comment .btn.btn-comment:active,
+.blog-comment .btn.btn-comment:focus,
+.footer-main .footer-subscribe .subscribe-form input[type="email"]:focus,
+#accordion .panel,
+.contact-me .btn.btn-contact:hover,
+.contact-me .btn.btn-contact:active,
+.contact-me .btn.btn-contact:focus,
+#sblog .btn-outlined,
+#how-it-works .tab-nav a,
+#how-it-works .tab-nav a.active
+.init-filter,
+.clicked-filter,
+.container-left-sidebar .tag-cloud .tag:hover,
+.container-right-sidebar .tag-cloud .tag:hover,
+.hero-careers .btn-outlined
+{
+border: 1px solid #E37949;
+}
+.main-header .btn-outlined:hover,
+.cnt-hero-content .cnt-btn,
+#services .btn-outlined:hover,
+#features .btn-outlined:hover,
+#showcase .btn-outlined,
+.hero-features .btn-outlined:hover,
+#get-quote .btn-outlined,
+.txt-testimonial,
+.hero-mat,
+.cnt-started-bg,
+.btn-special,
+.btn-special:hover,
+#workwithus .cnt-btn.active-btn,
+#workwithus  .cnt-btn:hover,
+.login-pg,
+#login-form .btn.btn-signin,
+#register .btn.btn-signup,
+#post-blog .btn-outlined,
+#post-blog #footer-blog .pager li a:hover,
+#post-blog #footer-blog-right .pager li a:hover,
+#post-blog #footer-blog-left .pager li a:hover,
+.hero-blog-post .btn-outlined:hover,
+#subscribe-blog .btn-subscribe,
+.main-navigation li.current a::after,
+.tag li:hover,
+.blog-comment .btn.btn-comment,
+.hero-faq .btn-outlined:hover,
+.hero-privacy .btn-outlined:hover,
+.hero-comparisonchart .btn-outlined:hover,
+.hero-contact .btn-outlined:hover,
+#hero-4 .cnt-btn.active-btn,
+#hero-4  .cnt-btn:hover,
+.hero--slider .slick-dots .slick-active button,
+.container-right-sidebar .social-icon-holder-twitter:hover,
+.container-right-sidebar .social-icon-holder-facebook:hover,
+.container-right-sidebar .social-icon-holder-mail:hover,
+.container-right-sidebar .social-icon-holder-rss:hover,
+.container-left-sidebar .social-icon-holder-twitter:hover,
+.container-left-sidebar .social-icon-holder-facebook:hover,
+.container-left-sidebar .social-icon-holder-mail:hover,
+.container-left-sidebar .social-icon-holder-rss:hover,
+.pricing-content .price-block .plan-title::after,
+.pricing-content .price-block .button:hover,
+.pricing-content .price-block .button:focus,
+.pricing-content .primary .top-part::before,
+.btn-comparison:hover,
+.btn-comparison:focus,
+.main-nav-wrap ul.main-navigation ul.dropdown-blog,
+.main-nav-wrap ul.main-navigation ul.dropdown,
+.contact-me .btn.btn-contact,
+.hero-services .cnt-btn.active-btn,
+.hero-services  .cnt-btn:hover,
+.slidenow .slick-dots .slick-active button,
+.hero-error .btn-outlined:hover,
+#sblog .btn-outlined:hover,
+#sblog .cnt-blog-wg .cnt-post .fit_image img,
+#how-it-works .tab-nav a.active,
+#how-it-works .tab-nav a:hover,
+.center-tab .video,
+.center-tab .video .overlay-video,
+.searchbox:focus, .searchbox:hover,
+.searchbox:focus + .searchbutton, .searchbox:hover + .searchbutton,
+.init-filter,
+#post-blog .container-post .data-post-main,
+.container-left-sidebar .tag-cloud .tag:hover,
+.container-right-sidebar .tag-cloud .tag:hover,
+.hero-careers .btn-outlined:hover,
+#hiring .job-position .button,
+.cnt-herocoming-content #clock span
+{
+background: #E37949;
+}
+.cnt-hero-content .cnt-btn,
+#workwithus .cnt-btn.active-btn,
+#workwithus .cnt-btn:hover,
+#post-blog #footer-blog .pager li a:hover,
+#post-blog #footer-blog-right .pager li a:hover,
+#post-blog #footer-blog-left .pager li a:hover,
+.hero-blog-post .btn-outlined,
+.hero-faq .btn-outlined,
+.hero-privacy .btn-outlined,
+.hero-comparisonchart .btn-outlined,
+.hero-contact .btn-outlined,
+#hero-4 .cnt-btn.active-btn,
+#hero-4 .cnt-btn:hover,
+.container-right-sidebar .social-icon-holder-twitter,
+.container-right-sidebar .social-icon-holder-facebook,
+.container-right-sidebar .social-icon-holder-mail,
+.container-right-sidebar .social-icon-holder-rss,
+.container-left-sidebar .social-icon-holder-twitter,
+.container-left-sidebar .social-icon-holder-facebook,
+.container-left-sidebar .social-icon-holder-mail,
+.container-left-sidebar .social-icon-holder-rss,
+.pricing-content .price-block,
+.pricing-content .price-block .button,
+.pricing-content .primary,
+.btn-comparison,
+.hero-services .cnt-btn.active-btn,
+.hero-services .cnt-btn:hover,
+.hero-error .btn-outlined,
+#sblog .cnt-blog-wg .cnt-post,
+#register input:focus,
+#hiring .job-position .button,
+#hiring .job-position .button:hover,
+#hiring .job-position
+{
+border:2px solid #E37949;
+}
+hr.question,
+#login-form .form-signin .form-control:focus,
+hr.title-sidebar,
+.contact-me input[type="text"]:focus,
+.contact-me textarea:focus,
+.contact-me input[type="email"]:focus
+{
+border-color:#E37949;
+}
+.txt-testimonial:before
+{
+border-color: #34495e #fff;
+
+}
+#get-quote .btn-outlined:hover,
+#workwithus  .cnt-btn.active-btn:hover,
+#login-form .btn.btn-signin:hover,
+#login-form .btn.btn-signin:active,
+#login-form .btn.btn-signin:focus,
+#register .btn.btn-signup:hover,
+#register .btn.btn-signup:active,
+#register .btn.btn-signup:focus,
+#hero-4 .cnt-btn.active-btn:hover,
+#post-blog .btn:hover,
+#subscribe-blog .btn-subscribe:hover,
+.blog-comment .btn.btn-comment:hover,
+.footer-main .footer-subscribe .subscribe-form input[type="email"]:focus,
+.cnt-hero-content .cnt-btn:hover,
+.contact-me .btn.btn-contact:hover,
+.contact-me .btn.btn-contact:active,
+.contact-me .btn.btn-contact:focus,
+.hero-services .cnt-btn.active-btn:hover,
+#showcase .btn-outlined:hover,
+#how-it-works .tab-nav a.active:hover,
+.clicked-filter,
+#hiring .job-position .button:hover
+{
+background: transparent;
+}
+.fit-image:after
+{
+background:#E37949;
+opacity: 0.6;
+
+}
+.error-path
+{
+fill:#E37949;
+}
+#wearein #mapa:hover
+{
+fill:#E37949;
+transition: 200ms;
+transition-timing-function: ease-in-out;
+-webkit-transition: 200ms;
+-webkit-transition-timing-function: ease-in-out;
+cursor: pointer;
+}
+.theader,
+.cfeature-first
+{
+border-top: 1px solid #E37949;
+}
+.cfeature,
+.cfeature-first,
+.free,
+.theader.free,
+.standard,
+.theader.standard,
+.premium,
+.theader.premium
+{
+border-bottom: 1px solid #E37949;
+}
+.cfeature,
+.cfeature-first,
+.free,
+.standard
+{
+border-left: 1px solid #E37949;
+}
+.standard,
+.premium
+{
+border-right: 1px solid #E37949;
+}
+.cnt-contact-bg .data-contact
+{
+border-top: 15px solid #E37949;
+}
+.cnt-contact-bg .data-contact
+{
+border-bottom: 15px solid #E37949;
+}

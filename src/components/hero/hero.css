@@ -1,0 +1,50 @@
+/*Hero 3*/
+/*1.1 Hero */
+#hero-3 .hero {
+padding-top: 0px;
+padding-bottom: 10px;
+position: relative;
+color: #fff;
+}
+#hero-3 .cnt-hero-content{
+padding:0px 0px 500px 0px;
+background-color: #2da9e8; /*This is the color of Hero*/
+overflow: visible;
+}
+#hero-3 .hero-box{
+text-align: center;
+position: relative;
+top:200px;
+}
+#hero-3 .hero-text h1,
+#hero-3 .hero-text p{
+line-height:1em;
+color: #fff;
+}
+
+#hero-3 .hero-text h1{
+font-family: 'Montserrat',sans-serif;
+font-weight: 800;
+font-size: 5rem;
+line-height: 1em;
+margin: 0 0 15px;
+}
+#hero-3 .hero-text p{
+font-family: 'Montserrat',sans-serif;
+font-size: 1.8rem;
+width: 70%;
+line-height: 1.2em;
+text-align: center;
+font-weight: 100;
+margin: 30px auto;
+color: #a8d9f2;
+}
+#hero-3 .screenshot {
+position: absolute;
+bottom: 0px;
+left: 0;
+right: 0; 
+top: 150px;
+}
+#hero-3 .screenshot img {
+margin: 0 auto; }
