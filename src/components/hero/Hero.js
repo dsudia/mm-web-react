@@ -1,29 +1,26 @@
 import React, { Component } from 'react';
-import heroImage from '../../assets/img/training.jpg'
-import './hero.css'
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import Logo from '../../assets/img/mm.png'
+import {Card, CardActions, CardMedia} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 
 class Hero extends Component {
   render() {
     return (
-      <div>
-        <section id="hero-3" className="hero-3">
-            <div id="img-back">
-                <div className="cnt-hero-content">
-                    <div className="hero-box">
-                        <div className="container">
-                            <div className="hero-text align-center">
-                                <h1>Montessori Match</h1>
-                                <p>Find schools and teachers with a great cultural fit.</p>
-                                <div className="screenshot animated fadeInUp">
-                                    <img src={heroImage} className="img-responsive" alt="screenshot" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-      </div>
+        <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+            <Card>
+                <CardMedia>
+                    <img src={Logo} alt='Montessori Match Logo'/>
+                </CardMedia>
+                <CardActions>
+                    <a href="http://montessorimatch.us14.list-manage.com/subscribe?u=9be45c7772ad2a078cc4b091d&id=91ce5d5d68" target="_blank">
+                        <FlatButton label='Sign up for our mailing list to get updates!'/>
+                    </a>
+                </CardActions>
+            </Card>
+        </MuiThemeProvider>
     );
   }
 }
