@@ -6,3 +6,5 @@ const fb = firebase.initializeApp({
   databaseURL: 'https://montessori-match.firebaseio.com/',
   storageBucket: 'gs://montessori-match.appspot.com'
 })
+
+export default fb
