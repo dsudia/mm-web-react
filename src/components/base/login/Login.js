@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
-import { Link } from 'react-router'
+// import { Link } from 'react-router'
 import FaceIcon from 'material-ui/svg-icons/action/face';
+import SignUp from '../sign-up-login/sign-up';
 
 export class Login extends Component {
   static muiName = 'Login';
@@ -18,10 +19,10 @@ export class Login extends Component {
       targetOrigin={{horizontal: 'right', vertical: 'top'}}
       anchorOrigin={{horizontal: 'right', vertical: 'top'}}
     >
-      <MenuItem primaryText="Sign Up" />
-      <MenuItem primaryText="Sign In"
-        containerElement={<Link to="/profile" />}
-      />
+
+      <MenuItem containerElement={<SignUp signUp={true} />} />
+      <MenuItem containerElement={<SignUp />} />
+
     </IconMenu>
     );
   }
@@ -45,3 +46,8 @@ export class Logged extends Component {
     )
   }
 }
+
+// <MenuItem primaryText="Sign Up" />
+// <MenuItem primaryText="Sign In"
+//   containerElement={<Link to="/profile" />}
+// />

@@ -1,0 +1,28 @@
+.display-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-flow: column;
+}
+
+.half-width {
+  width: 50%;
+  margin: auto;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
