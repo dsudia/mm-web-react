@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Logo from '../../assets/img/mm.png'
 import {Card, CardActions, CardMedia} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class Hero extends Component {
   render() {
@@ -16,7 +16,7 @@ class Hero extends Component {
                 </CardMedia>
                 <CardActions>
                     <a href="http://montessorimatch.us14.list-manage.com/subscribe?u=9be45c7772ad2a078cc4b091d&id=91ce5d5d68" target="_blank">
-                        <FlatButton label='Sign up for our mailing list to get updates!'/>
+                        <RaisedButton label='Sign up for our mailing list to get updates!' primary={true} />
                     </a>
                 </CardActions>
             </Card>
