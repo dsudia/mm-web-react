@@ -5,6 +5,7 @@ import MenuItem from 'material-ui/MenuItem';
 // import { Link } from 'react-router'
 import FaceIcon from 'material-ui/svg-icons/action/face';
 import SignUp from '../sign-up-login/sign-up';
+// import SignIn from '../sign-up-login/sign-in';
 
 export class Login extends Component {
   static muiName = 'Login';
@@ -12,16 +13,15 @@ export class Login extends Component {
   render() {
     return (
       <IconMenu
-      {...this.props}
-      iconButtonElement={
-        <IconButton><FaceIcon color='#fff' /></IconButton>
-      }
-      targetOrigin={{horizontal: 'right', vertical: 'top'}}
-      anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-    >
+        {...this.props}
+        iconButtonElement={
+          <IconButton><FaceIcon color='#fff' /></IconButton>
+        }
+        targetOrigin={{horizontal: 'right', vertical: 'top'}}
+        anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+      >
 
-      <MenuItem containerElement={<SignUp signUp={true} />} />
-      <MenuItem containerElement={<SignUp />} />
+      <MenuItem containerElement={<SignUp openSignUp={this.props.openSignUp} />} />
 
     </IconMenu>
     );
