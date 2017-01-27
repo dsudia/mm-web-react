@@ -71,7 +71,7 @@ export default class SignUpForm extends Component {
                <div
                  style={styles.marginTop}
                  className="display-flex half-width text-left"
-               >
+                >
                    <RadioButton
                      value="Teacher"
                      label="Teacher"

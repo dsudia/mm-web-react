@@ -18,7 +18,7 @@ class Header extends Component {
     }
 
     handleOpenSignUp() {
-      this.setState({openSignUp: true})
+        this.setState({ open: true });
     }
 
     render() {
