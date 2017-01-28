@@ -10,6 +10,10 @@ import {
 import OrgTypeSchool from './subComps/OrgTypeSchool'
 import CalsSchool from './subComps/CalsSchool'
 import StatesSchool from './subComps/StatesSchool'
+import SizesSchool from './subComps/SizesSchool'
+import AgesSchool from './subComps/AgesSchool'
+import TrainingsSchool from './subComps/TrainingsSchool'
+import TraitsSchool from './subComps/TraitsSchool'
 
 export default class MatchProfileStepperSchool extends Component {
 
@@ -38,7 +42,7 @@ export default class MatchProfileStepperSchool extends Component {
     const {stepIndex} = this.state;
     this.setState({
       stepIndex: stepIndex + 1,
-      finished: stepIndex >= 8,
+      finished: stepIndex >= 7,
     });
   };
 
@@ -55,7 +59,7 @@ export default class MatchProfileStepperSchool extends Component {
     return (
       <div style={{margin: '12px 0'}}>
         <RaisedButton
-          label={stepIndex === 8 ? 'Finish' : 'Next'}
+          label={stepIndex === 7 ? 'Finish' : 'Next'}
           disableTouchRipple={true}
           disableFocusRipple={true}
           primary={true}
@@ -124,9 +128,9 @@ export default class MatchProfileStepperSchool extends Component {
             <StepLabel>Size</StepLabel>
             <StepContent>
               <p>
-                How big is your school?
+                How many classrooms does your school have?
               </p>
-              <StatesSchool />
+              <SizesSchool />
               {this.renderStepActions(4)}
             </StepContent>
           </Step>
@@ -136,8 +140,8 @@ export default class MatchProfileStepperSchool extends Component {
               <p>
                 What age bands do you teach?
               </p>
-              <StatesSchool />
-              {this.renderStepActions(4)}
+              <AgesSchool />
+              {this.renderStepActions(5)}
             </StepContent>
           </Step>
           <Step>
@@ -146,32 +150,23 @@ export default class MatchProfileStepperSchool extends Component {
               <p>
                 What teacher training standards do you accept?
               </p>
-              <StatesSchool />
-              {this.renderStepActions(4)}
+              <TrainingsSchool />
+              {this.renderStepActions(6)}
             </StepContent>
           </Step>
           <Step>
             <StepLabel>Culture</StepLabel>
             <StepContent>
               <p>
-                Pick seven traits that describe your school culture
+                Pick seven traits that describe your school culture. (We know you are all of these things!)
               </p>
-              <StatesSchool />
-              {this.renderStepActions(4)}
+              <TraitsSchool />
+              {this.renderStepActions(7)}
             </StepContent>
           </Step>
         </Stepper>
         {finished && (
           <p style={{margin: '20px 0', textAlign: 'center'}}>
-            <a
-              href="#"
-              onClick={(event) => {
-                event.preventDefault();
-                this.setState({stepIndex: 0, finished: false});
-              }}
-            >
-              Click here
-            </a> to reset the example.
           </p>
         )}
       </div>
