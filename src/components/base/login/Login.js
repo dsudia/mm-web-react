@@ -14,13 +14,18 @@ export class Login extends Component {
   constructor(props) {
       super(props)
       this.state = {
-          open: false
+          open: false,
+          openSignIn: false
       }
   }
 
   handleOpen = () => {
     this.setState({open: true});
   };
+
+  handleOpenSignIn = () => {
+    this.setState({ openSignIn: true});
+  }
 
   render() {
     return (
@@ -37,14 +42,14 @@ export class Login extends Component {
           <FlatButton label="Register" onTouchTap={this.handleOpen.bind(this)} />
         </MenuItem>
         <MenuItem>
-          <FlatButton label="Sign In" onTouchTap={this.handleOpen.bind(this)} />
+          <FlatButton label="Sign In" onTouchTap={this.handleOpenSignIn.bind(this)} />
         </MenuItem>
         <MenuItem primaryText="Sign In"
           containerElement={<Link to="/profile" />}
         />
       </IconMenu>
     <SignInForm open={this.state.open} />
-    <RegisterForm open={this.state.open} />
+    <RegisterForm openSignIn={this.state.openSignIn} />
     </div>
     );
   }

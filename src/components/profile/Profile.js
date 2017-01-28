@@ -21,7 +21,6 @@ export default class Profile extends Component {
             user: userData,
             open: false
         }
-        // JSON.parse(localStorage.getItem('userData')) || 
     }
 
     handleFillProfileClick() {
@@ -47,9 +46,9 @@ export default class Profile extends Component {
                             Looking a little spare here, huh?
                         </p>
                         <p>
-                            To get the most out of Montessori Match, 
+                            To get the most out of Montessori Match,
                         </p>
-                        <RaisedButton 
+                        <RaisedButton
                             label='fill out your matching profile!'
                             primary={true}
                             onClick={this.handleFillProfileClick.bind(this)}

@@ -25,15 +25,15 @@ const styles = {
 
 export default class RegisterForm extends React.Component {
     state = {
-        open: this.props.open
+        openSignIn: this.props.openSignIn
     };
 
     componentWillReceiveProps(nextProps) {
-        this.setState({ open: nextProps.open });
+        this.setState({ openSignIn: nextProps.openSignIn });
     }
 
     handleClose = () => {
-        this.setState({ open: false });
+        this.setState({ openSignIn: false });
     };
 
     render() {
@@ -53,7 +53,7 @@ export default class RegisterForm extends React.Component {
               title="Sign Up"
               actions={actions}
               modal={false}
-              open={this.state.open}
+              open={this.state.openSignIn}
               onRequestClose={this.handleClose}
             >
             I'm signing up as a...
