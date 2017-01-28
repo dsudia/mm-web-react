@@ -5,6 +5,7 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import { Link } from 'react-router'
 import FaceIcon from 'material-ui/svg-icons/action/face';
+import RegisterForm from '../../register/register-form.js';
 import SignInForm from '../../sign-in/signin-form.js';
 
 export class Login extends Component {
@@ -33,13 +34,17 @@ export class Login extends Component {
           anchorOrigin={{horizontal: 'right', vertical: 'top'}}
         >
         <MenuItem>
-          <FlatButton label="Sign Up" onTouchTap={this.handleOpen.bind(this)} />
+          <FlatButton label="Register" onTouchTap={this.handleOpen.bind(this)} />
+        </MenuItem>
+        <MenuItem>
+          <FlatButton label="Sign In" onTouchTap={this.handleOpen.bind(this)} />
         </MenuItem>
         <MenuItem primaryText="Sign In"
           containerElement={<Link to="/profile" />}
         />
       </IconMenu>
     <SignInForm open={this.state.open} />
+    <RegisterForm open={this.state.open} />
     </div>
     );
   }
