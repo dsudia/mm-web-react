@@ -14,7 +14,7 @@ class Header extends Component {
     handleChange = (event, logged) => {
         this.setState({logged: logged});
     }
-    
+
     render() {
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>

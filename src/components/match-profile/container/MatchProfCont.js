@@ -9,7 +9,7 @@ export default class MatchProfileContainer extends Component {
     };
 
     componentWillReceiveProps(nextProps) {
-        this.setState({open: nextProps.open})
+        this.setState({open: nextProps.open});
     }
 
     handleClose = () => {
