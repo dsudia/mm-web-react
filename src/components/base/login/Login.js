@@ -18,28 +18,29 @@ export class Login extends Component {
   }
 
   handleOpen = () => {
-    console.log('here')
     this.setState({open: true});
   };
 
   render() {
     return (
-      <IconMenu
-      {...this.props}
-      iconButtonElement={
-        <IconButton><FaceIcon color='#fff' /></IconButton>
-      }
-      targetOrigin={{horizontal: 'right', vertical: 'top'}}
-      anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-    >
-      <SignInForm open={this.state.open} />
-      <MenuItem>
-        <FlatButton label="Sign Up" onTouchTap={this.handleOpen.bind(this)} />
-      </MenuItem>
-      <MenuItem primaryText="Sign In"
-        containerElement={<Link to="/profile" />}
-      />
-    </IconMenu>
+      <div>
+        <IconMenu
+          {...this.props}
+          iconButtonElement={
+            <IconButton><FaceIcon color='#fff' /></IconButton>
+          }
+          targetOrigin={{horizontal: 'right', vertical: 'top'}}
+          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+        >
+        <MenuItem>
+          <FlatButton label="Sign Up" onTouchTap={this.handleOpen.bind(this)} />
+        </MenuItem>
+        <MenuItem primaryText="Sign In"
+          containerElement={<Link to="/profile" />}
+        />
+      </IconMenu>
+    <SignInForm open={this.state.open} />
+    </div>
     );
   }
 }
