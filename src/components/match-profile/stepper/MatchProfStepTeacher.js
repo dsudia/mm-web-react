@@ -7,15 +7,15 @@ import {
   StepContent,
   StepLabel,
 } from 'material-ui/Stepper'
-import OrgTypeSchool from './subCompsSchool/OrgTypeSchool'
-import CalsSchool from './subCompsSchool/CalsSchool'
-import StatesSchool from './subCompsSchool/StatesSchool'
-import SizesSchool from './subCompsSchool/SizesSchool'
-import AgesSchool from './subCompsSchool/AgesSchool'
-import TrainingsSchool from './subCompsSchool/TrainingsSchool'
-import TraitsSchool from './subCompsSchool/TraitsSchool'
+import OrgTypeTeacher from './subCompsTeacher/OrgTypeTeacher'
+import CalsTeacher from './subCompsTeacher/CalsTeacher'
+import StatesTeacher from './subCompsTeacher/StatesTeacher'
+import SizesTeacher from './subCompsTeacher/SizesTeacher'
+import AgesTeacher from './subCompsTeacher/AgesTeacher'
+import TrainingsTeacher from './subCompsTeacher/TrainingsTeacher'
+import TraitsTeacher from './subCompsTeacher/TraitsTeacher'
 
-export default class MatchProfileStepperSchool extends Component {
+export default class MatchProfileStepperTeacher extends Component {
 
   state = {
     finished: false,
@@ -88,37 +88,37 @@ export default class MatchProfileStepperSchool extends Component {
           <Step>
             <StepLabel>Your Matching Profile</StepLabel>
             <StepContent>
-              The power of Montessori Match is finding teachers that will be
-              great cultural fits for your school. Fill out this quick
+              The power of Montessori Match is finding schools that will be
+              great cultural fits for you. Fill out this quick
               profile and we can start getting you matched up!
               {this.renderStepActions(0)}
             </StepContent>
           </Step>
           <Step>
-            <StepLabel>Type of School</StepLabel>
+            <StepLabel>Types of School</StepLabel>
             <StepContent>
               <p>
-                What category best matches your school?
+                What kinds of school would you like to work at?
               </p>
               <OrgTypeSchool />
               {this.renderStepActions(1)}
             </StepContent>
           </Step>
           <Step>
-            <StepLabel>Calendar</StepLabel>
+            <StepLabel>Calendars</StepLabel>
             <StepContent>
               <p>
-                What calendar does your school use?
+                What calendar are you willing to work on?
               </p>
               <CalsSchool />
               {this.renderStepActions(2)}
             </StepContent>
           </Step>
           <Step>
-            <StepLabel>State</StepLabel>
+            <StepLabel>States</StepLabel>
             <StepContent>
               <p>
-                What state is your school in?
+                What states would you like to work in?
               </p>
               <StatesSchool />
               {this.renderStepActions(3)}
@@ -128,7 +128,7 @@ export default class MatchProfileStepperSchool extends Component {
             <StepLabel>Size</StepLabel>
             <StepContent>
               <p>
-                How many classrooms does your school have?
+                How many classrooms does your ideal school have?
               </p>
               <SizesSchool />
               {this.renderStepActions(4)}
@@ -138,7 +138,7 @@ export default class MatchProfileStepperSchool extends Component {
             <StepLabel>Age Ranges</StepLabel>
             <StepContent>
               <p>
-                What age bands do you teach?
+                What age bands are you licensed to teach?
               </p>
               <AgesSchool />
               {this.renderStepActions(5)}
@@ -148,7 +148,7 @@ export default class MatchProfileStepperSchool extends Component {
             <StepLabel>Teacher Training</StepLabel>
             <StepContent>
               <p>
-                What teacher training standards do you accept?
+                What training certifications do you have?
               </p>
               <TrainingsSchool />
               {this.renderStepActions(6)}
@@ -158,7 +158,7 @@ export default class MatchProfileStepperSchool extends Component {
             <StepLabel>Culture</StepLabel>
             <StepContent>
               <p>
-                Pick seven traits that describe your school culture. (We know you are all of these things!)
+                Pick seven traits that describe your ideal school culture. (We know you are all of these things!)
               </p>
               <TraitsSchool />
               {this.renderStepActions(7)}
