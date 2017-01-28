@@ -48,8 +48,8 @@ export class Login extends Component {
           containerElement={<Link to="/profile" />}
         />
       </IconMenu>
-    <SignInForm open={this.state.open} />
-    <RegisterForm openSignIn={this.state.openSignIn} />
+    <SignInForm openSignIn={this.state.openSignIn} />
+    <RegisterForm open={this.state.open} />
     </div>
     );
   }

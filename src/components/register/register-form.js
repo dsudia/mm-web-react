@@ -1,6 +1,7 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import { Link } from 'react-router'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RadioButton from 'material-ui/RadioButton';
 import TextField from 'material-ui/TextField';
@@ -25,24 +26,39 @@ const styles = {
 
 export default class RegisterForm extends React.Component {
     state = {
-        openSignIn: this.props.openSignIn
+        isTeacher: 0,
+        open: this.props.open,
+        firstname: '',
+        lastname: '',
+        email: '',
+        displayName: '',
+        password: '',
+        confirmPassword: '',
     };
 
     componentWillReceiveProps(nextProps) {
-        this.setState({ openSignIn: nextProps.openSignIn });
+        this.setState({ open: nextProps.open });
     }
 
     handleClose = () => {
-        this.setState({ openSignIn: false });
+        this.setState({ open: false });
     };
+
+    createNewUser = () => {
+      // console.log("register!")
+      // setTimeout(function () {
+      //     window.location = "/profile"
+      // }, 1000);
+      return this.handleClose();
+    }
 
     render() {
       const actions = [
         <FlatButton
-          label="Ok"
+          label="Register"
           primary={true}
           keyboardFocused={true}
-          onTouchTap={this.handleClose}
+          onTouchTap={this.createNewUser}
         />,
       ];
 
@@ -53,8 +69,9 @@ export default class RegisterForm extends React.Component {
               title="Sign Up"
               actions={actions}
               modal={false}
-              open={this.state.openSignIn}
-              onRequestClose={this.handleClose}
+              open={this.state.open}
+              onRequestClose={this.createNewUser}
+              containerElement={<Link to="/profile" />}
             >
             I'm signing up as a...
 

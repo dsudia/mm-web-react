@@ -24,21 +24,29 @@ const styles = {
 
 export default class SignInForm extends React.Component {
     state = {
-        open: this.props.open
+        openSignIn: this.props.openSignIn
     };
 
     componentWillReceiveProps(nextProps) {
-        this.setState({ open: nextProps.open });
+        this.setState({ openSignIn: nextProps.openSignIn });
     }
 
     handleClose = () => {
-        this.setState({ open: false });
+        this.setState({ openSignIn: false });
     };
+
+    signIn = () => {
+      console.log('sign in');
+      setTimeout(function () {
+          window.location = "#/profile"
+      }, 1000);
+      return this.handleClose();
+    }
 
     render() {
       const actions = [
         <FlatButton
-          label="Ok"
+          label="Sign In"
           primary={true}
           keyboardFocused={true}
           onTouchTap={this.handleClose}
@@ -52,7 +60,7 @@ export default class SignInForm extends React.Component {
               title="Sign In"
               actions={actions}
               modal={false}
-              open={this.state.open}
+              open={this.state.openSignIn}
               onRequestClose={this.handleClose}
             >
             Welcome!
