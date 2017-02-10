@@ -6,6 +6,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import TextField from 'material-ui/TextField';
 import * as firebase from 'firebase'
+import { browserHistory } from 'react-router'
 
 const styles = {
   title : {
@@ -63,7 +64,8 @@ export default class RegisterForm extends React.Component {
         }
       })
       this.handleClose()
-      window.location = "/profile"
+      console.log(this.props)
+      browserHistory.push('/profile')
     }
 
     handleRadioChange = (event, value) => {
