@@ -6,6 +6,14 @@ import Profile from './components/profile/Profile'
 import './index.css';
 import { Route, Router, hashHistory } from 'react-router'
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import * as firebase from 'firebase'
+
+firebase.initializeApp({
+  apiKey:  'AIzaSyCx9qGnCCieTChB0laygI1YZnkf4BuMRv8',
+  authDomain: 'www.montessorimatch.com',
+  databaseURL: 'https://montessori-match.firebaseio.com/',
+  storageBucket: 'gs://montessori-match.appspot.com'
+})
 
 injectTapEventPlugin();
 
