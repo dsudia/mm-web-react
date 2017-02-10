@@ -7,6 +7,7 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import TextField from 'material-ui/TextField';
 import * as firebase from 'firebase'
 import { browserHistory } from 'react-router'
+import { writeInitialData } from '../../databaseCalls/userCalls'
 
 const styles = {
   title : {
@@ -28,7 +29,7 @@ const styles = {
 
 export default class RegisterForm extends React.Component {
     state = {
-        isTeacher: 1,
+        memberType: 'teacher',
         open: this.props.open,
         firstName: '',
         lastName: '',
@@ -36,6 +37,7 @@ export default class RegisterForm extends React.Component {
         displayName: '',
         password: '',
         confirmPassword: '',
+        userId: null
     };
 
     componentWillReceiveProps(nextProps) {
@@ -52,27 +54,34 @@ export default class RegisterForm extends React.Component {
       //     window.location = "/profile"
       // }, 1000);
       firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then(() => {
+        firebase.auth().onAuthStateChanged(user => {
+          if (user) {
+            this.setState({userId: user.uid})
+            writeInitialData(user.uid,
+                            this.state.firstName,
+                            this.state.lastName,
+                            this.state.displayName,
+                            this.state.memberType,
+                            'development')
+            this.handleClose()
+            browserHistory.push('/profile')
+          } else {
+            console.log('no user is signed in')
+          }
+        })
+      })
       .catch((error) => {
         console.log(error.code)
         console.log(error.message)
       })
-      firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-          console.log(user)
-        } else {
-          console.log('no user is signed in')
-        }
-      })
-      this.handleClose()
-      console.log(this.props)
-      browserHistory.push('/profile')
     }
 
     handleRadioChange = (event, value) => {
       if (value === 'teacher') {
-        this.setState({isTeacher: 1, lastname: ''})
+        this.setState({memberType: 'teacher', lastname: ''})
       } else if (value === 'school') {
-        this.setState({isTeacher: 0, lastname: 'school'})
+        this.setState({memberType: 'school', lastname: 'school'})
       }
     }
 
@@ -140,7 +149,7 @@ export default class RegisterForm extends React.Component {
                       />
                     </RadioButtonGroup>
                </div>
-               {this.state.isTeacher === 1 ? 
+               {this.state.memberType === 'teacher' ? 
                 <div>
                   <div style={styles.form}>
                       <TextField

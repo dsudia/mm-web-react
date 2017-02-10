@@ -11,15 +11,40 @@ import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import MatchProfileContainer from '../match-profile/container/MatchProfCont'
+import * as firebase from 'firebase'
+import { getProfileData } from '../../databaseCalls/userCalls'
+import { browserHistory } from 'react-router'
 
 export default class Profile extends Component {
 
     constructor(props) {
-        const userData = {username: 'fred', firstName: 'fred', lastName: 'smith', email: 'fred@gmail.com'}
+        // const userData = {username: 'fred', firstName: 'fred', lastName: 'smith', email: 'fred@gmail.com'}
         super(props)
         this.state = {
-            user: userData,
+            user: {},
             open: false
+        }
+    }
+
+    componentWillMount() {
+        const user = firebase.auth().currentUser
+        if (user) {
+            return getProfileData(user.uid, 'development')
+            .then(data => {
+                console.log(data.val())
+                const userData = data.val()
+                this.setState({
+                    user: {
+                        username: userData.displayName,
+                        firstName: userData.firstName,
+                        lastName: userData.lastName,
+                        email: user.email
+                    }
+                })
+            })
+        } else {
+            console.log('no user is signed in')
+            browserHistory.push('/')
         }
     }
 
