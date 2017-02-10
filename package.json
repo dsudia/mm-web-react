@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "@types/immutable": "^3.8.7",
+    "@types/react": "^15.0.4",
+    "@types/react-redux": "^4.4.36",
     "flow-bin": "^0.37.4",
     "react-scripts": "0.8.4"
   },
@@ -10,6 +13,7 @@
     "amazon-cognito-identity-js": "^1.11.0",
     "bootstrap": "3",
     "firebase": "^3.6.4",
+    "immutable": "^3.8.1",
     "material-ui": "^0.16.6",
     "react": "15.4.2",
     "react-bootstrap": "^0.30.7",
