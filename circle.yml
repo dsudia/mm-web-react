@@ -12,4 +12,5 @@ dependencies:
 
 test:
   override:
+    - nohup yarn start &
     - yarn run uitests-headless
