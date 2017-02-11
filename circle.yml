@@ -11,9 +11,5 @@ dependencies:
     - ~/.cache/yarn
 
 test:
-  pre:
-    - "yarn start":
-        background: true
-    - sleep 5
   override:
-    - yarn run uitests-headless
+    - yarn run test
