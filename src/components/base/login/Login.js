@@ -7,6 +7,8 @@ import { Link } from 'react-router'
 import FaceIcon from 'material-ui/svg-icons/action/face';
 import RegisterForm from '../../register/register-form.js';
 import SignInForm from '../../sign-in/signin-form.js';
+import * as firebase from 'firebase'
+import { browserHistory } from 'react-router'
 
 export class Login extends Component {
   static muiName = 'Login';
@@ -23,9 +25,20 @@ export class Login extends Component {
     this.setState({open: true});
   };
 
-  handleOpenSignIn = () => {
+  handleOpenSignIn = (event) => {
     this.setState({ openSignIn: true});
-  }
+  };
+
+  handleSignOut = () => {
+    return firebase.auth().signOut()
+    .then(() => {
+      console.log(`user signed out`)
+      browserHistory.push(`/`)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  };
 
   render() {
     return (
@@ -45,16 +58,14 @@ export class Login extends Component {
           <FlatButton label="Sign In" onTouchTap={this.handleOpenSignIn.bind(this)} />
         </MenuItem>
       </IconMenu>
-    <SignInForm openSignIn={this.state.openSignIn} />
-    <RegisterForm open={this.state.open} />
+      <SignInForm openSignIn={this.state.openSignIn} />
+      <RegisterForm open={this.state.open} />
     </div>
     );
   }
 }
 
 export class Logged extends Component {
-  static muiName = 'Logged';
-
   render() {
     return (
       <IconMenu
@@ -66,7 +77,7 @@ export class Logged extends Component {
         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
       >
         <Link to={`/profile`}><MenuItem primaryText="My Profile" /></Link>
-        <MenuItem primaryText="Sign out" />
+        <MenuItem primaryText="Sign out" onTouchTap={this.handleSignOut}/>
       </IconMenu>
     )
   }

@@ -28,7 +28,6 @@ export default class Profile extends Component {
         if (user) {
             return getProfileData(user.uid, 'development')
             .then(data => {
-                console.log(data.val())
                 const userData = data.val()
                 this.setState({
                     user: {
