@@ -57,18 +57,22 @@ export default class Profile extends Component {
               <ListItem
                 primaryText={this.state.user.username}
                 leftIcon={<FaceIcon />}
+                data-test='item-display-name'
               />
               <ListItem
                 primaryText={this.state.user.firstName}
                 leftIcon={<PersonIcon />}
+                data-test='item-first-name'
               />
               <ListItem
                 primaryText={this.state.user.lastName}
                 leftIcon={<PersonOutlineIcon />}
+                data-test='item-last-name'
               />
               <ListItem
                 primaryText={this.state.user.email}
                 leftIcon={<EmailIcon />}
+                data-test='item-email'
               />
             </List>
             <p>
