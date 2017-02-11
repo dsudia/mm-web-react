@@ -50,7 +50,7 @@ export default class Profile extends Component {
     return (
       <div>
         <Header />
-        <Card>
+        <Card data-test="card-profile">
           <CardHeader title={this.state.user.username} avatar={TeacherImg} />
           <CardText>
             <List>

@@ -9,6 +9,7 @@
   "dependencies": {
     "amazon-cognito-identity-js": "^1.11.0",
     "bootstrap": "3",
+    "faker": "^3.1.0",
     "firebase": "^3.6.4",
     "material-ui": "^0.16.6",
     "prettier": "^0.16.0",
@@ -16,12 +17,14 @@
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.1",
     "react-router": "^3.0.0",
-    "react-tap-event-plugin": "^2.0.1"
+    "react-tap-event-plugin": "^2.0.1",
+    "testcafe": "^0.12.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "prettier --write \"src/**/*.js\" && react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "uitest": "testcafe chrome uitests/tests/ -a \"yarn start\"",
     "prettier": "prettier --write \"src/**/*.js\"",
     "eject": "react-scripts eject"
   }

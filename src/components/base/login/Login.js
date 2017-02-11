@@ -34,20 +34,28 @@ export class Login extends Component {
       <div>
         <IconMenu
           {...this.props}
-          iconButtonElement={<IconButton><FaceIcon color="#fff" /></IconButton>}
+          iconButtonElement={
+            (
+              <IconButton>
+                <FaceIcon color="#fff" data-test="button-auth-menu" />
+              </IconButton>
+            )
+          }
           targetOrigin={{ horizontal: "right", vertical: "top" }}
           anchorOrigin={{ horizontal: "right", vertical: "top" }}
         >
           <MenuItem>
             <FlatButton
-              label="Register"
+              label="Sign Up"
               onTouchTap={this.handleOpen.bind(this)}
+              data-test="button-open-sign-up"
             />
           </MenuItem>
           <MenuItem>
             <FlatButton
               label="Sign In"
               onTouchTap={this.handleOpenSignIn.bind(this)}
+              data-test="button-open-sign-in"
             />
           </MenuItem>
         </IconMenu>
@@ -81,7 +89,11 @@ export class Logged extends Component {
         anchorOrigin={{ horizontal: "right", vertical: "top" }}
       >
         <Link to={`/profile`}><MenuItem primaryText="My Profile" /></Link>
-        <MenuItem primaryText="Sign out" onTouchTap={this.handleSignOut} />
+        <MenuItem
+          primaryText="Sign out"
+          onTouchTap={this.handleSignOut}
+          data-test="button-sign-out"
+        />
       </IconMenu>
     );
   }

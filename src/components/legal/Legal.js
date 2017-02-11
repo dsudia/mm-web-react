@@ -31,6 +31,8 @@ export default class Legal extends Component {
 
 
             Therefore, we ask that you check and review this Agreement for such changes on an occasional basis. Should you not agree to any provision of this Agreement or any changes we make to this Agreement, we ask and advise that you do not use or continue to access the Montessori Match site immediately.
+
+
             {" "}
           </p>
           <h2>Contact Us</h2>

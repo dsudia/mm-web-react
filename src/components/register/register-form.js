@@ -128,7 +128,9 @@ export default class RegisterForm extends React.Component {
           modal={false}
           open={this.state.open}
           onRequestClose={this.createNewUser}
-          containerElement={<Link to="/profile" />}
+          containerElement={
+            <Link to="/profile" data-test="button-submit-sign-up" />
+          }
         >
           I'm signing up as a...
 
@@ -145,11 +147,13 @@ export default class RegisterForm extends React.Component {
                 value="teacher"
                 label="Teacher"
                 style={styles.radioButton}
+                data-test="radio-teacher"
               />
               <RadioButton
                 value="school"
                 label="School"
                 style={styles.radioButton}
+                data-test="radio-school"
               />
             </RadioButtonGroup>
           </div>
@@ -160,11 +164,13 @@ export default class RegisterForm extends React.Component {
                     className="half-width"
                     hintText="First Name"
                     onChange={this.handleFirstNameChange}
+                    data-test="field-first-name"
                   />
                   <TextField
                     className="half-width"
                     hintText="Last Name"
                     onChange={this.handleLastNameChange}
+                    data-test="field-last-name"
                   />
                 </div>
                 <div style={styles.form}>
@@ -172,11 +178,13 @@ export default class RegisterForm extends React.Component {
                     className="half-width"
                     hintText="Email"
                     onChange={this.handleEmailChange}
+                    data-test="field-email"
                   />
                   <TextField
                     className="half-width"
                     hintText="Display Name"
                     onChange={this.handleDisplayNameChange}
+                    data-test="field-display-name"
                   />
                 </div>
                 <div style={styles.form}>
@@ -185,12 +193,14 @@ export default class RegisterForm extends React.Component {
                     hintText="Password"
                     type="password"
                     onChange={this.handlePasswordChange}
+                    data-test="field-password"
                   />
                   <TextField
                     className="half-width"
                     hintText="Confirm Password"
                     type="password"
                     onChange={this.handleConfPassChange}
+                    data-test="field-conf-password"
                   />
                 </div>
               </div>
