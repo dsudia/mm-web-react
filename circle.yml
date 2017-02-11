@@ -4,7 +4,7 @@ machine:
   environment:
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
   post:
-    - yarn start:
+    - "yarn start":
       - background: true
     - sleep 5
 
