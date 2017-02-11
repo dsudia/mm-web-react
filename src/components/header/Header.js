@@ -1,31 +1,33 @@
-import React, { Component } from 'react';
-import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import { Logged, Login } from '../base/login/Login'
-import { MainMenu } from '../base/main-menu/MainMenu'
-import AppBar from 'material-ui/AppBar'
+import React, { Component } from "react";
+import { Logged, Login } from "../base/login/Login";
+import { MainMenu } from "../base/main-menu/MainMenu";
+import AppBar from "material-ui/AppBar";
+import * as firebase from "firebase";
 
 class Header extends Component {
-    state = {
-        logged: false
-    }
+  state = {
+    logged: false
+  };
 
-    handleChange = (event, logged) => {
-        this.setState({logged: logged});
-    }
-    
-    render() {
-        return (
-            <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-                <AppBar
-                    title='Montessori Match'
-                    iconElementLeft={<MainMenu/>}
-                    iconElementRight={this.state.logged ? <Logged/> : <Login/>}
-                />
-            </MuiThemeProvider>
-        );
-    }
+  componentWillMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ logged: true });
+      } else {
+        this.setState({ logged: false });
+      }
+    });
+  }
+
+  render() {
+    return (
+      <AppBar
+        title="Montessori Match"
+        iconElementLeft={<MainMenu />}
+        iconElementRight={this.state.logged ? <Logged /> : <Login />}
+      />
+    );
+  }
 }
 
 export default Header;
