@@ -61,7 +61,7 @@ export default class RegisterForm extends React.Component {
               this.state.lastName,
               this.state.displayName,
               this.state.memberType,
-              "development"
+              process.env.NODE_ENV
             );
             this.handleClose();
             browserHistory.push("/profile");

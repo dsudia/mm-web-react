@@ -12,10 +12,10 @@ import injectTapEventPlugin from "react-tap-event-plugin";
 import * as firebase from "firebase";
 
 firebase.initializeApp({
-  apiKey: "AIzaSyCx9qGnCCieTChB0laygI1YZnkf4BuMRv8",
-  authDomain: "www.montessorimatch.com",
-  databaseURL: "https://montessori-match.firebaseio.com/",
-  storageBucket: "gs://montessori-match.appspot.com"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET
 });
 
 injectTapEventPlugin();
