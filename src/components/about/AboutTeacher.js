@@ -25,6 +25,7 @@ export default class AboutTeacher extends Component {
           <p>
             Teaching is so rewarding. It can also be hard, especially if you’re teaching in a school with a culture, location, or administration that doesn’t work for you.
 
+
             We know that when teachers work in schools in which they thrive, the children flourish.
           </p>
           <p>
@@ -35,6 +36,7 @@ export default class AboutTeacher extends Component {
           </p>
           <p>
             With a little bit of information about you we can help you find right fit schools looking for a teacher like you.
+
 
             Let us be your personal match maker so we can help you find the school of your dreams!
           </p>

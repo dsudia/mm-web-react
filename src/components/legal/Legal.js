@@ -10,6 +10,7 @@ export default class Legal extends Component {
           <p>
             Please read these Terms and Conditions completely before using Montessori Match (“Site”), which is owned and operated by Connectique. This Agreement documents the legally binding terms and conditions attached to the use of the site MontessoriMatch.com
 
+
             By using or accessing the Site in any way, viewing or browsing the Site, or adding your own content to the Site, you are agreeing to be bound by these Terms and Conditions.
           </p>
           <h2>Intellectual Property</h2>
@@ -29,7 +30,8 @@ export default class Legal extends Component {
             Montessori Match reserves the right to modify these Terms and Conditions at any time. We do so by posting and drawing attention to the updated terms on the Site. Your decision to continue to visit and make use of the Site after such changes have been made constitutes your formal acceptance of the new Terms and Conditions.
 
 
-            Therefore, we ask that you check and review this Agreement for such changes on an occasional basis. Should you not agree to any provision of this Agreement or any changes we make to this Agreement, we ask and advise that you do not use or continue to access the Montessori Match site immediately.{" "}
+            Therefore, we ask that you check and review this Agreement for such changes on an occasional basis. Should you not agree to any provision of this Agreement or any changes we make to this Agreement, we ask and advise that you do not use or continue to access the Montessori Match site immediately.
+            {" "}
           </p>
           <h2>Contact Us</h2>
           <p>

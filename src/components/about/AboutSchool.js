@@ -23,7 +23,9 @@ export default class AboutSchool extends Component {
         </CardMedia>
         <CardText expandable={true}>
           <p>
-            Your school is a special place and your community deserves to have the best teachers out there.{" "}
+            Your school is a special place and your community deserves to have the best teachers out there.
+            {" "}
+
 
             We know that when teachers work in schools in which they thrive, the children flourish.
           </p>
@@ -34,7 +36,9 @@ export default class AboutSchool extends Component {
             Start Here!
           </p>
           <p>
-            With a little bit of information about your school we can help you find right fit teachers looking for a school like yours.{" "}
+            With a little bit of information about your school we can help you find right fit teachers looking for a school like yours.
+            {" "}
+
 
             Let us be your personal match maker so we can help you find the teaching team of your dreams!
           </p>
