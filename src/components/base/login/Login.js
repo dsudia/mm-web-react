@@ -44,9 +44,6 @@ export class Login extends Component {
         <MenuItem>
           <FlatButton label="Sign In" onTouchTap={this.handleOpenSignIn.bind(this)} />
         </MenuItem>
-        <MenuItem primaryText="Sign In"
-          containerElement={<Link to="/profile" />}
-        />
       </IconMenu>
     <SignInForm openSignIn={this.state.openSignIn} />
     <RegisterForm open={this.state.open} />
