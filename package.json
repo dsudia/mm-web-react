@@ -18,13 +18,15 @@
     "react-dom": "^15.4.1",
     "react-router": "^3.0.0",
     "react-tap-event-plugin": "^2.0.1",
-    "testcafe": "^0.12.1"
+    "testcafe": "^0.12.1",
+    "testcafe-browser-provider-nightmare": "^0.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "prettier --write \"src/**/*.js\" && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "uitests": "testcafe chrome uitests/tests/ -a \"yarn start\"",
+    "uitests-headless": "testcafe nightmare uitests/tests/ -a \"yarn start\"",
     "prettier": "prettier --write \"src/**/*.js\"",
     "eject": "react-scripts eject"
   }
