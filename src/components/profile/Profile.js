@@ -11,6 +11,7 @@ import MatchProfileContainer from '../match-profile/container/MatchProfCont'
 import * as firebase from 'firebase'
 import { getProfileData } from '../../databaseCalls/userCalls'
 import { browserHistory } from 'react-router'
+import Header from '../header/Header'
 
 export default class Profile extends Component {
 
@@ -50,35 +51,38 @@ export default class Profile extends Component {
 
     render() {
         return (
-            <Card>
-                <CardHeader
-                    title={this.state.user.username}
-                    avatar={TeacherImg}
-                />
-                <CardText>
-                    <List>
-                        <ListItem primaryText={this.state.user.username} leftIcon={<FaceIcon />} />
-                        <ListItem primaryText={this.state.user.firstName} leftIcon={<PersonIcon />} />
-                        <ListItem primaryText={this.state.user.lastName} leftIcon={<PersonOutlineIcon />} />
-                        <ListItem primaryText={this.state.user.email} leftIcon={<EmailIcon />} />
-                    </List>
-                    <p>
-                        Looking a little spare here, huh?
-                    </p>
-                    <p>
-                        To get the most out of Montessori Match,
-                    </p>
-                    <RaisedButton
-                        label='fill out your matching profile!'
-                        primary={true}
-                        onClick={this.handleFillProfileClick.bind(this)}
+            <div>
+                <Header/>
+                <Card>
+                    <CardHeader
+                        title={this.state.user.username}
+                        avatar={TeacherImg}
                     />
-                </CardText>
-                <CardActions>
-                    <RaisedButton label="Edit"/>
-                </CardActions>
-                <MatchProfileContainer open={this.state.open}/>
-            </Card>
+                    <CardText>
+                        <List>
+                            <ListItem primaryText={this.state.user.username} leftIcon={<FaceIcon />} />
+                            <ListItem primaryText={this.state.user.firstName} leftIcon={<PersonIcon />} />
+                            <ListItem primaryText={this.state.user.lastName} leftIcon={<PersonOutlineIcon />} />
+                            <ListItem primaryText={this.state.user.email} leftIcon={<EmailIcon />} />
+                        </List>
+                        <p>
+                            Looking a little spare here, huh?
+                        </p>
+                        <p>
+                            To get the most out of Montessori Match,
+                        </p>
+                        <RaisedButton
+                            label='fill out your matching profile!'
+                            primary={true}
+                            onClick={this.handleFillProfileClick.bind(this)}
+                        />
+                    </CardText>
+                    <CardActions>
+                        <RaisedButton label="Edit"/>
+                    </CardActions>
+                    <MatchProfileContainer open={this.state.open}/>
+                </Card>
+            </div>
         );
     }
 }

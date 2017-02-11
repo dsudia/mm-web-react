@@ -65,6 +65,7 @@ export class Logged extends Component {
         targetOrigin={{horizontal: 'right', vertical: 'top'}}
         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
       >
+        <Link to={`/profile`}><MenuItem primaryText="My Profile" /></Link>
         <MenuItem primaryText="Sign out" />
       </IconMenu>
     )
