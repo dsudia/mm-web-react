@@ -2,7 +2,6 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { Link } from 'react-router'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import TextField from 'material-ui/TextField';
 import * as firebase from 'firebase'
@@ -49,10 +48,6 @@ export default class RegisterForm extends React.Component {
     };
 
     createNewUser = () => {
-      // console.log("register!")
-      // setTimeout(function () {
-      //     window.location = "/profile"
-      // }, 1000);
       firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => {
         firebase.auth().onAuthStateChanged(user => {
@@ -121,109 +116,107 @@ export default class RegisterForm extends React.Component {
 
       return (
         <div>
-        <MuiThemeProvider>
-            <Dialog
-              title="Sign Up"
-              actions={actions}
-              modal={false}
-              open={this.state.open}
-              onRequestClose={this.createNewUser}
-              containerElement={<Link to="/profile" />}
-            >
-            I'm signing up as a...
+          <Dialog
+            title="Sign Up"
+            actions={actions}
+            modal={false}
+            open={this.state.open}
+            onRequestClose={this.createNewUser}
+            containerElement={<Link to="/profile" />}
+          >
+          I'm signing up as a...
 
-               <div
-                 style={styles.marginTop}
-                 className="display-flex half-width text-left"
-               >
-                   <RadioButtonGroup onChange={this.handleRadioChange} name="memberType" defaultSelected="teacher">
-                      <RadioButton
-                        value="teacher"
-                        label="Teacher"
-                        style={styles.radioButton}
-                      />
-                      <RadioButton
-                        value="school"
-                        label="School"
-                        style={styles.radioButton}
-                      />
-                    </RadioButtonGroup>
-               </div>
-               {this.state.memberType === 'teacher' ? 
-                <div>
-                  <div style={styles.form}>
-                      <TextField
-                        className="half-width"
-                        hintText="First Name"
-                        onChange={this.handleFirstNameChange}
-                      />
-                      <TextField
-                        className="half-width"
-                        hintText="Last Name"
-                        onChange={this.handleLastNameChange}
-                      />
-                  </div>
-                  <div style={styles.form}>
-                      <TextField
-                        className="half-width"
-                        hintText="Email"
-                        onChange={this.handleEmailChange}
-                      />
-                      <TextField
-                        className="half-width"
-                        hintText="Display Name"
-                        onChange={this.handleDisplayNameChange}
-                      />
-                  </div>
-                  <div style={styles.form}>
-                      <TextField
-                        className="half-width"
-                        hintText="Password"
-                        type="password"
-                        onChange={this.handlePasswordChange}
-                      />
-                      <TextField
-                        className="half-width"
-                        hintText="Confirm Password"
-                        type="password"
-                        onChange={this.handleConfPassChange}
-                      />
-                  </div>
+              <div
+                style={styles.marginTop}
+                className="display-flex half-width text-left"
+              >
+                  <RadioButtonGroup onChange={this.handleRadioChange} name="memberType" defaultSelected="teacher">
+                    <RadioButton
+                      value="teacher"
+                      label="Teacher"
+                      style={styles.radioButton}
+                    />
+                    <RadioButton
+                      value="school"
+                      label="School"
+                      style={styles.radioButton}
+                    />
+                  </RadioButtonGroup>
+              </div>
+              {this.state.memberType === 'teacher' ? 
+              <div>
+                <div style={styles.form}>
+                    <TextField
+                      className="half-width"
+                      hintText="First Name"
+                      onChange={this.handleFirstNameChange}
+                    />
+                    <TextField
+                      className="half-width"
+                      hintText="Last Name"
+                      onChange={this.handleLastNameChange}
+                    />
                 </div>
-                :
-                <div>
-                  <div style={styles.form}>
-                      <TextField
-                        className="half-width"
-                        hintText="School Name"
-                      />
-                  </div>
-                  <div style={styles.form}>
-                      <TextField
-                        className="half-width"
-                        hintText="Email"
-                      />
-                      <TextField
-                        className="half-width"
-                        hintText="Display Name"
-                      />
-                  </div>
-                  <div style={styles.form}>
-                      <TextField
-                        className="half-width"
-                        hintText="Password"
-                        type="password"
-                      />
-                      <TextField
-                        className="half-width"
-                        hintText="Confirm Password"
-                        type="password"
-                      />
-                  </div>
+                <div style={styles.form}>
+                    <TextField
+                      className="half-width"
+                      hintText="Email"
+                      onChange={this.handleEmailChange}
+                    />
+                    <TextField
+                      className="half-width"
+                      hintText="Display Name"
+                      onChange={this.handleDisplayNameChange}
+                    />
                 </div>
-              }
-             </Dialog>
-          </MuiThemeProvider>
+                <div style={styles.form}>
+                    <TextField
+                      className="half-width"
+                      hintText="Password"
+                      type="password"
+                      onChange={this.handlePasswordChange}
+                    />
+                    <TextField
+                      className="half-width"
+                      hintText="Confirm Password"
+                      type="password"
+                      onChange={this.handleConfPassChange}
+                    />
+                </div>
+              </div>
+              :
+              <div>
+                <div style={styles.form}>
+                    <TextField
+                      className="half-width"
+                      hintText="School Name"
+                    />
+                </div>
+                <div style={styles.form}>
+                    <TextField
+                      className="half-width"
+                      hintText="Email"
+                    />
+                    <TextField
+                      className="half-width"
+                      hintText="Display Name"
+                    />
+                </div>
+                <div style={styles.form}>
+                    <TextField
+                      className="half-width"
+                      hintText="Password"
+                      type="password"
+                    />
+                    <TextField
+                      className="half-width"
+                      hintText="Confirm Password"
+                      type="password"
+                    />
+                </div>
+              </div>
+            }
+            </Dialog>
         </div>
       );
     }
