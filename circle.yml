@@ -3,6 +3,10 @@ machine:
     version: 6.9.1
   environment:
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+  post:
+    - yarn start:
+      background: true
+    - sleep 5
 
 dependencies:
   override:
@@ -12,5 +16,4 @@ dependencies:
 
 test:
   override:
-    - nohup yarn start &
     - yarn run uitests-headless
