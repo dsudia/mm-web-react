@@ -10,7 +10,7 @@ export default class Page {
         this.fieldDisplayName = Selector('[data-test=field-display-name]')
         this.fieldEmail = Selector('[data-test=field-email]')
         this.fieldPassword = Selector('[data-test=field-password]')
-        this.fieldConfPassword = Selector('[data-test=field-confPassword]')
+        this.fieldConfPassword = Selector('[data-test=field-conf-password]')
         this.buttonSubmitSignUp = Selector('[data-test=button-submit-sign-up]')
     }
 }

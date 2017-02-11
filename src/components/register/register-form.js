@@ -116,6 +116,7 @@ export default class RegisterForm extends React.Component {
           primary={true}
           keyboardFocused={true}
           onTouchTap={this.createNewUser}
+          data-test="button-submit-sign-up"
         />
       )
     ];
@@ -128,9 +129,6 @@ export default class RegisterForm extends React.Component {
           modal={false}
           open={this.state.open}
           onRequestClose={this.createNewUser}
-          containerElement={
-            <Link to="/profile" data-test="button-submit-sign-up" />
-          }
         >
           I'm signing up as a...
 
