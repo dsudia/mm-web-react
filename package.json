@@ -22,6 +22,7 @@
     "start": "react-scripts start",
     "build": "prettier \"src/**/*.js\" && react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "prettier": "prettier \"src/**/*.js\"",
     "eject": "react-scripts eject"
   }
 }

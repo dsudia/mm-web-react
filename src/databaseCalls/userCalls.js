@@ -6,7 +6,7 @@ export function writeInitialData(
   lastName,
   displayName,
   memberType,
-  env = process.env.NODE_ENV
+  env = `development`
 ) {
   firebase.database().ref(`${env}/users/profiles/${userId}`).set({
     firstName: firstName,

@@ -43,7 +43,6 @@ export default class SignInForm extends React.Component {
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(res => {
-        console.log(res);
         firebase.auth().onAuthStateChanged(user => {
           if (user) {
             this.handleClose();
