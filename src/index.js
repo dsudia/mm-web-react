@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { Provider } from 'react-redux'
-import { store } from './redux/store'
-import Legal from './components/legal/Legal'
-import Profile from './components/profile/Profile'
-import './index.css';
-import { Route, Router, hashHistory } from 'react-router'
-import injectTapEventPlugin from 'react-tap-event-plugin';
-=======
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
@@ -28,21 +16,10 @@ firebase.initializeApp({
   databaseURL: process.env.REACT_APP_DATABASE_URL,
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET
 });
->>>>>>> master
 
 injectTapEventPlugin();
 
 ReactDOM.render(
-<<<<<<< HEAD
-  <Provider store={store}>
-    <Router history={hashHistory}>
-      <Route path='/' component={App} />
-      <Route path='/legal' component={Legal} />
-      <Route path='/profile' component={Profile} />
-    </Router>
-  </Provider>,
-  document.getElementById('root')
-=======
   <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
     <Router history={browserHistory}>
       <Route path="/" component={App} />
@@ -51,5 +28,4 @@ ReactDOM.render(
     </Router>
   </MuiThemeProvider>,
   document.getElementById("root")
->>>>>>> master
 );
