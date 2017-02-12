@@ -65,7 +65,7 @@ export default class MatchProfileStepperSchool extends Component {
             onTouchTap={this.handlePrev}
           />}
       </div>
-    );
+    )
   }
 
   render() {

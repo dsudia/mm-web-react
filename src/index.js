@@ -9,7 +9,7 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import { Route, Router, browserHistory } from "react-router";
 import injectTapEventPlugin from "react-tap-event-plugin";
-import * as firebase from 'firebase'
+import * as firebase from "firebase";
 
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
