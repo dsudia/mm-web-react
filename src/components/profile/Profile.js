@@ -9,13 +9,13 @@ import EmailIcon from "material-ui/svg-icons/communication/mail-outline";
 import { Card, CardActions, CardHeader, CardText } from "material-ui/Card";
 import RaisedButton from "material-ui/RaisedButton";
 import MatchProfileContainer from "../match-profile/container/MatchProfCont";
-import {
-  getCurrentUserProfile
-} from "../../redux/actions/get-current-user-profile";
-import { connect } from "react-redux";
 import * as translators from "./translators";
+import firebase from 'firebase'
+import { getProfileData } from '../../databaseCalls/userCalls'
+import { inject, observer } from 'mobx-react'
+import { browserHistory } from 'react-router'
 
-export default class Profile extends Component {
+class Profile extends Component {
   constructor(props) {
     super(props);
     const traits = localStorage.getItem(`traits`);
@@ -35,32 +35,30 @@ export default class Profile extends Component {
     };
   }
 
-  //   componentWillMount() {
-  //     const user = firebase.auth().currentUser;
-  //     if (user) {
-  //       return getProfileData(user.uid, "development").then(data => {
-  //         const userData = data.val();
-  //         this.setState({
-  //           user: {
-  //             username: userData.displayName,
-  //             firstName: userData.firstName,
-  //             lastName: userData.lastName,
-  //             email: user.email
-  //           }
-  //         });
-  //       });
-  //     } else {
-  //       console.log("no user is signed in");
-  //       browserHistory.push("/");
-  //     }
-  //   }
+    componentWillMount() {
+      const user = firebase.auth().currentUser;
+      if (user) {
+        return getProfileData(user.uid, "development").then(data => {
+          const userData = data.val();
+          this.props.currentUser.setProfile({
+            username: userData.displayName,
+            firstName: userData.firstName,
+            lastName: userData.lastName,
+            email: user.email
+          })
+        });
+      } else {
+        console.log("no user is signed in");
+        browserHistory.push("/");
+      }
+    }
 
   handleFillProfileClick() {
     this.setState({ open: true });
   }
 
   render() {
-    const profile = this.props.currentUserProfile;
+    const profile = this.props.currentUser.profile
     return (
       <div>
         <Card data-test="card-profile">
@@ -147,3 +145,5 @@ export default class Profile extends Component {
     );
   }
 }
+
+export default inject('currentUser')(observer(Profile))

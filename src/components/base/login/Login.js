@@ -9,31 +9,15 @@ import RegisterForm from "../../register/register-form.js";
 import SignInForm from "../../sign-in/signin-form.js";
 import firebase from "firebase";
 import { browserHistory } from "react-router";
+import { inject, observer } from 'mobx-react'
 
 export class Login extends Component {
   static muiName = "Login";
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false,
-      openSignIn: false
-    };
-  }
-
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleOpenSignIn = event => {
-    this.setState({ openSignIn: true });
-  };
 
   render() {
     return (
       <div>
         <IconMenu
-          {...this.props}
           iconButtonElement={
             (
               <IconButton>
@@ -47,26 +31,28 @@ export class Login extends Component {
           <MenuItem>
             <FlatButton
               label="Sign Up"
-              onTouchTap={this.handleOpen.bind(this)}
+              onTouchTap={this.props.menus.openRegister}
               data-test="button-open-sign-up"
             />
           </MenuItem>
           <MenuItem>
             <FlatButton
               label="Sign In"
-              onTouchTap={this.handleOpenSignIn.bind(this)}
+              onTouchTap={this.props.menus.openSignIn}
               data-test="button-open-sign-in"
             />
           </MenuItem>
         </IconMenu>
-        <SignInForm openSignIn={this.state.openSignIn} />
-        <RegisterForm open={this.state.open} />
+        <SignInForm />
+        <RegisterForm />
       </div>
     );
   }
 }
 
-export class Logged extends Component {
+export const login = inject('menus')(observer(Login))
+
+class Logged extends Component {
   handleSignOut = () => {
     return firebase
       .auth()
@@ -98,3 +84,5 @@ export class Logged extends Component {
     );
   }
 }
+
+export const logged = inject('currentUser')(observer(Logged))

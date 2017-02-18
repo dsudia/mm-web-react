@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Dialog from "material-ui/Dialog";
 import FlatButton from "material-ui/FlatButton";
 import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton";
@@ -6,6 +6,7 @@ import TextField from "material-ui/TextField";
 import firebase from "firebase";
 import { browserHistory } from "react-router";
 import { writeInitialData } from "../../databaseCalls/userCalls";
+import { inject, observer } from 'mobx-react'
 
 const styles = {
   title: {
@@ -25,22 +26,17 @@ const styles = {
   }
 };
 
-export default class RegisterForm extends React.Component {
+class RegisterForm extends Component {
   state = {
-    memberType: "teacher",
-    open: this.props.open,
-    firstName: "",
-    lastName: "",
-    email: "",
-    displayName: "",
-    password: "",
-    confirmPassword: "",
-    userId: null
-  };
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({ open: nextProps.open });
-  }
+      memberType: "teacher",
+      firstName: "",
+      lastName: "",
+      email: "",
+      displayName: "",
+      password: "",
+      confirmPassword: "",
+      userId: null
+    };
 
   handleClose = () => {
     this.setState({ open: false });
@@ -126,7 +122,7 @@ export default class RegisterForm extends React.Component {
           title="Sign Up"
           actions={actions}
           modal={false}
-          open={this.state.open}
+          open={this.props.menus.registerIsOpen}
           onRequestClose={this.createNewUser}
         >
           I'm signing up as a...
@@ -227,3 +223,5 @@ export default class RegisterForm extends React.Component {
     );
   }
 }
+
+export default inject('menus')(observer(RegisterForm))

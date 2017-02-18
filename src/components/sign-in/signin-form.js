@@ -1,11 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import Dialog from "material-ui/Dialog";
 import FlatButton from "material-ui/FlatButton";
 import TextField from "material-ui/TextField";
 import firebase from "firebase";
-import { browserHistory } from "react-router";
-import { getCurrentUser } from "../../redux/actions/get-current-user";
-import { connect } from "react-redux";
+import { inject, observer } from 'mobx-react'
+import { browserHistory } from 'react-router'
 
 const styles = {
   title: {
@@ -25,28 +24,33 @@ const styles = {
   }
 };
 
-export default class SignInForm extends React.Component {
-  state = {
-    openSignIn: this.props.openSignIn,
-    email: ``,
-    password: ``
-  };
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({ openSignIn: nextProps.openSignIn });
+class SignInForm extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      email: ``,
+      password: ``
+    };
   }
 
   handleClose = () => {
-    this.setState({ openSignIn: false });
+    this.props.menus.closeSignIn();
   };
 
   signIn = () => {
-    firebase
+    return firebase
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(res => {
-        this.handleClose();
-        browserHistory.push("/profile");
+      .then(() => {
+        firebase.auth().onAuthStateChanged(user => {
+          if (user) {
+            this.props.currentUser.setId(user.uid)
+            this.handleClose();
+            browserHistory.push("/profile")
+          } else {
+            console.log('no user is signed in')
+          }
+        })
       })
       .catch(error => {
         console.log(error.code);
@@ -80,7 +84,7 @@ export default class SignInForm extends React.Component {
           title="Sign In"
           actions={actions}
           modal={false}
-          open={this.state.openSignIn}
+          open={this.props.menus.signInIsOpen}
           onRequestClose={this.handleClose}
         >
           Welcome!
@@ -105,3 +109,5 @@ export default class SignInForm extends React.Component {
     );
   }
 }
+
+export default inject('currentUser', 'menus')(observer(SignInForm))

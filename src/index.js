@@ -13,9 +13,7 @@ import ReactDOM from "react-dom";
 import { browserHistory } from "react-router";
 import injectTapEventPlugin from "react-tap-event-plugin";
 
-// redux
-import configureStore from "./redux/store/configureStore";
-import { syncHistoryWithStore } from "react-router-redux";
+import { store } from './state/store'
 
 // Material-UI
 import lightBaseTheme from "material-ui/styles/baseThemes/lightBaseTheme";
@@ -27,12 +25,9 @@ import Root from "./components/containers/Root";
 
 injectTapEventPlugin();
 
-const store = configureStore();
-const history = syncHistoryWithStore(browserHistory, store);
-
 ReactDOM.render(
   <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-    <Root store={store} history={history} />
+    <Root store={store} history={browserHistory} />
   </MuiThemeProvider>,
   document.getElementById("root")
 );

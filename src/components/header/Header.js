@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { Logged, Login } from "../base/login/Login";
+import { logged as Logged, login as Login } from "../base/login/Login";
 import { MainMenu } from "../base/main-menu/MainMenu";
 import AppBar from "material-ui/AppBar";
 import firebase from "firebase";
 
 class Header extends Component {
   state = {
-    logged: false
-  };
+      logged: false
+    };
 
   componentWillMount() {
     firebase.auth().onAuthStateChanged(user => {
