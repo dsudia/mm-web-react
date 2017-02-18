@@ -1,20 +1,21 @@
 import actionTypes from "../constants/action-types";
-import firebase from 'firebase'
+import firebase from "firebase";
 
 export function getCurrentUserProfile(userId) {
   return dispatch => {
     dispatch(getCurrentUserProfileRequestedAction());
-    return firebase.database()
+    return firebase
+      .database()
       .ref(`/${process.env.NODE_ENV}/users/profiles/${userId}`)
       .once("value")
       .then(data => {
-        const profile = data.val()
-        dispatch(getCurrentUserProfileFulfilledAction(profile))
+        const profile = data.val();
+        dispatch(getCurrentUserProfileFulfilledAction(profile));
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
         dispatch(getCurrentUserProfileRejectedAction());
-      })
+      });
   };
 }
 

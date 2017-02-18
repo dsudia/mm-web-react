@@ -4,7 +4,7 @@ import firebase from "firebase";
 export function getCurrentUser() {
   return dispatch => {
     dispatch(getCurrentUserRequestedAction());
-    const user = firebase.auth().currentUser
+    const user = firebase.auth().currentUser;
     if (user) {
       dispatch(getCurrentUserFulfilledAction(user));
     } else {

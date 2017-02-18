@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Header from "../header/Header";
-import { getCurrentUser } from '../../redux/actions/get-current-user'
+import { getCurrentUser } from "../../redux/actions/get-current-user";
 import { connect } from "react-redux";
 
 class App extends Component {
@@ -16,13 +16,13 @@ class App extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onGetCurrentUser: () => dispatch(getCurrentUser()),
+    onGetCurrentUser: () => dispatch(getCurrentUser())
   };
 }
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.currentUser,
+    currentUser: state.currentUser
   };
 }
 
