@@ -1,11 +1,19 @@
+// firebase
+import firebase from "firebase";
+firebase.initializeApp({
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET
+});
+
 // react
 import React from "react";
 import ReactDOM from "react-dom";
 import { browserHistory } from "react-router";
 import injectTapEventPlugin from "react-tap-event-plugin";
 
-// firebase
-import firebase from "firebase";
+
 
 // redux
 import configureStore from "./redux/store/configureStore";
@@ -18,13 +26,6 @@ import getMuiTheme from "material-ui/styles/getMuiTheme";
 
 // components
 import Root from "./components/containers/Root";
-
-firebase.initializeApp({
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_DATABASE_URL,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET
-});
 
 injectTapEventPlugin();
 

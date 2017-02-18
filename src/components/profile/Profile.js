@@ -9,12 +9,11 @@ import EmailIcon from "material-ui/svg-icons/communication/mail-outline";
 import { Card, CardActions, CardHeader, CardText } from "material-ui/Card";
 import RaisedButton from "material-ui/RaisedButton";
 import MatchProfileContainer from "../match-profile/container/MatchProfCont";
-// import firebase from "firebase";
-// import { getProfileData } from "../../databaseCalls/userCalls";
-// import { browserHistory } from "react-router";
-import Header from "../header/Header";
-import { getCurrentUser } from '../../redux/actions/get-current-user'
-import { connect } from 'react-redux'
+import {
+  getCurrentUserProfile
+} from "../../redux/actions/get-current-user-profile";
+import { connect } from "react-redux";
+import * as translators from "./translators";
 
 class Profile extends Component {
   constructor(props) {
@@ -25,229 +24,70 @@ class Profile extends Component {
       open: false,
       matchingProfile: {
         exists: traits ? true : false,
-        ageRanges: this.translateAgeRanges(),
-        cals: this.translateCals(),
-        orgType: this.translateOrgTypes(),
-        sizes: this.translateSizes(),
+        ageRanges: translators.translateAgeRanges(),
+        cals: translators.translateCals(),
+        orgType: translators.translateOrgTypes(),
+        sizes: translators.translateSizes(),
         states: localStorage.getItem(`states`),
-        trainings: this.translateTrainings(),
-        traits: this.translateTraits()
+        trainings: translators.translateTrainings(),
+        traits: translators.translateTraits()
       }
     };
   }
 
   componentDidMount() {
-      this.props.onGetCurrentUser()
+    this.props.onGetCurrentUserProfile(this.props.currentUser.currentUser.uid);
   }
 
-//   componentWillMount() {
-//     const user = firebase.auth().currentUser;
-//     if (user) {
-//       return getProfileData(user.uid, "development").then(data => {
-//         const userData = data.val();
-//         this.setState({
-//           user: {
-//             username: userData.displayName,
-//             firstName: userData.firstName,
-//             lastName: userData.lastName,
-//             email: user.email
-//           }
-//         });
-//       });
-//     } else {
-//       console.log("no user is signed in");
-//       browserHistory.push("/");
-//     }
-//   }
-
-  translateAgeRanges() {
-    const ageRangeNums = JSON.parse(localStorage.getItem(`ageRanges`));
-    if (ageRangeNums) {
-      const ageRangeWords = ageRangeNums.map(el => {
-        switch (el) {
-          case 0:
-            return `0 to 3`;
-          case 1:
-            return `3 to 6`;
-          case 2:
-            return `6 to 9`;
-          case 3:
-            return `9 to 12`;
-          case 4:
-            return `12 to 15`;
-          case 5:
-            return `15 to 18`;
-          default:
-            return null;
-        }
-      });
-      const ageRangeList = ageRangeWords.join(`, `);
-      return ageRangeList;
-    }
-    return null;
-  }
-
-  translateCals() {
-    const calNums = JSON.parse(localStorage.getItem(`cals`));
-    if (calNums === 0) {
-      return `Traditional`;
-    } else if (calNums === 1) {
-      return `Year Round`;
-    }
-    return null;
-  }
-
-  translateOrgTypes() {
-    const orgType = JSON.parse(localStorage.getItem(`orgType`));
-    if (orgType) {
-      switch (orgType) {
-        case 0:
-          return `Public District`;
-        case 1:
-          return `Public Magnet`;
-        case 2:
-          return `Public Charter`;
-        case 3:
-          return `Public Innovation`;
-        case 4:
-          return `Private For-Profit, Single Owner`;
-        case 5:
-          return `Private For-Profit, Corporate Owner`;
-        case 6:
-          return `Private Non-Profit`;
-        default:
-          return null;
-      }
-    }
-    return null;
-  }
-
-  translateSizes() {
-    const sizes = JSON.parse(localStorage.getItem(`sizes`));
-    switch (sizes) {
-      case 0:
-        return `4 or less`;
-      case 1:
-        return `4 to 9`;
-      case 2:
-        return `10 to 19`;
-      case 3:
-        return `20 or more`;
-      default:
-        return null;
-    }
-  }
-
-  translateTrainings() {
-    const trainingsNums = JSON.parse(localStorage.getItem(`trainings`));
-    if (trainingsNums) {
-      const trainingsWords = trainingsNums.map(el => {
-        switch (el) {
-          case 0:
-            return `AMI`;
-          case 1:
-            return `AMS`;
-          case 2:
-            return `MCI`;
-          case 3:
-            return `SNM`;
-          case 4:
-            return `Other`;
-          default:
-            return null;
-        }
-      });
-      const trainingsList = trainingsWords.join(`, `);
-      return trainingsList;
-    }
-    return null;
-  }
-
-  translateTraits() {
-    const traitsNums = JSON.parse(localStorage.getItem(`traits`));
-    if (traitsNums) {
-      const traitsWords = traitsNums.map(el => {
-        switch (el) {
-          case 0:
-            return `Ambitious`;
-          case 1:
-            return `Humorous`;
-          case 2:
-            return `Collaborative`;
-          case 3:
-            return `Independent`;
-          case 4:
-            return `Extroverted`;
-          case 5:
-            return `Introverted`;
-          case 6:
-            return `Artistic`;
-          case 7:
-            return `Musical`;
-          case 8:
-            return `Creative`;
-          case 9:
-            return `Organized`;
-          case 10:
-            return `Playful`;
-          case 11:
-            return `Quiet`;
-          case 12:
-            return `Verbal Communicator`;
-          case 13:
-            return `Written Communicator`;
-          case 14:
-            return `Joyful`;
-          case 15:
-            return `Techie`;
-          case 16:
-            return `Analog`;
-          case 17:
-            return `Patient`;
-          case 18:
-            return `Spontaneous`;
-          case 19:
-            return `Routine Oriented`;
-          default:
-            return null;
-        }
-      });
-      const traitsList = traitsWords.join(`, `);
-      return traitsList;
-    }
-    return null;
-  }
+  //   componentWillMount() {
+  //     const user = firebase.auth().currentUser;
+  //     if (user) {
+  //       return getProfileData(user.uid, "development").then(data => {
+  //         const userData = data.val();
+  //         this.setState({
+  //           user: {
+  //             username: userData.displayName,
+  //             firstName: userData.firstName,
+  //             lastName: userData.lastName,
+  //             email: user.email
+  //           }
+  //         });
+  //       });
+  //     } else {
+  //       console.log("no user is signed in");
+  //       browserHistory.push("/");
+  //     }
+  //   }
 
   handleFillProfileClick() {
     this.setState({ open: true });
   }
 
   render() {
-    const user = this.props.user
+    const profile = this.props.currentUserProfile;
     return (
       <div>
-        <Header />
         <Card data-test="card-profile">
-          <CardHeader title={user.username} avatar={TeacherImg} />
+          <CardHeader title={profile.username} avatar={TeacherImg} />
           <CardText>
             <List>
               <ListItem
-                primaryText={user.username}
+                primaryText={profile.username}
                 leftIcon={<FaceIcon />}
                 data-test="item-display-name"
               />
               <ListItem
-                primaryText={user.firstName}
+                primaryText={profile.firstName}
                 leftIcon={<PersonIcon />}
                 data-test="item-first-name"
               />
               <ListItem
-                primaryText={user.lastName}
+                primaryText={profile.lastName}
                 leftIcon={<PersonOutlineIcon />}
                 data-test="item-last-name"
               />
               <ListItem
-                primaryText={user.email}
+                primaryText={profile.email}
                 leftIcon={<EmailIcon />}
                 data-test="item-email"
               />
@@ -313,15 +153,16 @@ class Profile extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        onGetCurrentUser: () => dispatch(getCurrentUser())
-    }
+  return {
+    onGetCurrentUserProfile: userId => dispatch(getCurrentUserProfile(userId))
+  };
 }
 
 function mapStateToProps(state) {
   return {
-    user: state.user
+    currentUser: state.currentUser,
+    currentUserProfile: state.currentUserProfile
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

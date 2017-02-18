@@ -4,6 +4,8 @@ import FlatButton from "material-ui/FlatButton";
 import TextField from "material-ui/TextField";
 import firebase from "firebase";
 import { browserHistory } from "react-router";
+import { getCurrentUser } from "../../redux/actions/get-current-user";
+import { connect } from "react-redux";
 
 const styles = {
   title: {
@@ -23,7 +25,7 @@ const styles = {
   }
 };
 
-export default class SignInForm extends React.Component {
+class SignInForm extends React.Component {
   state = {
     openSignIn: this.props.openSignIn,
     email: ``,
@@ -43,14 +45,9 @@ export default class SignInForm extends React.Component {
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(res => {
-        firebase.auth().onAuthStateChanged(user => {
-          if (user) {
-            this.handleClose();
-            browserHistory.push("/profile");
-          } else {
-            console.log("no user is signed in");
-          }
-        });
+        this.props.onGetCurrentUser();
+        this.handleClose();
+        browserHistory.push("/profile");
       })
       .catch(error => {
         console.log(error.code);
@@ -109,3 +106,17 @@ export default class SignInForm extends React.Component {
     );
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onGetCurrentUser: () => dispatch(getCurrentUser())
+  };
+}
+
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignInForm);
