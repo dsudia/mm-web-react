@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Logged, Login } from "../base/login/Login";
 import { MainMenu } from "../base/main-menu/MainMenu";
 import AppBar from "material-ui/AppBar";
-import * as firebase from "firebase";
+import firebase from "firebase";
 
 class Header extends Component {
   state = {

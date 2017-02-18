@@ -1,20 +1,14 @@
-
-import React, { Component } from 'react';
-import FlatButton from 'material-ui/FlatButton'
-import RaisedButton from 'material-ui/RaisedButton'
-import {
-  Step,
-  Stepper,
-  StepContent,
-  StepLabel,
-} from 'material-ui/Stepper'
-import OrgTypeSchool from './subCompsSchool/OrgTypeSchool'
-import CalsSchool from './subCompsSchool/CalsSchool'
-import StatesSchool from './subCompsSchool/StatesSchool'
-import SizesSchool from './subCompsSchool/SizesSchool'
-import AgesSchool from './subCompsSchool/AgesSchool'
-import TrainingsSchool from './subCompsSchool/TrainingsSchool'
-import TraitsSchool from './subCompsSchool/TraitsSchool'
+import React, { Component } from "react";
+import FlatButton from "material-ui/FlatButton";
+import RaisedButton from "material-ui/RaisedButton";
+import { Step, Stepper, StepContent, StepLabel } from "material-ui/Stepper";
+import OrgTypeSchool from "./subCompsSchool/OrgTypeSchool";
+import CalsSchool from "./subCompsSchool/CalsSchool";
+import StatesSchool from "./subCompsSchool/StatesSchool";
+import SizesSchool from "./subCompsSchool/SizesSchool";
+import AgesSchool from "./subCompsSchool/AgesSchool";
+import TrainingsSchool from "./subCompsSchool/TrainingsSchool";
+import TraitsSchool from "./subCompsSchool/TraitsSchool";
 
 export default class MatchProfileStepperSchool extends Component {
   state = {
@@ -75,7 +69,7 @@ export default class MatchProfileStepperSchool extends Component {
             onTouchTap={this.handlePrev}
           />}
       </div>
-    )
+    );
   }
 
   render() {

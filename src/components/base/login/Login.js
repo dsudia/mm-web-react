@@ -7,7 +7,7 @@ import { Link } from "react-router";
 import FaceIcon from "material-ui/svg-icons/action/face";
 import RegisterForm from "../../register/register-form.js";
 import SignInForm from "../../sign-in/signin-form.js";
-import * as firebase from "firebase";
+import firebase from "firebase";
 import { browserHistory } from "react-router";
 
 export class Login extends Component {

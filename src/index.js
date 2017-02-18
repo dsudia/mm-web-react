@@ -1,15 +1,23 @@
+// react
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
-import Legal from "./components/legal/Legal";
-import Profile from "./components/profile/Profile";
-import "./index.css";
+import { browserHistory } from "react-router";
+import injectTapEventPlugin from "react-tap-event-plugin";
+
+// firebase
+import firebase from "firebase";
+
+// redux
+import configureStore from "./redux/store/configureStore";
+import { syncHistoryWithStore } from "react-router-redux";
+
+// Material-UI
 import lightBaseTheme from "material-ui/styles/baseThemes/lightBaseTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
-import { Route, Router, browserHistory } from "react-router";
-import injectTapEventPlugin from "react-tap-event-plugin";
-import * as firebase from "firebase";
+
+// components
+import Root from "./components/containers/Root";
 
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
@@ -20,13 +28,12 @@ firebase.initializeApp({
 
 injectTapEventPlugin();
 
+const store = configureStore();
+const history = syncHistoryWithStore(browserHistory, store);
+
 ReactDOM.render(
   <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-    <Router history={browserHistory}>
-      <Route path="/" component={App} />
-      <Route path="/legal" component={Legal} />
-      <Route path="/profile" component={Profile} />
-    </Router>
+    <Root store={store} history={history} />
   </MuiThemeProvider>,
   document.getElementById("root")
 );

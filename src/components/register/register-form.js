@@ -1,10 +1,9 @@
 import React from "react";
 import Dialog from "material-ui/Dialog";
 import FlatButton from "material-ui/FlatButton";
-import { Link } from "react-router";
 import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton";
 import TextField from "material-ui/TextField";
-import * as firebase from "firebase";
+import firebase from "firebase";
 import { browserHistory } from "react-router";
 import { writeInitialData } from "../../databaseCalls/userCalls";
 

@@ -1,22 +1,16 @@
-import React, { Component } from 'react';
-import FlatButton from 'material-ui/FlatButton'
-import RaisedButton from 'material-ui/RaisedButton'
-import {
-  Step,
-  Stepper,
-  StepContent,
-  StepLabel,
-} from 'material-ui/Stepper'
-import OrgTypeTeacher from './subCompsTeacher/OrgTypeTeacher'
-import CalsTeacher from './subCompsTeacher/CalsTeacher'
-import StatesTeacher from './subCompsTeacher/StatesTeacher'
-import SizesTeacher from './subCompsTeacher/SizesTeacher'
-import AgesTeacher from './subCompsTeacher/AgesTeacher'
-import TrainingsTeacher from './subCompsTeacher/TrainingsTeacher'
-import TraitsTeacher from './subCompsTeacher/TraitsTeacher'
+import React, { Component } from "react";
+import FlatButton from "material-ui/FlatButton";
+import RaisedButton from "material-ui/RaisedButton";
+import { Step, Stepper, StepContent, StepLabel } from "material-ui/Stepper";
+import OrgTypeTeacher from "./subCompsTeacher/OrgTypeTeacher";
+import CalsTeacher from "./subCompsTeacher/CalsTeacher";
+import StatesTeacher from "./subCompsTeacher/StatesTeacher";
+import SizesTeacher from "./subCompsTeacher/SizesTeacher";
+import AgesTeacher from "./subCompsTeacher/AgesTeacher";
+import TrainingsTeacher from "./subCompsTeacher/TrainingsTeacher";
+import TraitsTeacher from "./subCompsTeacher/TraitsTeacher";
 
 export default class MatchProfileStepperTeacher extends Component {
-
   state = {
     finished: false,
     stepIndex: 0,
@@ -39,51 +33,50 @@ export default class MatchProfileStepperTeacher extends Component {
   };
 
   handleNext = () => {
-    const {stepIndex} = this.state;
+    const { stepIndex } = this.state;
     this.setState({
       stepIndex: stepIndex + 1,
-      finished: stepIndex >= 7,
+      finished: stepIndex >= 7
     });
   };
 
   handlePrev = () => {
-    const {stepIndex} = this.state;
+    const { stepIndex } = this.state;
     if (stepIndex > 0) {
-      this.setState({stepIndex: stepIndex - 1});
+      this.setState({ stepIndex: stepIndex - 1 });
     }
   };
 
   renderStepActions(step) {
-    const {stepIndex} = this.state;
+    const { stepIndex } = this.state;
 
     return (
-      <div style={{margin: '12px 0'}}>
+      <div style={{ margin: "12px 0" }}>
         <RaisedButton
-          label={stepIndex === 7 ? 'Finish' : 'Next'}
+          label={stepIndex === 7 ? "Finish" : "Next"}
           disableTouchRipple={true}
           disableFocusRipple={true}
           primary={true}
           onTouchTap={this.handleNext}
-          style={{marginRight: 12}}
+          style={{ marginRight: 12 }}
         />
-        {step > 0 && (
+        {step > 0 &&
           <FlatButton
             label="Back"
             disabled={stepIndex === 0}
             disableTouchRipple={true}
             disableFocusRipple={true}
             onTouchTap={this.handlePrev}
-          />
-        )}
+          />}
       </div>
     );
   }
 
   render() {
-    const {finished, stepIndex} = this.state;
+    const { finished, stepIndex } = this.state;
 
     return (
-      <div style={{maxWidth: 380, maxHeight: 800, margin: 'auto'}}>
+      <div style={{ maxWidth: 380, maxHeight: 800, margin: "auto" }}>
         <Stepper activeStep={stepIndex} orientation="vertical">
           <Step>
             <StepLabel>Your Matching Profile</StepLabel>
@@ -165,10 +158,7 @@ export default class MatchProfileStepperTeacher extends Component {
             </StepContent>
           </Step>
         </Stepper>
-        {finished && (
-          <p style={{margin: '20px 0', textAlign: 'center'}}>
-          </p>
-        )}
+        {finished && <p style={{ margin: "20px 0", textAlign: "center" }} />}
       </div>
     );
   }
