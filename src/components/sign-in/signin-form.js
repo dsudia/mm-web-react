@@ -25,7 +25,7 @@ const styles = {
   }
 };
 
-class SignInForm extends React.Component {
+export default class SignInForm extends React.Component {
   state = {
     openSignIn: this.props.openSignIn,
     email: ``,
@@ -45,7 +45,6 @@ class SignInForm extends React.Component {
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(res => {
-        this.props.onGetCurrentUser();
         this.handleClose();
         browserHistory.push("/profile");
       })
@@ -106,17 +105,3 @@ class SignInForm extends React.Component {
     );
   }
 }
-
-function mapDispatchToProps(dispatch) {
-  return {
-    onGetCurrentUser: () => dispatch(getCurrentUser())
-  };
-}
-
-function mapStateToProps(state) {
-  return {
-    currentUser: state.currentUser
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignInForm);

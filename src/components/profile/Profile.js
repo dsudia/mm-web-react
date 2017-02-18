@@ -15,7 +15,7 @@ import {
 import { connect } from "react-redux";
 import * as translators from "./translators";
 
-class Profile extends Component {
+export default class Profile extends Component {
   constructor(props) {
     super(props);
     const traits = localStorage.getItem(`traits`);
@@ -33,10 +33,6 @@ class Profile extends Component {
         traits: translators.translateTraits()
       }
     };
-  }
-
-  componentDidMount() {
-    this.props.onGetCurrentUserProfile(this.props.currentUser.currentUser.uid);
   }
 
   //   componentWillMount() {
@@ -151,18 +147,3 @@ class Profile extends Component {
     );
   }
 }
-
-function mapDispatchToProps(dispatch) {
-  return {
-    onGetCurrentUserProfile: userId => dispatch(getCurrentUserProfile(userId))
-  };
-}
-
-function mapStateToProps(state) {
-  return {
-    currentUser: state.currentUser,
-    currentUserProfile: state.currentUserProfile
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
