@@ -6,8 +6,8 @@ import firebase from "firebase";
 
 class Header extends Component {
   state = {
-      logged: false
-    };
+    logged: false
+  };
 
   componentWillMount() {
     firebase.auth().onAuthStateChanged(user => {

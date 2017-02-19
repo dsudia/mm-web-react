@@ -13,7 +13,7 @@ import ReactDOM from "react-dom";
 import { browserHistory } from "react-router";
 import injectTapEventPlugin from "react-tap-event-plugin";
 
-import { store } from './state/store'
+import { store } from "./state/store";
 
 // Material-UI
 import lightBaseTheme from "material-ui/styles/baseThemes/lightBaseTheme";

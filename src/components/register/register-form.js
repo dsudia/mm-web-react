@@ -6,7 +6,7 @@ import TextField from "material-ui/TextField";
 import firebase from "firebase";
 import { browserHistory } from "react-router";
 import { writeInitialData } from "../../databaseCalls/userCalls";
-import { inject, observer } from 'mobx-react'
+import { inject, observer } from "mobx-react";
 
 const styles = {
   title: {
@@ -28,15 +28,15 @@ const styles = {
 
 class RegisterForm extends Component {
   state = {
-      memberType: "teacher",
-      firstName: "",
-      lastName: "",
-      email: "",
-      displayName: "",
-      password: "",
-      confirmPassword: "",
-      userId: null
-    };
+    memberType: "teacher",
+    firstName: "",
+    lastName: "",
+    email: "",
+    displayName: "",
+    password: "",
+    confirmPassword: "",
+    userId: null
+  };
 
   handleClose = () => {
     this.setState({ open: false });
@@ -224,4 +224,4 @@ class RegisterForm extends Component {
   }
 }
 
-export default inject('menus')(observer(RegisterForm))
+export default inject("menus")(observer(RegisterForm));

@@ -3,8 +3,8 @@ import Dialog from "material-ui/Dialog";
 import FlatButton from "material-ui/FlatButton";
 import TextField from "material-ui/TextField";
 import firebase from "firebase";
-import { inject, observer } from 'mobx-react'
-import { browserHistory } from 'react-router'
+import { inject, observer } from "mobx-react";
+import { browserHistory } from "react-router";
 
 const styles = {
   title: {
@@ -26,7 +26,7 @@ const styles = {
 
 class SignInForm extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       email: ``,
       password: ``
@@ -44,13 +44,13 @@ class SignInForm extends Component {
       .then(() => {
         firebase.auth().onAuthStateChanged(user => {
           if (user) {
-            this.props.currentUser.setId(user.uid)
+            this.props.currentUser.setId(user.uid);
             this.handleClose();
-            browserHistory.push("/profile")
+            browserHistory.push("/profile");
           } else {
-            console.log('no user is signed in')
+            console.log("no user is signed in");
           }
-        })
+        });
       })
       .catch(error => {
         console.log(error.code);
@@ -110,4 +110,4 @@ class SignInForm extends Component {
   }
 }
 
-export default inject('currentUser', 'menus')(observer(SignInForm))
+export default inject("currentUser", "menus")(observer(SignInForm));

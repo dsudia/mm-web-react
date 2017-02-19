@@ -10,10 +10,10 @@ import { Card, CardActions, CardHeader, CardText } from "material-ui/Card";
 import RaisedButton from "material-ui/RaisedButton";
 import MatchProfileContainer from "../match-profile/container/MatchProfCont";
 import * as translators from "./translators";
-import firebase from 'firebase'
-import { getProfileData } from '../../databaseCalls/userCalls'
-import { inject, observer } from 'mobx-react'
-import { browserHistory } from 'react-router'
+import firebase from "firebase";
+import { getProfileData } from "../../databaseCalls/userCalls";
+import { inject, observer } from "mobx-react";
+import { browserHistory } from "react-router";
 
 class Profile extends Component {
   constructor(props) {
@@ -35,30 +35,30 @@ class Profile extends Component {
     };
   }
 
-    componentWillMount() {
-      const user = firebase.auth().currentUser;
-      if (user) {
-        return getProfileData(user.uid, "development").then(data => {
-          const userData = data.val();
-          this.props.currentUser.setProfile({
-            username: userData.displayName,
-            firstName: userData.firstName,
-            lastName: userData.lastName,
-            email: user.email
-          })
+  componentWillMount() {
+    const user = firebase.auth().currentUser;
+    if (user) {
+      return getProfileData(user.uid, "development").then(data => {
+        const userData = data.val();
+        this.props.currentUser.setProfile({
+          username: userData.displayName,
+          firstName: userData.firstName,
+          lastName: userData.lastName,
+          email: user.email
         });
-      } else {
-        console.log("no user is signed in");
-        browserHistory.push("/");
-      }
+      });
+    } else {
+      console.log("no user is signed in");
+      browserHistory.push("/");
     }
+  }
 
   handleFillProfileClick() {
     this.setState({ open: true });
   }
 
   render() {
-    const profile = this.props.currentUser.profile
+    const profile = this.props.currentUser.profile;
     return (
       <div>
         <Card data-test="card-profile">
@@ -146,4 +146,4 @@ class Profile extends Component {
   }
 }
 
-export default inject('currentUser')(observer(Profile))
+export default inject("currentUser")(observer(Profile));

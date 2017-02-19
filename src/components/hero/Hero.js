@@ -3,7 +3,7 @@ import Logo from "../../assets/img/mm.png";
 import { Card, CardActions, CardMedia } from "material-ui/Card";
 import RaisedButton from "material-ui/RaisedButton";
 
-class Hero extends Component {  
+class Hero extends Component {
   render() {
     return (
       <Card>

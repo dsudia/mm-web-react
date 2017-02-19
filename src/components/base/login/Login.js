@@ -9,7 +9,7 @@ import RegisterForm from "../../register/register-form.js";
 import SignInForm from "../../sign-in/signin-form.js";
 import firebase from "firebase";
 import { browserHistory } from "react-router";
-import { inject, observer } from 'mobx-react'
+import { inject, observer } from "mobx-react";
 
 export class Login extends Component {
   static muiName = "Login";
@@ -50,7 +50,7 @@ export class Login extends Component {
   }
 }
 
-export const login = inject('menus')(observer(Login))
+export const login = inject("menus")(observer(Login));
 
 class Logged extends Component {
   handleSignOut = () => {
@@ -58,7 +58,7 @@ class Logged extends Component {
       .auth()
       .signOut()
       .then(() => {
-        this.props.currentUser.clearUser()
+        this.props.currentUser.clearUser();
         console.log(`user signed out`);
         browserHistory.push(`/`);
       })
@@ -86,4 +86,4 @@ class Logged extends Component {
   }
 }
 
-export const logged = inject('currentUser')(observer(Logged))
+export const logged = inject("currentUser")(observer(Logged));
