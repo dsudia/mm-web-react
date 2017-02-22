@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton";
+import { inject, observer } from "mobx-react";
 
 const styles = {
   block: {
@@ -12,7 +13,10 @@ const styles = {
 
 export default class OrgTypeSchool extends Component {
   handleOnChange(event, value) {
-    localStorage.setItem(`orgType`, value);
+    this.props.currentUser.updateMatchingProfile({
+      orgType: [value],
+      orgTypeWgt: 10
+    })
   }
 
   render() {
@@ -57,3 +61,5 @@ export default class OrgTypeSchool extends Component {
     );
   }
 }
+
+export const $ = inject("currentUser")(observer(OrgTypeSchool));

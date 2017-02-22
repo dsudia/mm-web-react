@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import FlatButton from "material-ui/FlatButton";
 import Dialog from "material-ui/Dialog";
-import MatchProfileStepperSchool from "../stepper/MatchProfStepSchool";
+import { $ as MatchProfileStepperSchool } from "../stepper/MatchProfStepSchool";
+import { $ as MatchProfileStepperTeacher } from "../stepper/MatchProfStepTeacher";
+import { inject, observer } from "mobx-react";
 
-export default class MatchProfileContainer extends Component {
+class MatchProfileContainer extends Component {
   state = {
     open: this.props.open
   };
@@ -37,8 +39,12 @@ export default class MatchProfileContainer extends Component {
         onRequestClose={this.handleClose}
         autoScrollBodyContent={true}
       >
-        <MatchProfileStepperSchool />
+        {this.props.currentUser.memberType === "school"
+          ? <MatchProfileStepperSchool />
+          : <MatchProfileStepperTeacher />}
       </Dialog>
     );
   }
 }
+
+export const $ = inject("currentUser")(observer(MatchProfileContainer));

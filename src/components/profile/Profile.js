@@ -8,7 +8,7 @@ import PersonOutlineIcon from "material-ui/svg-icons/social/person-outline";
 import EmailIcon from "material-ui/svg-icons/communication/mail-outline";
 import { Card, CardActions, CardHeader, CardText } from "material-ui/Card";
 import RaisedButton from "material-ui/RaisedButton";
-import MatchProfileContainer from "../match-profile/container/MatchProfCont";
+import { $ as MatchProfileContainer } from "../match-profile/container/MatchProfCont";
 import * as translators from "./translators";
 import firebase from "firebase";
 import { getProfileData } from "../../databaseCalls/userCalls";

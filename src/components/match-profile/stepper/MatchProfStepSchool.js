@@ -2,34 +2,20 @@ import React, { Component } from "react";
 import FlatButton from "material-ui/FlatButton";
 import RaisedButton from "material-ui/RaisedButton";
 import { Step, Stepper, StepContent, StepLabel } from "material-ui/Stepper";
-import OrgTypeSchool from "./subCompsSchool/OrgTypeSchool";
-import CalsSchool from "./subCompsSchool/CalsSchool";
-import StatesSchool from "./subCompsSchool/StatesSchool";
-import SizesSchool from "./subCompsSchool/SizesSchool";
-import AgesSchool from "./subCompsSchool/AgesSchool";
-import TrainingsSchool from "./subCompsSchool/TrainingsSchool";
-import TraitsSchool from "./subCompsSchool/TraitsSchool";
+import { $ as OrgTypeSchool } from "./subCompsSchool/OrgTypeSchool";
+import { $ as CalsSchool } from "./subCompsSchool/CalsSchool";
+import { $ as StatesSchool } from "./subCompsSchool/StatesSchool";
+import { $ as SizesSchool } from "./subCompsSchool/SizesSchool";
+import { $ as AgesSchool } from "./subCompsSchool/AgesSchool";
+import { $ as TrainingsSchool } from "./subCompsSchool/TrainingsSchool";
+import { $ as TraitsSchool } from "./subCompsSchool/TraitsSchool";
+import { inject, observer } from "mobx-react";
+import { writeMatchProfile } from "../../../databaseCalls/userCalls"
 
-export default class MatchProfileStepperSchool extends Component {
+class MatchProfileStepperSchool extends Component {
   state = {
     finished: false,
-    stepIndex: 0,
-    orgTypes: [],
-    orgTypesWgt: 0,
-    cals: [],
-    calsWgt: 0,
-    states: [],
-    statesWgt: 0,
-    sizes: [],
-    sizesWgt: 0,
-    locTypes: [],
-    locTypesWgt: 0,
-    ageRanges: [],
-    ageRangesWgt: 0,
-    traits: [],
-    traitsWgt: 0,
-    trainings: [],
-    trainingsWgt: 0
+    stepIndex: 0
   };
 
   handleNext = () => {
@@ -165,12 +151,15 @@ export default class MatchProfileStepperSchool extends Component {
               onClick={event => {
                 event.preventDefault();
                 this.setState({ stepIndex: 0, finished: false });
+                writeMatchProfile(this.props.currentUser.id, this.props.currentUser.matchingProfile)
               }}
             >
               Click here
-            </a> to reset the example.
+            </a> to submit your matching profile!
           </p>}
       </div>
     );
   }
 }
+
+export const $ = inject("currentUser")(observer(MatchProfileStepperSchool));

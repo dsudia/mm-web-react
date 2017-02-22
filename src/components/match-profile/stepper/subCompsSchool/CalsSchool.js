@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton";
+import { inject, observer } from "mobx-react";
 
 const styles = {
   block: {
@@ -12,7 +13,10 @@ const styles = {
 
 export default class CalsSchool extends Component {
   handleOnChange(event, value) {
-    localStorage.setItem(`cals`, value);
+    this.props.currentUser.updateMatchingProfile({
+      cals: [value],
+      calsWgt: 10
+    })
   }
 
   render() {
@@ -24,3 +28,5 @@ export default class CalsSchool extends Component {
     );
   }
 }
+
+export const $ = inject("currentUser")(observer(CalsSchool));

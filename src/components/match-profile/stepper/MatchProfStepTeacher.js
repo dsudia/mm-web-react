@@ -9,6 +9,7 @@ import SizesTeacher from "./subCompsTeacher/SizesTeacher";
 import AgesTeacher from "./subCompsTeacher/AgesTeacher";
 import TrainingsTeacher from "./subCompsTeacher/TrainingsTeacher";
 import TraitsTeacher from "./subCompsTeacher/TraitsTeacher";
+import { inject, observer } from "mobx-react";
 
 export default class MatchProfileStepperTeacher extends Component {
   state = {
@@ -93,7 +94,7 @@ export default class MatchProfileStepperTeacher extends Component {
               <p>
                 What kinds of school would you like to work at?
               </p>
-              <OrgTypeSchool />
+              <OrgTypeTeacher />
               {this.renderStepActions(1)}
             </StepContent>
           </Step>
@@ -103,7 +104,7 @@ export default class MatchProfileStepperTeacher extends Component {
               <p>
                 What calendar are you willing to work on?
               </p>
-              <CalsSchool />
+              <CalsTeacher />
               {this.renderStepActions(2)}
             </StepContent>
           </Step>
@@ -113,7 +114,7 @@ export default class MatchProfileStepperTeacher extends Component {
               <p>
                 What states would you like to work in?
               </p>
-              <StatesSchool />
+              <StatesTeacher />
               {this.renderStepActions(3)}
             </StepContent>
           </Step>
@@ -123,7 +124,7 @@ export default class MatchProfileStepperTeacher extends Component {
               <p>
                 How many classrooms does your ideal school have?
               </p>
-              <SizesSchool />
+              <SizesTeacher />
               {this.renderStepActions(4)}
             </StepContent>
           </Step>
@@ -133,7 +134,7 @@ export default class MatchProfileStepperTeacher extends Component {
               <p>
                 What age bands are you licensed to teach?
               </p>
-              <AgesSchool />
+              <AgesTeacher />
               {this.renderStepActions(5)}
             </StepContent>
           </Step>
@@ -143,7 +144,7 @@ export default class MatchProfileStepperTeacher extends Component {
               <p>
                 What training certifications do you have?
               </p>
-              <TrainingsSchool />
+              <TrainingsTeacher />
               {this.renderStepActions(6)}
             </StepContent>
           </Step>
@@ -153,7 +154,7 @@ export default class MatchProfileStepperTeacher extends Component {
               <p>
                 Pick seven traits that describe your ideal school culture. (We know you are all of these things!)
               </p>
-              <TraitsSchool />
+              <TraitsTeacher />
               {this.renderStepActions(7)}
             </StepContent>
           </Step>
@@ -163,3 +164,5 @@ export default class MatchProfileStepperTeacher extends Component {
     );
   }
 }
+
+export const $ = inject("currentUser")(observer(MatchProfileStepperTeacher));

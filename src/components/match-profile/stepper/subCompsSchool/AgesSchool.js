@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Checkbox from "material-ui/Checkbox";
+import { inject, observer } from "mobx-react";
 
 const styles = {
   block: {
@@ -10,111 +11,58 @@ const styles = {
   }
 };
 
-export default class AgesSchool extends Component {
-  constructor(props) {
-    super(props);
-    localStorage.setItem(`ageRanges`, JSON.stringify([]));
+class AgesSchool extends Component {
+  componentWillMount() {
+    this.props.currentUser.updateMatchingProfile({
+      ageRanges: [],
+      agesWgt: 10
+    })
   }
-
   handle03Checked(event, isInputChecked) {
     if (isInputChecked) {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      ageRanges.push(0);
-      localStorage.setItem(`ageRanges`, JSON.stringify(ageRanges));
+      this.props.currentUser.pushtoMatchProfileArray("ageRanges", 0)
     } else {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      const newRanges = ageRanges.filter(el => {
-        if (el !== 0) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`ageRanges`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("ageRanges", 0)
     }
   }
 
   handle36Checked(event, isInputChecked) {
     if (isInputChecked) {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      ageRanges.push(1);
-      localStorage.setItem(`ageRanges`, JSON.stringify(ageRanges));
+      this.props.currentUser.pushtoMatchProfileArray("ageRanges", 1)
     } else {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      const newRanges = ageRanges.filter(el => {
-        if (el !== 1) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`ageRanges`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("ageRanges", 1)
     }
   }
 
   handle69Checked(event, isInputChecked) {
     if (isInputChecked) {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      ageRanges.push(2);
-      localStorage.setItem(`ageRanges`, JSON.stringify(ageRanges));
+      this.props.currentUser.pushtoMatchProfileArray("ageRanges", 2)
     } else {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      const newRanges = ageRanges.filter(el => {
-        if (el !== 2) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`ageRanges`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("ageRanges", 2)
     }
   }
 
   handle912Checked(event, isInputChecked) {
     if (isInputChecked) {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      ageRanges.push(3);
-      localStorage.setItem(`ageRanges`, JSON.stringify(ageRanges));
+      this.props.currentUser.pushtoMatchProfileArray("ageRanges", 3)
     } else {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      const newRanges = ageRanges.filter(el => {
-        if (el !== 3) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`ageRanges`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("ageRanges", 3)
     }
   }
 
   handle1215Checked(event, isInputChecked) {
     if (isInputChecked) {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      ageRanges.push(4);
-      localStorage.setItem(`ageRanges`, JSON.stringify(ageRanges));
+      this.props.currentUser.pushtoMatchProfileArray("ageRanges", 4)
     } else {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      const newRanges = ageRanges.filter(el => {
-        if (el !== 4) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`ageRanges`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("ageRanges", 4)
     }
   }
 
   handle1518Checked(event, isInputChecked) {
     if (isInputChecked) {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      ageRanges.push(5);
-      localStorage.setItem(`ageRanges`, JSON.stringify(ageRanges));
+      this.props.currentUser.pushtoMatchProfileArray("ageRanges", 5)
     } else {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      const newRanges = ageRanges.filter(el => {
-        if (el !== 5) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`ageRanges`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("ageRanges", 5)
     }
   }
 
@@ -155,3 +103,5 @@ export default class AgesSchool extends Component {
     );
   }
 }
+
+export const $ = inject("currentUser")(observer(AgesSchool));

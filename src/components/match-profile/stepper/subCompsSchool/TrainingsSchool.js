@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Checkbox from "material-ui/Checkbox";
+import { inject, observer } from "mobx-react";
 
 const styles = {
   block: {
@@ -11,93 +12,50 @@ const styles = {
 };
 
 export default class TrainingsSchool extends Component {
-  constructor(props) {
-    super(props);
-    localStorage.setItem(`trainings`, JSON.stringify([]));
+  componentWillMount() {
+    this.props.currentUser.updateMatchingProfile({
+      trainings: [],
+      trainingsWgt: 10
+    })
   }
 
   handleAMIChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const trainings = JSON.parse(localStorage.getItem(`trainings`));
-      trainings.push(0);
-      localStorage.setItem(`trainings`, JSON.stringify(trainings));
+      this.props.currentUser.pushtoMatchProfileArray("trainings", 0)
     } else {
-      const trainings = JSON.parse(localStorage.getItem(`trainings`));
-      const newRanges = trainings.filter(el => {
-        if (el !== 0) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`trainings`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("trainings", 0)
     }
   }
 
   handleAMSChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const trainings = JSON.parse(localStorage.getItem(`trainings`));
-      trainings.push(1);
-      localStorage.setItem(`trainings`, JSON.stringify(trainings));
+      this.props.currentUser.pushtoMatchProfileArray("trainings", 1)
     } else {
-      const trainings = JSON.parse(localStorage.getItem(`trainings`));
-      const newRanges = trainings.filter(el => {
-        if (el !== 1) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`trainings`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("trainings", 1)
     }
   }
 
   handleMCIChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const trainings = JSON.parse(localStorage.getItem(`trainings`));
-      trainings.push(2);
-      localStorage.setItem(`trainings`, JSON.stringify(trainings));
+      this.props.currentUser.pushtoMatchProfileArray("trainings", 2)
     } else {
-      const trainings = JSON.parse(localStorage.getItem(`trainings`));
-      const newRanges = trainings.filter(el => {
-        if (el !== 2) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`trainings`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("trainings", 2)
     }
   }
 
   handleSNMChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const trainings = JSON.parse(localStorage.getItem(`trainings`));
-      trainings.push(3);
-      localStorage.setItem(`trainings`, JSON.stringify(trainings));
+      this.props.currentUser.pushtoMatchProfileArray("trainings", 3)
     } else {
-      const trainings = JSON.parse(localStorage.getItem(`trainings`));
-      const newRanges = trainings.filter(el => {
-        if (el !== 3) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`trainings`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("trainings", 3)
     }
   }
 
   handleOtherChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const trainings = JSON.parse(localStorage.getItem(`trainings`));
-      trainings.push(4);
-      localStorage.setItem(`trainings`, JSON.stringify(trainings));
+      this.props.currentUser.pushtoMatchProfileArray("trainings", 4)
     } else {
-      const trainings = JSON.parse(localStorage.getItem(`trainings`));
-      const newRanges = trainings.filter(el => {
-        if (el !== 4) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`trainings`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("trainings", 4)
     }
   }
 
@@ -133,3 +91,5 @@ export default class TrainingsSchool extends Component {
     );
   }
 }
+
+export const $ = inject("currentUser")(observer(TrainingsSchool));

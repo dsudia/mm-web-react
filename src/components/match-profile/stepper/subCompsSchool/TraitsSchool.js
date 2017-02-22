@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Checkbox from "material-ui/Checkbox";
+import { inject, observer } from "mobx-react";
 
 const styles = {
   block: {
@@ -11,348 +12,170 @@ const styles = {
 };
 
 export default class TraitsSchool extends Component {
-  constructor(props) {
-    super(props);
-    localStorage.setItem(`traits`, JSON.stringify([]));
+  componentWillMount() {
+    this.props.currentUser.updateMatchingProfile({
+      traits: [],
+      traitsWgt: 10
+    })
   }
 
   handleAmbChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(0);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 0)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 0) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 0)
     }
   }
 
   handleHumChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(1);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 1)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 1) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 1)
     }
   }
 
   handleColChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(2);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 2)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 2) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 2)
     }
   }
 
   handleIndChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(3);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 3)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 3) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 3)
     }
   }
 
   handleExtChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(4);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 4)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 4) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 4)
     }
   }
 
   handleIntChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(5);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 5)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 5) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 5)
     }
   }
 
   handleArtChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(6);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 6)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 6) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 6)
     }
   }
 
   handleMusChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(7);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 7)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 7) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 7)
     }
   }
 
   handleCreChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(8);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 8)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 8) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 8)
     }
   }
 
   handleOrgChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(9);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 9)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 9) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 9)
     }
   }
 
   handlePlaChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(10);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 10)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 10) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 10)
     }
   }
 
   handleQuiChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(11);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 11)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 11) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 11)
     }
   }
 
   handleVerChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(12);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 12)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 12) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 12)
     }
   }
 
   handleWriChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(13);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 13)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 13) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 13)
     }
   }
 
   handleJoyChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(14);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 14)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 14) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 14)
     }
   }
 
   handleTecChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(15);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 15)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 15) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 15)
     }
   }
 
   handleAnaChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(16);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 16)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 16) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 16)
     }
   }
 
   handlePatChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(17);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 17)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 17) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 17)
     }
   }
 
   handleSpoChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(18);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 18)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 18) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 18)
     }
   }
 
   handleRouChecked(event, isInputChecked) {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(19);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushtoMatchProfileArray("traits", 19)
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 19) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 19)
     }
   }
 
@@ -463,3 +286,5 @@ export default class TraitsSchool extends Component {
     );
   }
 }
+
+export const $ = inject("currentUser")(observer(TraitsSchool));

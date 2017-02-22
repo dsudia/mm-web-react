@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AutoComplete from "material-ui/AutoComplete";
+import { inject, observer } from "mobx-react";
 
 /**
  * The input is used to create the `dataSource`, so the input always matches three entries.
@@ -62,7 +63,10 @@ export default class StatesSchool extends Component {
   };
 
   handleUpdateInput = value => {
-    localStorage.setItem(`states`, value);
+    this.props.currentUser.updateMatchingProfile({
+      states: [value],
+      statesWgt: 10
+    })
   };
 
   render() {
@@ -75,3 +79,5 @@ export default class StatesSchool extends Component {
     );
   }
 }
+
+export const $ = inject("currentUser")(observer(StatesSchool));
