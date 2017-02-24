@@ -33,7 +33,7 @@ export default class MatchProfileStepperTeacher extends Component {
     }
   };
 
-  renderStepActions(step) {
+  renderStepActions = step => {
     const { stepIndex } = this.state;
 
     return (

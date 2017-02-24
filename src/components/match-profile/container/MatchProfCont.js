@@ -10,7 +10,7 @@ class MatchProfileContainer extends Component {
     open: this.props.open
   };
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps = (nextProps) => {
     this.setState({ open: nextProps.open });
   }
 

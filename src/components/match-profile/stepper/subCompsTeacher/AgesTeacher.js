@@ -19,49 +19,49 @@ class AgesTeacher extends Component {
     })
   }
 
-  handle03Checked(event, isInputChecked) {
+  handle03Checked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("ageRanges", 0)
+      this.props.currentUser.pushToMatchProfileArray("ageRanges", 0)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("ageRanges", 0)
     }
   }
 
-  handle36Checked(event, isInputChecked) {
+  handle36Checked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("ageRanges", 1)
+      this.props.currentUser.pushToMatchProfileArray("ageRanges", 1)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("ageRanges", 1)
     }
   }
 
-  handle69Checked(event, isInputChecked) {
+  handle69Checked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("ageRanges", 2)
+      this.props.currentUser.pushToMatchProfileArray("ageRanges", 2)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("ageRanges", 2)
     }
   }
 
-  handle912Checked(event, isInputChecked) {
+  handle912Checked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("ageRanges", 3)
+      this.props.currentUser.pushToMatchProfileArray("ageRanges", 3)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("ageRanges", 3)
     }
   }
 
-  handle1215Checked(event, isInputChecked) {
+  handle1215Checked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("ageRanges", 4)
+      this.props.currentUser.pushToMatchProfileArray("ageRanges", 4)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("ageRanges", 4)
     }
   }
 
-  handle1518Checked(event, isInputChecked) {
+  handle1518Checked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("ageRanges", 5)
+      this.props.currentUser.pushToMatchProfileArray("ageRanges", 5)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("ageRanges", 5)
     }

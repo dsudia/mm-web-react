@@ -19,161 +19,161 @@ export default class TraitsSchool extends Component {
     })
   }
 
-  handleAmbChecked(event, isInputChecked) {
+  handleAmbChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 0)
+      this.props.currentUser.pushToMatchProfileArray("traits", 0)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 0)
     }
   }
 
-  handleHumChecked(event, isInputChecked) {
+  handleHumChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 1)
+      this.props.currentUser.pushToMatchProfileArray("traits", 1)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 1)
     }
   }
 
-  handleColChecked(event, isInputChecked) {
+  handleColChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 2)
+      this.props.currentUser.pushToMatchProfileArray("traits", 2)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 2)
     }
   }
 
-  handleIndChecked(event, isInputChecked) {
+  handleIndChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 3)
+      this.props.currentUser.pushToMatchProfileArray("traits", 3)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 3)
     }
   }
 
-  handleExtChecked(event, isInputChecked) {
+  handleExtChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 4)
+      this.props.currentUser.pushToMatchProfileArray("traits", 4)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 4)
     }
   }
 
-  handleIntChecked(event, isInputChecked) {
+  handleIntChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 5)
+      this.props.currentUser.pushToMatchProfileArray("traits", 5)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 5)
     }
   }
 
-  handleArtChecked(event, isInputChecked) {
+  handleArtChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 6)
+      this.props.currentUser.pushToMatchProfileArray("traits", 6)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 6)
     }
   }
 
-  handleMusChecked(event, isInputChecked) {
+  handleMusChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 7)
+      this.props.currentUser.pushToMatchProfileArray("traits", 7)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 7)
     }
   }
 
-  handleCreChecked(event, isInputChecked) {
+  handleCreChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 8)
+      this.props.currentUser.pushToMatchProfileArray("traits", 8)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 8)
     }
   }
 
-  handleOrgChecked(event, isInputChecked) {
+  handleOrgChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 9)
+      this.props.currentUser.pushToMatchProfileArray("traits", 9)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 9)
     }
   }
 
-  handlePlaChecked(event, isInputChecked) {
+  handlePlaChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 10)
+      this.props.currentUser.pushToMatchProfileArray("traits", 10)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 10)
     }
   }
 
-  handleQuiChecked(event, isInputChecked) {
+  handleQuiChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 11)
+      this.props.currentUser.pushToMatchProfileArray("traits", 11)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 11)
     }
   }
 
-  handleVerChecked(event, isInputChecked) {
+  handleVerChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 12)
+      this.props.currentUser.pushToMatchProfileArray("traits", 12)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 12)
     }
   }
 
-  handleWriChecked(event, isInputChecked) {
+  handleWriChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 13)
+      this.props.currentUser.pushToMatchProfileArray("traits", 13)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 13)
     }
   }
 
-  handleJoyChecked(event, isInputChecked) {
+  handleJoyChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 14)
+      this.props.currentUser.pushToMatchProfileArray("traits", 14)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 14)
     }
   }
 
-  handleTecChecked(event, isInputChecked) {
+  handleTecChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 15)
+      this.props.currentUser.pushToMatchProfileArray("traits", 15)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 15)
     }
   }
 
-  handleAnaChecked(event, isInputChecked) {
+  handleAnaChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 16)
+      this.props.currentUser.pushToMatchProfileArray("traits", 16)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 16)
     }
   }
 
-  handlePatChecked(event, isInputChecked) {
+  handlePatChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 17)
+      this.props.currentUser.pushToMatchProfileArray("traits", 17)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 17)
     }
   }
 
-  handleSpoChecked(event, isInputChecked) {
+  handleSpoChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 18)
+      this.props.currentUser.pushToMatchProfileArray("traits", 18)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 18)
     }
   }
 
-  handleRouChecked(event, isInputChecked) {
+  handleRouChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("traits", 19)
+      this.props.currentUser.pushToMatchProfileArray("traits", 19)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("traits", 19)
     }

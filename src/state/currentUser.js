@@ -3,7 +3,9 @@ import { action, observable } from "mobx";
 export const initialState = observable({
   id: null,
   profile: {},
-  matchingProfile: {},
+  matchingProfile: {
+    states: []
+  },
   updateMatchingProfile: action.bound(function _updateMatchingProfile(
     newProps
   ) {

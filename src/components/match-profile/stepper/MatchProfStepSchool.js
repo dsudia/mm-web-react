@@ -34,7 +34,7 @@ class MatchProfileStepperSchool extends Component {
     }
   };
 
-  renderStepActions(step) {
+  renderStepActions = step => {
     const { stepIndex } = this.state;
 
     return (

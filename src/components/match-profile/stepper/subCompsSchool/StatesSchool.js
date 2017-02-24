@@ -69,7 +69,7 @@ export default class StatesSchool extends Component {
   }
 
   handleNewRequest = (chosenRequest, index) => {
-    this.props.currentUser.pushtoMatchProfileArray("states", this.state.stateMap[chosenRequest])
+    this.props.currentUser.pushToMatchProfileArray("states", this.state.stateMap[chosenRequest])
   }
 
   render() {

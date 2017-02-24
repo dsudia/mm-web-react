@@ -19,41 +19,41 @@ export default class TrainingsTeacher extends Component {
     })
   }
 
-  handleAMIChecked(event, isInputChecked) {
+  handleAMIChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("trainings", 0)
+      this.props.currentUser.pushToMatchProfileArray("trainings", 0)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("trainings", 0)
     }
   }
 
-  handleAMSChecked(event, isInputChecked) {
+  handleAMSChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("trainings", 1)
+      this.props.currentUser.pushToMatchProfileArray("trainings", 1)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("trainings", 1)
     }
   }
 
-  handleMCIChecked(event, isInputChecked) {
+  handleMCIChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("trainings", 2)
+      this.props.currentUser.pushToMatchProfileArray("trainings", 2)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("trainings", 2)
     }
   }
 
-  handleSNMChecked(event, isInputChecked) {
+  handleSNMChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("trainings", 3)
+      this.props.currentUser.pushToMatchProfileArray("trainings", 3)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("trainings", 3)
     }
   }
 
-  handleOtherChecked(event, isInputChecked) {
+  handleOtherChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("trainings", 4)
+      this.props.currentUser.pushToMatchProfileArray("trainings", 4)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("trainings", 4)
     }

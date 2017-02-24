@@ -19,33 +19,33 @@ export default class SizesTeacher extends Component {
     })
   }
 
-  handle4OrLessChecked(event, isInputChecked) {
+  handle4OrLessChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("sizes", 0)
+      this.props.currentUser.pushToMatchProfileArray("sizes", 0)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("sizes", 0)
     }
   }
 
-  handle5To9Checked(event, isInputChecked) {
+  handle5To9Checked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("sizes", 1)
+      this.props.currentUser.pushToMatchProfileArray("sizes", 1)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("sizes", 1)
     }
   }
 
-  handle10To19Checked(event, isInputChecked) {
+  handle10To19Checked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("sizes", 2)
+      this.props.currentUser.pushToMatchProfileArray("sizes", 2)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("sizes", 2)
     }
   }
 
-  handle20OrMoreChecked(event, isInputChecked) {
+  handle20OrMoreChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("sizes", 3)
+      this.props.currentUser.pushToMatchProfileArray("sizes", 3)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("sizes", 3)
     }

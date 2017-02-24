@@ -19,17 +19,17 @@ class CalsTeacher extends Component {
     })
   }
 
-  handleTraditionalChecked(event, isInputChecked) {
+  handleTraditionalChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("cals", 0)
+      this.props.currentUser.pushToMatchProfileArray("cals", 0)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("cals", 0)
     }
   }
 
-  handleYearRoundChecked(event, isInputChecked) {
+  handleYearRoundChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushtoMatchProfileArray("cals", 1)
+      this.props.currentUser.pushToMatchProfileArray("cals", 1)
     } else {
       this.props.currentUser.removeFromMatchProfileArray("cals", 1)
     }

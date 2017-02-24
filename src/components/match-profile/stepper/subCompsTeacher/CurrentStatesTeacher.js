@@ -62,10 +62,16 @@ class StateChipsTeacher extends Component {
     console.log(event)
   }
 
-  componentWillMount() {
+  componentWillReact() {
+    console.log(`I rerendered because the props changed`)
+  }
+
+  componentWillReceiveProps = (nextProps) => {
+    console.log(nextProps)
     this.setState({
-      userStates: this.props.currentUser.matchingProfile.states.map(stateIndex => {
+      userStates: nextProps.currentUser.matchingProfile.states.map(stateIndex => {
         return <Chip
+            key={stateIndex}
             onRequestDelete={this.handleRequestDelete}
           >
             {this.state.stateMap[stateIndex]}
@@ -75,6 +81,7 @@ class StateChipsTeacher extends Component {
   }
 
   render() {
+    console.log(this.state.userStates)
     return <div>
         {this.state.userStates}
       </div>
