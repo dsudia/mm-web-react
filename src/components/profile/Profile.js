@@ -14,6 +14,7 @@ import firebase from "firebase";
 import { getProfileData } from "../../databaseCalls/userCalls";
 import { inject, observer } from "mobx-react";
 import { browserHistory } from "react-router";
+import Avatar from 'material-ui/Avatar'
 
 class Profile extends Component {
   constructor(props) {
@@ -62,7 +63,7 @@ class Profile extends Component {
     return (
       <div>
         <Card data-test="card-profile">
-          <CardHeader title={profile.username} avatar={AccountCircle} />
+          <CardHeader title={profile.username} avatar={<Avatar icon={<AccountCircle />} />} />
           <CardText>
             <List>
               <ListItem
