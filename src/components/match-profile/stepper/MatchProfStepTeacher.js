@@ -2,35 +2,20 @@ import React, { Component } from "react";
 import FlatButton from "material-ui/FlatButton";
 import RaisedButton from "material-ui/RaisedButton";
 import { Step, Stepper, StepContent, StepLabel } from "material-ui/Stepper";
-import OrgTypeTeacher from "./subCompsTeacher/OrgTypeTeacher";
-import CalsTeacher from "./subCompsTeacher/CalsTeacher";
-import StatesTeacher from "./subCompsTeacher/StatesTeacher";
-import SizesTeacher from "./subCompsTeacher/SizesTeacher";
-import AgesTeacher from "./subCompsTeacher/AgesTeacher";
-import TrainingsTeacher from "./subCompsTeacher/TrainingsTeacher";
-import TraitsTeacher from "./subCompsTeacher/TraitsTeacher";
+import { $ as OrgTypeTeacher } from "./subCompsTeacher/OrgTypeTeacher";
+import { $ as CalsTeacher } from "./subCompsTeacher/CalsTeacher";
+import { $ as StatesTeacher } from "./subCompsTeacher/StatesTeacher";
+import { $ as SizesTeacher } from "./subCompsTeacher/SizesTeacher";
+import { $ as AgesTeacher } from "./subCompsTeacher/AgesTeacher";
+import { $ as TrainingsTeacher } from "./subCompsTeacher/TrainingsTeacher";
+import { $ as TraitsTeacher } from "./subCompsTeacher/TraitsTeacher";
+import { $ as CurrentStatesTeacher } from './subCompsTeacher/CurrentStatesTeacher'
 import { inject, observer } from "mobx-react";
 
 export default class MatchProfileStepperTeacher extends Component {
   state = {
     finished: false,
     stepIndex: 0,
-    orgTypes: [],
-    orgTypesWgt: 0,
-    cals: [],
-    calsWgt: 0,
-    states: [],
-    statesWgt: 0,
-    sizes: [],
-    sizesWgt: 0,
-    locTypes: [],
-    locTypesWgt: 0,
-    ageRanges: [],
-    ageRangesWgt: 0,
-    traits: [],
-    traitsWgt: 0,
-    trainings: [],
-    trainingsWgt: 0
   };
 
   handleNext = () => {
@@ -114,6 +99,7 @@ export default class MatchProfileStepperTeacher extends Component {
               <p>
                 What states would you like to work in?
               </p>
+              <CurrentStatesTeacher />
               <StatesTeacher />
               {this.renderStepActions(3)}
             </StepContent>

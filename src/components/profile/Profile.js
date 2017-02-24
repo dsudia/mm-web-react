@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { List, ListItem, Subheader } from "material-ui/List";
-import TeacherImg from "../../assets/img/teacher.jpg";
+import AccountCircle from "material-ui/svg-icons/action/account-circle"
 import FaceIcon from "material-ui/svg-icons/action/face";
 import PersonIcon from "material-ui/svg-icons/social/person";
 import DateIcon from "material-ui/svg-icons/action/date-range";
@@ -62,7 +62,7 @@ class Profile extends Component {
     return (
       <div>
         <Card data-test="card-profile">
-          <CardHeader title={profile.username} avatar={TeacherImg} />
+          <CardHeader title={profile.username} avatar={AccountCircle} />
           <CardText>
             <List>
               <ListItem

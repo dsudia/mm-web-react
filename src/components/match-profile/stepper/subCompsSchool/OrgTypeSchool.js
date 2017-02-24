@@ -14,7 +14,7 @@ const styles = {
 export default class OrgTypeSchool extends Component {
   handleOnChange(event, value) {
     this.props.currentUser.updateMatchingProfile({
-      orgType: [value],
+      orgTypes: [value],
       orgTypeWgt: 10
     })
   }
