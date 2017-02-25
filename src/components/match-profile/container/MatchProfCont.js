@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import FlatButton from "material-ui/FlatButton";
 import Dialog from "material-ui/Dialog";
 import { $ as MatchProfileStepperSchool } from "../stepper/MatchProfStepSchool";
-import { $ as MatchProfileStepperTeacher } from "../stepper/MatchProfStepTeacher";
+import {
+  $ as MatchProfileStepperTeacher
+} from "../stepper/MatchProfStepTeacher";
 import { inject, observer } from "mobx-react";
 
 class MatchProfileContainer extends Component {
@@ -10,9 +12,9 @@ class MatchProfileContainer extends Component {
     open: this.props.open
   };
 
-  componentWillReceiveProps = (nextProps) => {
+  componentWillReceiveProps = nextProps => {
     this.setState({ open: nextProps.open });
-  }
+  };
 
   handleClose = () => {
     this.setState({ open: false });

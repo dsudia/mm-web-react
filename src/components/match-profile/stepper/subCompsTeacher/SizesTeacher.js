@@ -16,40 +16,40 @@ export default class SizesTeacher extends Component {
     this.props.currentUser.updateMatchingProfile({
       sizes: [],
       sizesWgt: 10
-    })
+    });
   }
 
   handle4OrLessChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushToMatchProfileArray("sizes", 0)
+      this.props.currentUser.pushToMatchProfileArray("sizes", 0);
     } else {
-      this.props.currentUser.removeFromMatchProfileArray("sizes", 0)
+      this.props.currentUser.removeFromMatchProfileArray("sizes", 0);
     }
-  }
+  };
 
   handle5To9Checked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushToMatchProfileArray("sizes", 1)
+      this.props.currentUser.pushToMatchProfileArray("sizes", 1);
     } else {
-      this.props.currentUser.removeFromMatchProfileArray("sizes", 1)
+      this.props.currentUser.removeFromMatchProfileArray("sizes", 1);
     }
-  }
+  };
 
   handle10To19Checked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushToMatchProfileArray("sizes", 2)
+      this.props.currentUser.pushToMatchProfileArray("sizes", 2);
     } else {
-      this.props.currentUser.removeFromMatchProfileArray("sizes", 2)
+      this.props.currentUser.removeFromMatchProfileArray("sizes", 2);
     }
-  }
+  };
 
   handle20OrMoreChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushToMatchProfileArray("sizes", 3)
+      this.props.currentUser.pushToMatchProfileArray("sizes", 3);
     } else {
-      this.props.currentUser.removeFromMatchProfileArray("sizes", 3)
+      this.props.currentUser.removeFromMatchProfileArray("sizes", 3);
     }
-  }
+  };
 
   render() {
     return (

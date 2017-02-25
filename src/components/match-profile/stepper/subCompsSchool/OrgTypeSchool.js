@@ -16,8 +16,8 @@ export default class OrgTypeSchool extends Component {
     this.props.currentUser.updateMatchingProfile({
       orgTypes: [value],
       orgTypeWgt: 10
-    })
-  }
+    });
+  };
 
   render() {
     return (

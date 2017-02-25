@@ -16,64 +16,64 @@ export default class OrgTypeTeacher extends Component {
     this.props.currentUser.updateMatchingProfile({
       orgTypes: [],
       orgTypesWgt: 10
-    })
+    });
   }
 
   handlePubDistChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushToMatchProfileArray("orgTypes", 0)
+      this.props.currentUser.pushToMatchProfileArray("orgTypes", 0);
     } else {
-      this.props.currentUser.removeFromMatchProfileArray("orgTypes", 0)
+      this.props.currentUser.removeFromMatchProfileArray("orgTypes", 0);
     }
-  }
+  };
 
   handlePubMagChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushToMatchProfileArray("orgTypes", 1)
+      this.props.currentUser.pushToMatchProfileArray("orgTypes", 1);
     } else {
-      this.props.currentUser.removeFromMatchProfileArray("orgTypes", 1)
+      this.props.currentUser.removeFromMatchProfileArray("orgTypes", 1);
     }
-  }
+  };
 
   handlePubChartChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushToMatchProfileArray("orgTypes", 2)
+      this.props.currentUser.pushToMatchProfileArray("orgTypes", 2);
     } else {
-      this.props.currentUser.removeFromMatchProfileArray("orgTypes", 2)
+      this.props.currentUser.removeFromMatchProfileArray("orgTypes", 2);
     }
-  }
+  };
 
   handlePubInnoChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushToMatchProfileArray("orgTypes", 3)
+      this.props.currentUser.pushToMatchProfileArray("orgTypes", 3);
     } else {
-      this.props.currentUser.removeFromMatchProfileArray("orgTypes", 3)
+      this.props.currentUser.removeFromMatchProfileArray("orgTypes", 3);
     }
-  }
+  };
 
   handlePrivForSingleChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushToMatchProfileArray("orgTypes", 4)
+      this.props.currentUser.pushToMatchProfileArray("orgTypes", 4);
     } else {
-      this.props.currentUser.removeFromMatchProfileArray("orgTypes", 4)
+      this.props.currentUser.removeFromMatchProfileArray("orgTypes", 4);
     }
-  }
+  };
 
   handlePrivForCorpChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushToMatchProfileArray("orgTypes", 5)
+      this.props.currentUser.pushToMatchProfileArray("orgTypes", 5);
     } else {
-      this.props.currentUser.removeFromMatchProfileArray("orgTypes", 5)
+      this.props.currentUser.removeFromMatchProfileArray("orgTypes", 5);
     }
-  }
+  };
 
   handlePrivNonChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushToMatchProfileArray("orgTypes", 6)
+      this.props.currentUser.pushToMatchProfileArray("orgTypes", 6);
     } else {
-      this.props.currentUser.removeFromMatchProfileArray("orgTypes", 6)
+      this.props.currentUser.removeFromMatchProfileArray("orgTypes", 6);
     }
-  }
+  };
 
   render() {
     return (
@@ -119,4 +119,3 @@ export default class OrgTypeTeacher extends Component {
 }
 
 export const $ = inject("currentUser")(observer(OrgTypeTeacher));
-

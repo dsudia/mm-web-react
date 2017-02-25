@@ -16,24 +16,24 @@ class CalsTeacher extends Component {
     this.props.currentUser.updateMatchingProfile({
       cals: [],
       calsWgt: 10
-    })
+    });
   }
 
   handleTraditionalChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushToMatchProfileArray("cals", 0)
+      this.props.currentUser.pushToMatchProfileArray("cals", 0);
     } else {
-      this.props.currentUser.removeFromMatchProfileArray("cals", 0)
+      this.props.currentUser.removeFromMatchProfileArray("cals", 0);
     }
-  }
+  };
 
   handleYearRoundChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      this.props.currentUser.pushToMatchProfileArray("cals", 1)
+      this.props.currentUser.pushToMatchProfileArray("cals", 1);
     } else {
-      this.props.currentUser.removeFromMatchProfileArray("cals", 1)
+      this.props.currentUser.removeFromMatchProfileArray("cals", 1);
     }
-  }
+  };
 
   render() {
     return (

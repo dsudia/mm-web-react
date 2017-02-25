@@ -12,18 +12,23 @@ export const initialState = observable({
     const newProfile = Object.assign({}, this.matchingProfile || {}, newProps);
     this.matchingProfile = newProfile;
   }),
-  pushToMatchProfileArray: action.bound(function _pushToMatchProfileArray(name, value) {
-    this.matchingProfile[name].push(value)
+  pushToMatchProfileArray: action.bound(function _pushToMatchProfileArray(
+    name,
+    value
+  ) {
+    this.matchingProfile[name].push(value);
   }),
-  removeFromMatchProfileArray: action.bound(function _removeFromMatchProfileArray(name, value) {
-    const newValues = this.matchingProfile[name].filter(el => {
-      if (el !== value) {
-        return el;
-      }
-      return null;
-    });
-    this.matchingProfile[name] = newValues
-  }),
+  removeFromMatchProfileArray: action.bound(
+    function _removeFromMatchProfileArray(name, value) {
+      const newValues = this.matchingProfile[name].filter(el => {
+        if (el !== value) {
+          return el;
+        }
+        return null;
+      });
+      this.matchingProfile[name] = newValues;
+    }
+  ),
   setId: action.bound(function _setCurrentUserId(id) {
     this.id = id;
   }),

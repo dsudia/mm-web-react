@@ -12,12 +12,12 @@ const styles = {
 };
 
 export default class SizesSchool extends Component {
-  handleOnChange= (event, value) => {
+  handleOnChange = (event, value) => {
     this.props.currentUser.updateMatchingProfile({
       sizes: [value],
       sizesWgt: 10
-    })
-  }
+    });
+  };
 
   render() {
     return (

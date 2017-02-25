@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { List, ListItem, Subheader } from "material-ui/List";
-import AccountCircle from "material-ui/svg-icons/action/account-circle"
+import AccountCircle from "material-ui/svg-icons/action/account-circle";
 import FaceIcon from "material-ui/svg-icons/action/face";
 import PersonIcon from "material-ui/svg-icons/social/person";
 import DateIcon from "material-ui/svg-icons/action/date-range";
@@ -8,13 +8,15 @@ import PersonOutlineIcon from "material-ui/svg-icons/social/person-outline";
 import EmailIcon from "material-ui/svg-icons/communication/mail-outline";
 import { Card, CardActions, CardHeader, CardText } from "material-ui/Card";
 import RaisedButton from "material-ui/RaisedButton";
-import { $ as MatchProfileContainer } from "../match-profile/container/MatchProfCont";
+import {
+  $ as MatchProfileContainer
+} from "../match-profile/container/MatchProfCont";
 import * as translators from "./translators";
 import firebase from "firebase";
 import { getProfileData } from "../../databaseCalls/userCalls";
 import { inject, observer } from "mobx-react";
 import { browserHistory } from "react-router";
-import Avatar from 'material-ui/Avatar'
+import Avatar from "material-ui/Avatar";
 
 class Profile extends Component {
   constructor(props) {
@@ -63,7 +65,10 @@ class Profile extends Component {
     return (
       <div>
         <Card data-test="card-profile">
-          <CardHeader title={profile.username} avatar={<Avatar icon={<AccountCircle />} />} />
+          <CardHeader
+            title={profile.username}
+            avatar={<Avatar icon={<AccountCircle />} />}
+          />
           <CardText>
             <List>
               <ListItem

@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import Chip from "material-ui/Chip"
+import React, { Component } from "react";
+import Chip from "material-ui/Chip";
 import { inject, observer } from "mobx-react";
 
 class StateChipsTeacher extends Component {
@@ -55,36 +55,39 @@ class StateChipsTeacher extends Component {
       47: "WA",
       48: "WI",
       49: "WY"
-    },
+    }
   };
 
   handleRequestDelete(event) {
-    console.log(event)
+    console.log(event);
   }
 
   componentWillReact() {
-    console.log(`I rerendered because the props changed`)
+    console.log(`I rerendered because the props changed`);
   }
 
-  componentWillReceiveProps = (nextProps) => {
-    console.log(nextProps)
+  componentWillReceiveProps = nextProps => {
+    console.log(nextProps);
     this.setState({
-      userStates: nextProps.currentUser.matchingProfile.states.map(stateIndex => {
-        return <Chip
-            key={stateIndex}
-            onRequestDelete={this.handleRequestDelete}
-          >
-            {this.state.stateMap[stateIndex]}
-          </Chip>
-      })
-    })
-  }
+      userStates: nextProps.currentUser.matchingProfile.states.map(
+        stateIndex => {
+          return (
+            <Chip key={stateIndex} onRequestDelete={this.handleRequestDelete}>
+              {this.state.stateMap[stateIndex]}
+            </Chip>
+          );
+        }
+      )
+    });
+  };
 
   render() {
-    console.log(this.state.userStates)
-    return <div>
+    console.log(this.state.userStates);
+    return (
+      <div>
         {this.state.userStates}
       </div>
+    );
   }
 }
 

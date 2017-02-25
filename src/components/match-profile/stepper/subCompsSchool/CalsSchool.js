@@ -16,7 +16,7 @@ export default class CalsSchool extends Component {
     this.props.currentUser.updateMatchingProfile({
       cals: [value],
       calsWgt: 10
-    })
+    });
   }
 
   render() {

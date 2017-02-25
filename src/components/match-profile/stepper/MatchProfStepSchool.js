@@ -9,9 +9,9 @@ import { $ as SizesSchool } from "./subCompsSchool/SizesSchool";
 import { $ as AgesSchool } from "./subCompsSchool/AgesSchool";
 import { $ as TrainingsSchool } from "./subCompsSchool/TrainingsSchool";
 import { $ as TraitsSchool } from "./subCompsSchool/TraitsSchool";
-import { $ as CurrentStatesSchool } from './subCompsSchool/CurrentStatesSchool'
+import { $ as CurrentStatesSchool } from "./subCompsSchool/CurrentStatesSchool";
 import { inject, observer } from "mobx-react";
-import { writeMatchProfile } from "../../../databaseCalls/userCalls"
+import { writeMatchProfile } from "../../../databaseCalls/userCalls";
 
 class MatchProfileStepperSchool extends Component {
   state = {
@@ -57,7 +57,7 @@ class MatchProfileStepperSchool extends Component {
           />}
       </div>
     );
-  }
+  };
 
   render() {
     const { finished, stepIndex } = this.state;
@@ -153,7 +153,10 @@ class MatchProfileStepperSchool extends Component {
               onClick={event => {
                 event.preventDefault();
                 this.setState({ stepIndex: 0, finished: false });
-                writeMatchProfile(this.props.currentUser.id, this.props.currentUser.matchingProfile)
+                writeMatchProfile(
+                  this.props.currentUser.id,
+                  this.props.currentUser.matchingProfile
+                );
               }}
             >
               Click here
