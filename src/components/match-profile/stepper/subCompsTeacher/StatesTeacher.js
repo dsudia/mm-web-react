@@ -61,13 +61,6 @@ export default class StatesTeacher extends Component {
     }
   };
 
-  componentWillMount() {
-    this.props.currentUser.updateMatchingProfile({
-      states: [],
-      statesWgt: 10
-    });
-  }
-
   handleNewRequest = (chosenRequest, index) => {
     this.props.currentUser.pushToMatchProfileArray(
       "states",

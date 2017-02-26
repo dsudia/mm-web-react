@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Chip from "material-ui/Chip";
 import { inject, observer } from "mobx-react";
 
-class StateChipsTeacher extends Component {
+class CurrentStatesTeacher extends Component {
   state = {
     stateMap: {
       0: "AK",
@@ -66,10 +66,9 @@ class StateChipsTeacher extends Component {
     console.log(`I rerendered because the props changed`);
   }
 
-  componentWillReceiveProps = nextProps => {
-    console.log(nextProps);
+  componentWillMount() {
     this.setState({
-      userStates: nextProps.currentUser.matchingProfile.states.map(
+      userStates: this.props.currentUser.matchingProfile.states.map(
         stateIndex => {
           return (
             <Chip key={stateIndex} onRequestDelete={this.handleRequestDelete}>
@@ -91,4 +90,4 @@ class StateChipsTeacher extends Component {
   }
 }
 
-export const $ = inject("currentUser")(observer(StateChipsTeacher));
+export const $ = inject("currentUser")(observer(CurrentStatesTeacher));
