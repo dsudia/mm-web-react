@@ -62,10 +62,7 @@ export default class StatesTeacher extends Component {
   };
 
   handleNewRequest = (chosenRequest, index) => {
-    this.props.currentUser.pushToMatchProfileArray(
-      "states",
-      this.state.stateMap[chosenRequest]
-    );
+    this.props.currentUser.pushToStateList(this.state.stateMap[chosenRequest]);
   };
 
   render() {

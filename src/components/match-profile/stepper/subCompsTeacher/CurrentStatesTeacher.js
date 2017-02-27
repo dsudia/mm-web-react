@@ -78,7 +78,7 @@ class CurrentStatesTeacher extends Component {
         }
       )
     });
-  };
+  }
 
   render() {
     console.log(this.state.userStates);
