@@ -63,8 +63,12 @@ export default class StatesSchool extends Component {
     }
   };
 
-  handleRequestDelete(event) {
-    console.log(event);
+  handleRequestDelete(index) {
+    const withoutRemovedState = this.state.currentStates.filter(st => {
+      return st !== index
+    })
+    this.setState({currentStates: withoutRemovedState})
+    this.props.currentUser.removeFromMatchProfileArray("states", index)
   }
 
   componentWillMount() {

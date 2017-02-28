@@ -12,13 +12,6 @@ const styles = {
 };
 
 class CalsTeacher extends Component {
-  componentWillMount() {
-    this.props.currentUser.updateMatchingProfile({
-      cals: [],
-      calsWgt: 10
-    });
-  }
-
   handleTraditionalChecked = (event, isInputChecked) => {
     if (isInputChecked) {
       this.props.currentUser.pushToMatchProfileArray("cals", 0);
@@ -42,11 +35,13 @@ class CalsTeacher extends Component {
           label="Traditional"
           style={styles.checkbox}
           onCheck={this.handleTraditionalChecked}
+          checked={this.props.currentUser.matchingProfile.cals.includes(0)}
         />
         <Checkbox
           label="Year-Round"
           style={styles.checkbox}
           onCheck={this.handleYearRoundChecked}
+          checked={this.props.currentUser.matchingProfile.cals.includes(1)}
         />
       </div>
     );

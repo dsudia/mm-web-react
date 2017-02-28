@@ -4,7 +4,20 @@ export const initialState = observable({
   id: null,
   profile: {},
   matchingProfile: {
-    states: []
+    ageRanges: [],
+    ageRangesWgt: 10,
+    cals: [],
+    calsWgt: 10,
+    orgTypes: [],
+    orgTypesWgt: 10,
+    sizes: [],
+    sizesWgt: 10,
+    trainings: [],
+    trainingsWgt: 10,
+    traits: [],
+    traitsWgt: 10,
+    states: [],
+    statesWgt: 10,
   },
   updateMatchingProfile: action.bound(function _updateMatchingProfile(
     newProps

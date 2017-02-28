@@ -18,6 +18,25 @@ class MatchProfileStepperSchool extends Component {
     stepIndex: 0
   };
 
+  componentWillMount() {
+    this.props.currentUser.updateMatchingProfile({
+      ageRanges: [],
+      ageRangesWgt: 10,
+      cals: [],
+      calsWgt: 10,
+      orgTypes: [],
+      orgTypesWgt: 10,
+      sizes: [],
+      sizesWgt: 10,
+      trainings: [],
+      trainingsWgt: 10,
+      traits: [],
+      traitsWgt: 10,
+      states: [],
+      statesWgt: 10,
+    });
+  }
+
   handleNext = () => {
     const { stepIndex } = this.state;
     this.setState({
