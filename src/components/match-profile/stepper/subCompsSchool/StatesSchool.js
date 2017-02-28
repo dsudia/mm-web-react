@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AutoComplete from "material-ui/AutoComplete";
+import Chip from "material-ui/Chip";
 import { inject, observer } from "mobx-react";
 
 /**
@@ -7,6 +8,7 @@ import { inject, observer } from "mobx-react";
  */
 export default class StatesSchool extends Component {
   state = {
+    currentStates: [],
     stateMap: {
       AK: 0,
       AL: 1,
@@ -61,6 +63,10 @@ export default class StatesSchool extends Component {
     }
   };
 
+  handleRequestDelete(event) {
+    console.log(event);
+  }
+
   componentWillMount() {
     this.props.currentUser.updateMatchingProfile({
       states: [],
@@ -69,19 +75,29 @@ export default class StatesSchool extends Component {
   }
 
   handleNewRequest = (chosenRequest, index) => {
-    this.props.currentUser.pushToMatchProfileArray(
-      "states",
-      this.state.stateMap[chosenRequest]
-    );
+    const states = this.state.currentStates
+    states.push(this.state.stateMap[chosenRequest])
+    this.setState({currentStates: states})
+    this.props.currentUser.pushToMatchProfileArray("states", chosenRequest)
   };
 
   render() {
+    const stateNameList = Object.keys(this.state.stateMap)
     return (
-      <AutoComplete
-        hintText="Two Letter Abbrev (i.e. CO)"
-        dataSource={Object.keys(this.state.stateMap)}
-        onUpdateInput={this.handleNewRequest}
-      />
+      <div>
+        {this.state.currentStates.map(
+          stateIndex => {
+            return <Chip key={stateIndex} onRequestDelete={this.handleRequestDelete}>
+              {stateNameList[stateIndex]}
+            </Chip>
+          }
+        )}
+        <AutoComplete
+          hintText="Two Letter Abbrev (i.e. CO)"
+          dataSource={Object.keys(this.state.stateMap)}
+          onNewRequest={this.handleNewRequest}
+        />
+      </div>
     );
   }
 }

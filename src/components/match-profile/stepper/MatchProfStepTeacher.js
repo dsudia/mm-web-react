@@ -9,9 +9,6 @@ import { $ as SizesTeacher } from "./subCompsTeacher/SizesTeacher";
 import { $ as AgesTeacher } from "./subCompsTeacher/AgesTeacher";
 import { $ as TrainingsTeacher } from "./subCompsTeacher/TrainingsTeacher";
 import { $ as TraitsTeacher } from "./subCompsTeacher/TraitsTeacher";
-import {
-  $ as CurrentStatesTeacher
-} from "./subCompsTeacher/CurrentStatesTeacher";
 import { inject, observer } from "mobx-react";
 
 export default class MatchProfileStepperTeacher extends Component {
@@ -101,7 +98,6 @@ export default class MatchProfileStepperTeacher extends Component {
               <p>
                 What states would you like to work in?
               </p>
-              <CurrentStatesTeacher />
               <StatesTeacher />
               {this.renderStepActions(3)}
             </StepContent>

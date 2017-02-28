@@ -18,9 +18,6 @@ export const initialState = observable({
   ) {
     this.matchingProfile[name].push(value);
   }),
-  pushToStateList: action.bound(function _pushToStateList(value) {
-    this.matchingProfile.states.push(value);
-  }),
   removeFromMatchProfileArray: action.bound(
     function _removeFromMatchProfileArray(name, value) {
       const newValues = this.matchingProfile[name].filter(el => {
