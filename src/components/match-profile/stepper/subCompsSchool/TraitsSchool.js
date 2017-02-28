@@ -186,101 +186,121 @@ export default class TraitsSchool extends Component {
           label="Ambitious"
           style={styles.checkbox}
           onCheck={this.handleAmbChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(0)}
         />
         <Checkbox
           label="Humorous"
           style={styles.checkbox}
           onCheck={this.handleHumChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(1)}
         />
         <Checkbox
           label="Collaborative"
           style={styles.checkbox}
           onCheck={this.handleColhecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(2)}
         />
         <Checkbox
           label="Independent"
           style={styles.checkbox}
           onCheck={this.handleIndChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(3)}
         />
         <Checkbox
           label="Extroverted"
           style={styles.checkbox}
           onCheck={this.handleExtChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(4)}
         />
         <Checkbox
           label="Introverted"
           style={styles.checkbox}
           onCheck={this.handleIntChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(5)}
         />
         <Checkbox
           label="Artistic"
           style={styles.checkbox}
           onCheck={this.handleArtChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(6)}
         />
         <Checkbox
           label="Musical"
           style={styles.checkbox}
           onCheck={this.handleMusChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(7)}
         />
         <Checkbox
           label="Creative"
           style={styles.checkbox}
           onCheck={this.handleCreChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(8)}
         />
         <Checkbox
           label="Organized"
           style={styles.checkbox}
           onCheck={this.handleOrgChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(9)}
         />
         <Checkbox
           label="Playful"
           style={styles.checkbox}
           onCheck={this.handlePlaChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(10)}
         />
         <Checkbox
           label="Quiet"
           style={styles.checkbox}
           onCheck={this.handleQuiChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(11)}
         />
         <Checkbox
           label="Verbal Communicator"
           style={styles.checkbox}
           onCheck={this.handleVerChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(12)}
         />
         <Checkbox
           label="Written Communicator"
           style={styles.checkbox}
           onCheck={this.handleWriChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(13)}
         />
         <Checkbox
           label="Joyful"
           style={styles.checkbox}
           onCheck={this.handleJoyChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(14)}
         />
         <Checkbox
           label="Techie"
           style={styles.checkbox}
           onCheck={this.handleOTecChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(15)}
         />
         <Checkbox
           label="Analog"
           style={styles.checkbox}
           onCheck={this.handleAnaChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(16)}
         />
         <Checkbox
           label="Patient"
           style={styles.checkbox}
           onCheck={this.handlePatChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(17)}
         />
         <Checkbox
           label="Spontaneous"
           style={styles.checkbox}
           onCheck={this.handleSpoChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(18)}
         />
         <Checkbox
           label="Routine Oriented"
           style={styles.checkbox}
           onCheck={this.handleRouChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(19)}
         />
       </div>
     );

@@ -22,8 +22,18 @@ export default class CalsSchool extends Component {
   render() {
     return (
       <RadioButtonGroup name="cals" onChange={this.handleOnChange}>
-        <RadioButton value={0} label="Traditional" style={styles.radioButton} />
-        <RadioButton value={1} label="Year-Round" style={styles.radioButton} />
+        <RadioButton
+          value={0}
+          label="Traditional"
+          style={styles.radioButton}
+          checked={this.props.currentUser.cals.includes(0)}
+        />
+        <RadioButton
+          value={1}
+          label="Year-Round"
+          style={styles.radioButton}
+          checked={this.props.currentUser.cals.includes(1)}
+        />
       </RadioButtonGroup>
     );
   }
