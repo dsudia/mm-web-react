@@ -12,6 +12,7 @@ import { $ as TraitsTeacher } from "./subCompsTeacher/TraitsTeacher";
 import { writeMatchProfile } from "../../../databaseCalls/userCalls";
 import { inject, observer } from "mobx-react";
 import * as mobx from "mobx";
+import * as translators from "../../profile/translators";
 
 export default class MatchProfileStepperTeacher extends Component {
   state = {
@@ -19,15 +20,52 @@ export default class MatchProfileStepperTeacher extends Component {
     stepIndex: 0
   };
 
+  translateMatchingProfile() {
+    const translatedMatchingProfile = {
+      exists: true,
+      ageRanges: translators.translateAgeRanges(
+        this.props.currentUser.matchingProfile.ageRanges
+      ),
+      cals: translators.translateCals(
+        this.props.currentUser.matchingProfile.cals
+      ),
+      orgType: translators.translateOrgTypes(
+        this.props.currentUser.matchingProfile.orgTypes
+      ),
+      sizes: translators.translateSizes(
+        this.props.currentUser.matchingProfile.sizes
+      ),
+      states: translators.translateStates(
+        this.props.currentUser.matchingProfile.states
+      ),
+      trainings: translators.translateTrainings(
+        this.props.currentUser.matchingProfile.trainings
+      ),
+      traits: translators.translateTraits(
+        this.props.currentUser.matchingProfile.traits
+      )
+    };
+    return translatedMatchingProfile;
+  }
+
   handleFinish = () => {
     const user = mobx.toJS(this.props.currentUser);
-    console.log(user.matchingProfile);
     writeMatchProfile(user.id, user.matchingProfile);
     const { stepIndex } = this.state;
     this.setState({
       stepIndex: stepIndex + 1,
       finished: stepIndex >= 7
     });
+    this.props.currentUser.setMatchingProfile(user.matchingProfile);
+    const exists = this.props.currentUser.matchingProfile.ageRanges !==
+      undefined;
+    if (exists) {
+      this.props.currentUser.setTranslatedMatchingProfile(
+        this.translateMatchingProfile()
+      );
+    }
+    this.props.menus.closeMatchProfCont()
+    this.props.updateProfile()
   };
 
   handleNext = () => {
@@ -80,6 +118,7 @@ export default class MatchProfileStepperTeacher extends Component {
   };
 
   render() {
+    console.log(this.props.updateProfile)
     const { finished, stepIndex } = this.state;
 
     return (
@@ -171,4 +210,4 @@ export default class MatchProfileStepperTeacher extends Component {
   }
 }
 
-export const $ = inject("currentUser")(observer(MatchProfileStepperTeacher));
+export const $ = inject("currentUser", "menus")(observer(MatchProfileStepperTeacher));

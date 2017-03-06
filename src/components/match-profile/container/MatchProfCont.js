@@ -9,13 +9,14 @@ import { inject, observer } from "mobx-react";
 
 class MatchProfileContainer extends Component {
   render() {
+    console.log(this.props.updateProfile)
     const actions = [
       (
         <FlatButton
-          label="Ok"
+          label="Cancel"
           primary={true}
           keyboardFocused={true}
-          onTouchTap={this.handleClose}
+          onTouchTap={this.props.menus.closeMatchProfCont}
         />
       )
     ];
@@ -31,7 +32,7 @@ class MatchProfileContainer extends Component {
       >
         {this.props.currentUser.memberType === "school"
           ? <MatchProfileStepperSchool />
-          : <MatchProfileStepperTeacher />}
+          : <MatchProfileStepperTeacher updateProfile={this.props.updateProfile} />}
       </Dialog>
     );
   }

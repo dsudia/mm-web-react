@@ -28,6 +28,11 @@ class Profile extends Component {
     }
   }
 
+  updateIt() {
+    console.log("update it got called")
+    this.forceUpdate()
+  }
+
   render() {
     const translatedMatchingProfile = mobx.toJS(
       this.props.currentUser.translatedMatchingProfile
@@ -116,7 +121,7 @@ class Profile extends Component {
           <CardActions>
             <RaisedButton label="Edit" />
           </CardActions>
-          <MatchProfileContainer />
+          <MatchProfileContainer updateProfile={this.updateIt.bind(this)} />
         </Card>
       </div>
     );
