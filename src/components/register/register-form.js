@@ -100,7 +100,17 @@ class RegisterForm extends Component {
   };
 
   handleConfPassChange = (event, value) => {
-    this.setState({ confirmPassword: value });
+    if (value !== this.state.password) {
+      this.setState({
+        confirmPassword: value,
+        confPassError: true
+      })
+      return
+    }
+    this.setState({
+      confirmPassword: value,
+      confPassError: false
+    });
   };
 
   render() {
@@ -194,6 +204,7 @@ class RegisterForm extends Component {
                     type="password"
                     onChange={this.handleConfPassChange}
                     data-test="field-conf-password"
+                    errorText={this.state.confPassError ? "Passwords do not match" : null}
                   />
                 </div>
               </div>
