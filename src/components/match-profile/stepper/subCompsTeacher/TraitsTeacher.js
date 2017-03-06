@@ -190,7 +190,7 @@ export default class TraitsSchool extends Component {
         <Checkbox
           label="Collaborative"
           style={styles.checkbox}
-          onCheck={this.handleColhecked}
+          onCheck={this.handleColChecked}
           checked={this.props.currentUser.matchingProfile.traits.includes(2)}
         />
         <Checkbox
@@ -268,7 +268,7 @@ export default class TraitsSchool extends Component {
         <Checkbox
           label="Techie"
           style={styles.checkbox}
-          onCheck={this.handleOTecChecked}
+          onCheck={this.handleTecChecked}
           checked={this.props.currentUser.matchingProfile.traits.includes(15)}
         />
         <Checkbox

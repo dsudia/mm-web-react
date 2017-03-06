@@ -9,13 +9,26 @@ import { $ as SizesTeacher } from "./subCompsTeacher/SizesTeacher";
 import { $ as AgesTeacher } from "./subCompsTeacher/AgesTeacher";
 import { $ as TrainingsTeacher } from "./subCompsTeacher/TrainingsTeacher";
 import { $ as TraitsTeacher } from "./subCompsTeacher/TraitsTeacher";
+import { writeMatchProfile } from "../../../databaseCalls/userCalls"
 import { inject, observer } from "mobx-react";
+import * as mobx from "mobx"
 
 export default class MatchProfileStepperTeacher extends Component {
   state = {
     finished: false,
     stepIndex: 0
   };
+
+  handleFinish = () => {
+    const user = mobx.toJS(this.props.currentUser)
+    console.log(user.matchingProfile)
+    writeMatchProfile(user.id, user.matchingProfile)
+    const { stepIndex } = this.state;
+    this.setState({
+      stepIndex: stepIndex + 1,
+      finished: stepIndex >= 7
+    })
+  }
 
   handleNext = () => {
     const { stepIndex } = this.state;
@@ -37,14 +50,24 @@ export default class MatchProfileStepperTeacher extends Component {
 
     return (
       <div style={{ margin: "12px 0" }}>
+      {stepIndex === 7 ?
         <RaisedButton
-          label={stepIndex === 7 ? "Finish" : "Next"}
+          label={"Finish"}
+          disableTouchRipple={true}
+          disableFocusRipple={true}
+          primary={true}
+          onTouchTap={this.handleFinish}
+          style={{ marginRight: 12 }}
+        /> :
+        <RaisedButton
+          label={"Next"}
           disableTouchRipple={true}
           disableFocusRipple={true}
           primary={true}
           onTouchTap={this.handleNext}
           style={{ marginRight: 12 }}
         />
+      }
         {step > 0 &&
           <FlatButton
             label="Back"
