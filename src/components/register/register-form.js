@@ -156,7 +156,6 @@ class RegisterForm extends Component {
 
   handlePasswordChange = (event, value) => {
     const validPass = schema.validate(value)
-    console.log(validPass)
     if (validPass) {
       this.setState({
         password: value,

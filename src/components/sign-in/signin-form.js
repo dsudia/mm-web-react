@@ -8,6 +8,7 @@ import { browserHistory } from "react-router";
 import Promise from "bluebird";
 import * as translators from "../profile/translators";
 import { getMatchProfile, getProfileData } from "../../databaseCalls/userCalls";
+import validator from "validator"
 
 const styles = {
   title: {
@@ -103,17 +104,43 @@ class SignInForm extends Component {
         });
       })
       .catch(error => {
-        console.log(error.code);
-        console.log(error.message);
+        this.setState({passError: "Invalid email or password"})
       });
   };
 
   handleEmailChange = (event, value) => {
-    this.setState({ email: value });
+    if (value === "" || value === undefined || value === null) {
+      this.setState({
+        emailError: "Email is required",
+        email: value
+      });
+      return;
+    }
+    if (!validator.isEmail(value)) {
+      this.setState({
+        emailError: "Please enter an email address",
+        email: value
+      })
+      return
+    }
+    this.setState({
+      email: value,
+      emailError: false
+    });
   };
 
   handlePasswordChange = (event, value) => {
-    this.setState({ password: value });
+    if (value === "" || value === undefined || value === null) {
+      this.setState({
+        passError: "Password is required",
+        password: value
+      });
+      return;
+    }
+    this.setState({
+      password: value,
+      passError: false
+    });
   };
 
   render() {
@@ -149,12 +176,14 @@ class SignInForm extends Component {
               className="half-width"
               hintText="Email"
               onChange={this.handleEmailChange}
+              errorText={this.state.emailError ? this.state.emailError : null}
             />
             <TextField
               className="half-width"
               hintText="Password"
               type="password"
               onChange={this.handlePasswordChange}
+              errorText={this.state.passError ? this.state.passError : null}
             />
           </div>
         </Dialog>
