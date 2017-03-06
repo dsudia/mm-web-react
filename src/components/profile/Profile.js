@@ -1,68 +1,56 @@
 import React, { Component } from "react";
-import { List, ListItem, Subheader } from "material-ui/List";
-import TeacherImg from "../../assets/img/teacher.jpg";
+import { List, ListItem } from "material-ui/List";
+import Subheader from 'material-ui/Subheader';
+import AccountCircle from "material-ui/svg-icons/action/account-circle";
 import FaceIcon from "material-ui/svg-icons/action/face";
+import BusinessIcon from "material-ui/svg-icons/communication/business"
 import PersonIcon from "material-ui/svg-icons/social/person";
+import ChildCareIcon from "material-ui/svg-icons/places/child-care"
+import FingerprintIcon from "material-ui/svg-icons/action/fingerprint"
+import ImportExportIcon from "material-ui/svg-icons/communication/import-export"
 import DateIcon from "material-ui/svg-icons/action/date-range";
+import CardMembershipIcon from "material-ui/svg-icons/action/card-membership"
 import PersonOutlineIcon from "material-ui/svg-icons/social/person-outline";
 import EmailIcon from "material-ui/svg-icons/communication/mail-outline";
+import PlaceIcon from "material-ui/svg-icons/maps/place"
 import { Card, CardActions, CardHeader, CardText } from "material-ui/Card";
 import RaisedButton from "material-ui/RaisedButton";
-import MatchProfileContainer from "../match-profile/container/MatchProfCont";
-import * as translators from "./translators";
+import {
+  $ as MatchProfileContainer
+} from "../match-profile/container/MatchProfCont";
 import firebase from "firebase";
-import { getProfileData } from "../../databaseCalls/userCalls";
 import { inject, observer } from "mobx-react";
 import { browserHistory } from "react-router";
+import Avatar from "material-ui/Avatar";
+import * as mobx from "mobx";
 
 class Profile extends Component {
   constructor(props) {
     super(props);
-    const traits = localStorage.getItem(`traits`);
-    this.state = {
-      user: {},
-      open: false,
-      matchingProfile: {
-        exists: traits ? true : false,
-        ageRanges: translators.translateAgeRanges(),
-        cals: translators.translateCals(),
-        orgType: translators.translateOrgTypes(),
-        sizes: translators.translateSizes(),
-        states: localStorage.getItem(`states`),
-        trainings: translators.translateTrainings(),
-        traits: translators.translateTraits()
-      }
-    };
-  }
-
-  componentWillMount() {
     const user = firebase.auth().currentUser;
-    if (user) {
-      return getProfileData(user.uid, "development").then(data => {
-        const userData = data.val();
-        this.props.currentUser.setProfile({
-          username: userData.displayName,
-          firstName: userData.firstName,
-          lastName: userData.lastName,
-          email: user.email
-        });
-      });
-    } else {
+    if (!user) {
       console.log("no user is signed in");
       browserHistory.push("/");
     }
   }
 
-  handleFillProfileClick() {
-    this.setState({ open: true });
+  updateIt() {
+    console.log("update it got called")
+    this.forceUpdate()
   }
 
   render() {
+    const translatedMatchingProfile = mobx.toJS(
+      this.props.currentUser.translatedMatchingProfile
+    );
     const profile = this.props.currentUser.profile;
     return (
       <div>
         <Card data-test="card-profile">
-          <CardHeader title={profile.username} avatar={TeacherImg} />
+          <CardHeader
+            title={profile.username}
+            avatar={<Avatar icon={<AccountCircle />} />}
+          />
           <CardText>
             <List>
               <ListItem
@@ -87,7 +75,7 @@ class Profile extends Component {
               />
             </List>
             <div>
-              {!this.state.matchingProfile.exists
+              {!translatedMatchingProfile.ageRanges.length > 0
                 ? <div>
                     <p>
                       Looking a little spare here, huh?
@@ -98,39 +86,39 @@ class Profile extends Component {
                     <RaisedButton
                       label="fill out your matching profile!"
                       primary={true}
-                      onClick={this.handleFillProfileClick.bind(this)}
+                      onClick={this.props.menus.openMatchProfCont}
                     />
                   </div>
                 : <div>
                     <List>
                       <Subheader>Matching Profile</Subheader>
                       <ListItem
-                        primaryText={this.state.matchingProfile.ageRanges}
-                        leftIcon={<FaceIcon />}
+                        primaryText={translatedMatchingProfile.ageRanges}
+                        leftIcon={<ChildCareIcon />}
                       />
                       <ListItem
-                        primaryText={this.state.matchingProfile.cals}
+                        primaryText={translatedMatchingProfile.cals}
                         leftIcon={<DateIcon />}
                       />
                       <ListItem
-                        primaryText={this.state.matchingProfile.orgType}
-                        leftIcon={<PersonOutlineIcon />}
+                        primaryText={translatedMatchingProfile.orgType}
+                        leftIcon={<BusinessIcon />}
                       />
                       <ListItem
-                        primaryText={this.state.matchingProfile.sizes}
-                        leftIcon={<EmailIcon />}
+                        primaryText={translatedMatchingProfile.traits}
+                        leftIcon={<FingerprintIcon />}
                       />
                       <ListItem
-                        primaryText={this.state.matchingProfile.states}
-                        leftIcon={<EmailIcon />}
+                        primaryText={translatedMatchingProfile.trainings}
+                        leftIcon={<CardMembershipIcon />}
                       />
                       <ListItem
-                        primaryText={this.state.matchingProfile.trainings}
-                        leftIcon={<EmailIcon />}
+                        primaryText={translatedMatchingProfile.sizes}
+                        leftIcon={<ImportExportIcon />}
                       />
                       <ListItem
-                        primaryText={this.state.matchingProfile.traits}
-                        leftIcon={<EmailIcon />}
+                        primaryText={translatedMatchingProfile.states}
+                        leftIcon={<PlaceIcon />}
                       />
                     </List>
                   </div>}
@@ -139,11 +127,11 @@ class Profile extends Component {
           <CardActions>
             <RaisedButton label="Edit" />
           </CardActions>
-          <MatchProfileContainer open={this.state.open} />
+          <MatchProfileContainer updateProfile={this.updateIt.bind(this)} />
         </Card>
       </div>
     );
   }
 }
 
-export default inject("currentUser")(observer(Profile));
+export default inject("currentUser", "menus")(observer(Profile));

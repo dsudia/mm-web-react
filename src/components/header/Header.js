@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { logged as Logged, login as Login } from "../base/login/Login";
+import { $2 as Logged, $1 as Login } from "../base/login/Login";
 import { MainMenu } from "../base/main-menu/MainMenu";
 import AppBar from "material-ui/AppBar";
 import firebase from "firebase";

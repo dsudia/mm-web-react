@@ -5,6 +5,9 @@ import TextField from "material-ui/TextField";
 import firebase from "firebase";
 import { inject, observer } from "mobx-react";
 import { browserHistory } from "react-router";
+import Promise from "bluebird";
+import * as translators from "../profile/translators";
+import { getMatchProfile, getProfileData } from "../../databaseCalls/userCalls";
 
 const styles = {
   title: {
@@ -33,6 +36,34 @@ class SignInForm extends Component {
     };
   }
 
+  translateMatchingProfile() {
+    const translatedMatchingProfile = {
+      exists: true,
+      ageRanges: translators.translateAgeRanges(
+        this.props.currentUser.matchingProfile.ageRanges
+      ),
+      cals: translators.translateCals(
+        this.props.currentUser.matchingProfile.cals
+      ),
+      orgType: translators.translateOrgTypes(
+        this.props.currentUser.matchingProfile.orgTypes
+      ),
+      sizes: translators.translateSizes(
+        this.props.currentUser.matchingProfile.sizes
+      ),
+      states: translators.translateStates(
+        this.props.currentUser.matchingProfile.states
+      ),
+      trainings: translators.translateTrainings(
+        this.props.currentUser.matchingProfile.trainings
+      ),
+      traits: translators.translateTraits(
+        this.props.currentUser.matchingProfile.traits
+      )
+    };
+    return translatedMatchingProfile;
+  }
+
   handleClose = () => {
     this.props.menus.closeSignIn();
   };
@@ -45,8 +76,31 @@ class SignInForm extends Component {
         firebase.auth().onAuthStateChanged(user => {
           if (user) {
             this.props.currentUser.setId(user.uid);
-            this.handleClose();
-            browserHistory.push("/profile");
+            return Promise.all([
+              getProfileData(user.uid),
+              getMatchProfile(user.uid)
+            ]).spread((profileData, matchProfileData) => {
+              const userData = profileData.val();
+              const matchProfile = matchProfileData.val();
+              this.props.currentUser.setProfile({
+                username: userData.displayName,
+                firstName: userData.firstName,
+                lastName: userData.lastName,
+                email: user.email
+              });
+              if (matchProfile !== null) {
+                this.props.currentUser.setMatchingProfile(matchProfile);
+              }
+              const exists = this.props.currentUser.matchingProfile.ageRanges !==
+                undefined;
+              if (exists) {
+                this.props.currentUser.setTranslatedMatchingProfile(
+                  this.translateMatchingProfile()
+                );
+              }
+              this.handleClose();
+              browserHistory.push("/profile");
+            });
           } else {
             console.log("no user is signed in");
           }

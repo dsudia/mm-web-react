@@ -1,26 +1,51 @@
 import React, { Component } from "react";
-import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton";
+import Checkbox from "material-ui/Checkbox";
+import { inject, observer } from "mobx-react";
 
 const styles = {
   block: {
     maxWidth: 250
   },
-  radioButton: {
+  checkbox: {
     marginBottom: 16
   }
 };
 
-export default class CalsTeacher extends Component {
-  handleOnChange(event, value) {
-    localStorage.setItem(`cals`, JSON.stringify([]));
-  }
+class CalsTeacher extends Component {
+  handleTraditionalChecked = (event, isInputChecked) => {
+    if (isInputChecked) {
+      this.props.currentUser.pushToMatchProfileArray("cals", 0);
+    } else {
+      this.props.currentUser.removeFromMatchProfileArray("cals", 0);
+    }
+  };
+
+  handleYearRoundChecked = (event, isInputChecked) => {
+    if (isInputChecked) {
+      this.props.currentUser.pushToMatchProfileArray("cals", 1);
+    } else {
+      this.props.currentUser.removeFromMatchProfileArray("cals", 1);
+    }
+  };
 
   render() {
     return (
-      <RadioButtonGroup name="cals" onChange={this.handleOnChange}>
-        <RadioButton value={0} label="Traditional" style={styles.radioButton} />
-        <RadioButton value={1} label="Year-Round" style={styles.radioButton} />
-      </RadioButtonGroup>
+      <div style={styles.block}>
+        <Checkbox
+          label="Traditional"
+          style={styles.checkbox}
+          onCheck={this.handleTraditionalChecked}
+          checked={this.props.currentUser.matchingProfile.cals.includes(0)}
+        />
+        <Checkbox
+          label="Year-Round"
+          style={styles.checkbox}
+          onCheck={this.handleYearRoundChecked}
+          checked={this.props.currentUser.matchingProfile.cals.includes(1)}
+        />
+      </div>
     );
   }
 }
+
+export const $ = inject("currentUser")(observer(CalsTeacher));

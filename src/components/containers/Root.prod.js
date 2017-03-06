@@ -1,11 +1,13 @@
 import React, { PropTypes } from "react";
-import { Provider } from "react-redux";
+import { Provider } from "mobx-react";
 import routes from "../../routes";
 import { Router } from "react-router";
 
 const Root = ({ store, history }) => (
-  <Provider store={store}>
-    <Router history={history} routes={routes} />
+  <Provider {...store}>
+    <div>
+      <Router history={history} routes={routes} />
+    </div>
   </Provider>
 );
 

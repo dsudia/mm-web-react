@@ -22,3 +22,21 @@ export function getProfileData(userId, env = process.env.NODE_ENV) {
     .ref(`/${env}/users/profiles/${userId}`)
     .once("value");
 }
+
+export function getMatchProfile(userId, env = process.env.NODE_ENV) {
+  return firebase
+    .database()
+    .ref(`/${env}/users/matchingProfiles/${userId}`)
+    .once("value");
+}
+
+export function writeMatchProfile(
+  userId,
+  matchProfile,
+  env = process.env.NODE_ENV
+) {
+  firebase
+    .database()
+    .ref(`${env}/users/matchingProfiles/${userId}`)
+    .set(matchProfile);
+}

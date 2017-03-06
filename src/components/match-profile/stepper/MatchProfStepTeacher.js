@@ -2,34 +2,70 @@ import React, { Component } from "react";
 import FlatButton from "material-ui/FlatButton";
 import RaisedButton from "material-ui/RaisedButton";
 import { Step, Stepper, StepContent, StepLabel } from "material-ui/Stepper";
-import OrgTypeTeacher from "./subCompsTeacher/OrgTypeTeacher";
-import CalsTeacher from "./subCompsTeacher/CalsTeacher";
-import StatesTeacher from "./subCompsTeacher/StatesTeacher";
-import SizesTeacher from "./subCompsTeacher/SizesTeacher";
-import AgesTeacher from "./subCompsTeacher/AgesTeacher";
-import TrainingsTeacher from "./subCompsTeacher/TrainingsTeacher";
-import TraitsTeacher from "./subCompsTeacher/TraitsTeacher";
+import { $ as OrgTypeTeacher } from "./subCompsTeacher/OrgTypeTeacher";
+import { $ as CalsTeacher } from "./subCompsTeacher/CalsTeacher";
+import { $ as StatesTeacher } from "./subCompsTeacher/StatesTeacher";
+import { $ as SizesTeacher } from "./subCompsTeacher/SizesTeacher";
+import { $ as AgesTeacher } from "./subCompsTeacher/AgesTeacher";
+import { $ as TrainingsTeacher } from "./subCompsTeacher/TrainingsTeacher";
+import { $ as TraitsTeacher } from "./subCompsTeacher/TraitsTeacher";
+import { writeMatchProfile } from "../../../databaseCalls/userCalls";
+import { inject, observer } from "mobx-react";
+import * as mobx from "mobx";
+import * as translators from "../../profile/translators";
 
 export default class MatchProfileStepperTeacher extends Component {
   state = {
     finished: false,
-    stepIndex: 0,
-    orgTypes: [],
-    orgTypesWgt: 0,
-    cals: [],
-    calsWgt: 0,
-    states: [],
-    statesWgt: 0,
-    sizes: [],
-    sizesWgt: 0,
-    locTypes: [],
-    locTypesWgt: 0,
-    ageRanges: [],
-    ageRangesWgt: 0,
-    traits: [],
-    traitsWgt: 0,
-    trainings: [],
-    trainingsWgt: 0
+    stepIndex: 0
+  };
+
+  translateMatchingProfile() {
+    const translatedMatchingProfile = {
+      exists: true,
+      ageRanges: translators.translateAgeRanges(
+        this.props.currentUser.matchingProfile.ageRanges
+      ),
+      cals: translators.translateCals(
+        this.props.currentUser.matchingProfile.cals
+      ),
+      orgType: translators.translateOrgTypes(
+        this.props.currentUser.matchingProfile.orgTypes
+      ),
+      sizes: translators.translateSizes(
+        this.props.currentUser.matchingProfile.sizes
+      ),
+      states: translators.translateStates(
+        this.props.currentUser.matchingProfile.states
+      ),
+      trainings: translators.translateTrainings(
+        this.props.currentUser.matchingProfile.trainings
+      ),
+      traits: translators.translateTraits(
+        this.props.currentUser.matchingProfile.traits
+      )
+    };
+    return translatedMatchingProfile;
+  }
+
+  handleFinish = () => {
+    const user = mobx.toJS(this.props.currentUser);
+    writeMatchProfile(user.id, user.matchingProfile);
+    const { stepIndex } = this.state;
+    this.setState({
+      stepIndex: stepIndex + 1,
+      finished: stepIndex >= 7
+    });
+    this.props.currentUser.setMatchingProfile(user.matchingProfile);
+    const exists = this.props.currentUser.matchingProfile.ageRanges !==
+      undefined;
+    if (exists) {
+      this.props.currentUser.setTranslatedMatchingProfile(
+        this.translateMatchingProfile()
+      );
+    }
+    this.props.menus.closeMatchProfCont()
+    this.props.updateProfile()
   };
 
   handleNext = () => {
@@ -47,19 +83,28 @@ export default class MatchProfileStepperTeacher extends Component {
     }
   };
 
-  renderStepActions(step) {
+  renderStepActions = step => {
     const { stepIndex } = this.state;
 
     return (
       <div style={{ margin: "12px 0" }}>
-        <RaisedButton
-          label={stepIndex === 7 ? "Finish" : "Next"}
-          disableTouchRipple={true}
-          disableFocusRipple={true}
-          primary={true}
-          onTouchTap={this.handleNext}
-          style={{ marginRight: 12 }}
-        />
+        {stepIndex === 7
+          ? <RaisedButton
+              label={"Finish"}
+              disableTouchRipple={true}
+              disableFocusRipple={true}
+              primary={true}
+              onTouchTap={this.handleFinish}
+              style={{ marginRight: 12 }}
+            />
+          : <RaisedButton
+              label={"Next"}
+              disableTouchRipple={true}
+              disableFocusRipple={true}
+              primary={true}
+              onTouchTap={this.handleNext}
+              style={{ marginRight: 12 }}
+            />}
         {step > 0 &&
           <FlatButton
             label="Back"
@@ -70,9 +115,10 @@ export default class MatchProfileStepperTeacher extends Component {
           />}
       </div>
     );
-  }
+  };
 
   render() {
+    console.log(this.props.updateProfile)
     const { finished, stepIndex } = this.state;
 
     return (
@@ -93,7 +139,7 @@ export default class MatchProfileStepperTeacher extends Component {
               <p>
                 What kinds of school would you like to work at?
               </p>
-              <OrgTypeSchool />
+              <OrgTypeTeacher />
               {this.renderStepActions(1)}
             </StepContent>
           </Step>
@@ -103,7 +149,7 @@ export default class MatchProfileStepperTeacher extends Component {
               <p>
                 What calendar are you willing to work on?
               </p>
-              <CalsSchool />
+              <CalsTeacher />
               {this.renderStepActions(2)}
             </StepContent>
           </Step>
@@ -113,7 +159,7 @@ export default class MatchProfileStepperTeacher extends Component {
               <p>
                 What states would you like to work in?
               </p>
-              <StatesSchool />
+              <StatesTeacher />
               {this.renderStepActions(3)}
             </StepContent>
           </Step>
@@ -123,7 +169,7 @@ export default class MatchProfileStepperTeacher extends Component {
               <p>
                 How many classrooms does your ideal school have?
               </p>
-              <SizesSchool />
+              <SizesTeacher />
               {this.renderStepActions(4)}
             </StepContent>
           </Step>
@@ -133,7 +179,7 @@ export default class MatchProfileStepperTeacher extends Component {
               <p>
                 What age bands are you licensed to teach?
               </p>
-              <AgesSchool />
+              <AgesTeacher />
               {this.renderStepActions(5)}
             </StepContent>
           </Step>
@@ -143,7 +189,7 @@ export default class MatchProfileStepperTeacher extends Component {
               <p>
                 What training certifications do you have?
               </p>
-              <TrainingsSchool />
+              <TrainingsTeacher />
               {this.renderStepActions(6)}
             </StepContent>
           </Step>
@@ -153,7 +199,7 @@ export default class MatchProfileStepperTeacher extends Component {
               <p>
                 Pick seven traits that describe your ideal school culture. (We know you are all of these things!)
               </p>
-              <TraitsSchool />
+              <TraitsTeacher />
               {this.renderStepActions(7)}
             </StepContent>
           </Step>
@@ -163,3 +209,5 @@ export default class MatchProfileStepperTeacher extends Component {
     );
   }
 }
+
+export const $ = inject("currentUser", "menus")(observer(MatchProfileStepperTeacher));

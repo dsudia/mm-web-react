@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Checkbox from "material-ui/Checkbox";
+import { inject, observer } from "mobx-react";
 
 const styles = {
   block: {
@@ -11,350 +12,172 @@ const styles = {
 };
 
 export default class TraitsSchool extends Component {
-  constructor(props) {
-    super(props);
-    localStorage.setItem(`traits`, JSON.stringify([]));
+  componentWillMount() {
+    this.props.currentUser.updateMatchingProfile({
+      traits: [],
+      traitsWgt: 10
+    });
   }
 
-  handleAmbChecked(event, isInputChecked) {
+  handleAmbChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(0);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 0);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 0) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 0);
     }
-  }
+  };
 
-  handleHumChecked(event, isInputChecked) {
+  handleHumChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(1);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 1);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 1) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 1);
     }
-  }
+  };
 
-  handleColChecked(event, isInputChecked) {
+  handleColChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(2);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 2);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 2) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 2);
     }
-  }
+  };
 
-  handleIndChecked(event, isInputChecked) {
+  handleIndChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(3);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 3);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 3) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 3);
     }
-  }
+  };
 
-  handleExtChecked(event, isInputChecked) {
+  handleExtChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(4);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 4);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 4) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 4);
     }
-  }
+  };
 
-  handleIntChecked(event, isInputChecked) {
+  handleIntChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(5);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 5);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 5) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 5);
     }
-  }
+  };
 
-  handleArtChecked(event, isInputChecked) {
+  handleArtChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(6);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 6);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 6) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 6);
     }
-  }
+  };
 
-  handleMusChecked(event, isInputChecked) {
+  handleMusChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(7);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 7);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 7) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 7);
     }
-  }
+  };
 
-  handleCreChecked(event, isInputChecked) {
+  handleCreChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(8);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 8);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 8) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 8);
     }
-  }
+  };
 
-  handleOrgChecked(event, isInputChecked) {
+  handleOrgChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(9);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 9);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 9) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 9);
     }
-  }
+  };
 
-  handlePlaChecked(event, isInputChecked) {
+  handlePlaChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(10);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 10);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 10) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 10);
     }
-  }
+  };
 
-  handleQuiChecked(event, isInputChecked) {
+  handleQuiChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(11);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 11);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 11) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 11);
     }
-  }
+  };
 
-  handleVerChecked(event, isInputChecked) {
+  handleVerChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(12);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 12);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 12) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 12);
     }
-  }
+  };
 
-  handleWriChecked(event, isInputChecked) {
+  handleWriChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(13);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 13);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 13) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 13);
     }
-  }
+  };
 
-  handleJoyChecked(event, isInputChecked) {
+  handleJoyChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(14);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 14);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 14) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 14);
     }
-  }
+  };
 
-  handleTecChecked(event, isInputChecked) {
+  handleTecChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(15);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 15);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 15) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 15);
     }
-  }
+  };
 
-  handleAnaChecked(event, isInputChecked) {
+  handleAnaChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(16);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 16);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 16) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 16);
     }
-  }
+  };
 
-  handlePatChecked(event, isInputChecked) {
+  handlePatChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(17);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 17);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 17) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 17);
     }
-  }
+  };
 
-  handleSpoChecked(event, isInputChecked) {
+  handleSpoChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(18);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 18);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 18) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 18);
     }
-  }
+  };
 
-  handleRouChecked(event, isInputChecked) {
+  handleRouChecked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      traits.push(19);
-      localStorage.setItem(`traits`, JSON.stringify(traits));
+      this.props.currentUser.pushToMatchProfileArray("traits", 19);
     } else {
-      const traits = JSON.parse(localStorage.getItem(`traits`));
-      const newRanges = traits.filter(el => {
-        if (el !== 19) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`traits`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("traits", 19);
     }
-  }
+  };
 
   render() {
     return (
@@ -363,103 +186,125 @@ export default class TraitsSchool extends Component {
           label="Ambitious"
           style={styles.checkbox}
           onCheck={this.handleAmbChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(0)}
         />
         <Checkbox
           label="Humorous"
           style={styles.checkbox}
           onCheck={this.handleHumChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(1)}
         />
         <Checkbox
           label="Collaborative"
           style={styles.checkbox}
           onCheck={this.handleColhecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(2)}
         />
         <Checkbox
           label="Independent"
           style={styles.checkbox}
           onCheck={this.handleIndChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(3)}
         />
         <Checkbox
           label="Extroverted"
           style={styles.checkbox}
           onCheck={this.handleExtChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(4)}
         />
         <Checkbox
           label="Introverted"
           style={styles.checkbox}
           onCheck={this.handleIntChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(5)}
         />
         <Checkbox
           label="Artistic"
           style={styles.checkbox}
           onCheck={this.handleArtChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(6)}
         />
         <Checkbox
           label="Musical"
           style={styles.checkbox}
           onCheck={this.handleMusChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(7)}
         />
         <Checkbox
           label="Creative"
           style={styles.checkbox}
           onCheck={this.handleCreChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(8)}
         />
         <Checkbox
           label="Organized"
           style={styles.checkbox}
           onCheck={this.handleOrgChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(9)}
         />
         <Checkbox
           label="Playful"
           style={styles.checkbox}
           onCheck={this.handlePlaChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(10)}
         />
         <Checkbox
           label="Quiet"
           style={styles.checkbox}
           onCheck={this.handleQuiChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(11)}
         />
         <Checkbox
           label="Verbal Communicator"
           style={styles.checkbox}
           onCheck={this.handleVerChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(12)}
         />
         <Checkbox
           label="Written Communicator"
           style={styles.checkbox}
           onCheck={this.handleWriChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(13)}
         />
         <Checkbox
           label="Joyful"
           style={styles.checkbox}
           onCheck={this.handleJoyChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(14)}
         />
         <Checkbox
           label="Techie"
           style={styles.checkbox}
           onCheck={this.handleOTecChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(15)}
         />
         <Checkbox
           label="Analog"
           style={styles.checkbox}
           onCheck={this.handleAnaChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(16)}
         />
         <Checkbox
           label="Patient"
           style={styles.checkbox}
           onCheck={this.handlePatChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(17)}
         />
         <Checkbox
           label="Spontaneous"
           style={styles.checkbox}
           onCheck={this.handleSpoChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(18)}
         />
         <Checkbox
           label="Routine Oriented"
           style={styles.checkbox}
           onCheck={this.handleRouChecked}
+          checked={this.props.currentUser.matchingProfile.traits.includes(19)}
         />
       </div>
     );
   }
 }
+
+export const $ = inject("currentUser")(observer(TraitsSchool));

@@ -50,7 +50,7 @@ export class Login extends Component {
   }
 }
 
-export const login = inject("menus")(observer(Login));
+export const $1 = inject("menus")(observer(Login));
 
 class Logged extends Component {
   handleSignOut = () => {
@@ -86,4 +86,4 @@ class Logged extends Component {
   }
 }
 
-export const logged = inject("currentUser")(observer(Logged));
+export const $2 = inject("currentUser")(observer(Logged));

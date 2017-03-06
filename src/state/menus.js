@@ -14,5 +14,12 @@ export const initialState = observable({
   }),
   openRegister: action.bound(function _openRegister() {
     this.registerIsOpen = true;
+  }),
+  matchProfContIsOpen: false,
+  closeMatchProfCont: action.bound(function _closeFillMatchProfile() {
+    this.matchProfContIsOpen = false;
+  }),
+  openMatchProfCont: action.bound(function _openFillMatchProfile() {
+    this.matchProfContIsOpen = true;
   })
 });

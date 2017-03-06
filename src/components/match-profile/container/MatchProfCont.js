@@ -1,29 +1,22 @@
 import React, { Component } from "react";
 import FlatButton from "material-ui/FlatButton";
 import Dialog from "material-ui/Dialog";
-import MatchProfileStepperSchool from "../stepper/MatchProfStepSchool";
+import { $ as MatchProfileStepperSchool } from "../stepper/MatchProfStepSchool";
+import {
+  $ as MatchProfileStepperTeacher
+} from "../stepper/MatchProfStepTeacher";
+import { inject, observer } from "mobx-react";
 
-export default class MatchProfileContainer extends Component {
-  state = {
-    open: this.props.open
-  };
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({ open: nextProps.open });
-  }
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
+class MatchProfileContainer extends Component {
   render() {
+    console.log(this.props.updateProfile)
     const actions = [
       (
         <FlatButton
-          label="Ok"
+          label="Cancel"
           primary={true}
           keyboardFocused={true}
-          onTouchTap={this.handleClose}
+          onTouchTap={this.props.menus.closeMatchProfCont}
         />
       )
     ];
@@ -33,12 +26,18 @@ export default class MatchProfileContainer extends Component {
         title="Fill out your matching profile"
         actions={actions}
         modal={false}
-        open={this.state.open}
-        onRequestClose={this.handleClose}
+        open={this.props.menus.matchProfContIsOpen}
+        onRequestClose={this.props.menus.closeMatchProfCont}
         autoScrollBodyContent={true}
       >
-        <MatchProfileStepperSchool />
+        {this.props.currentUser.memberType === "school"
+          ? <MatchProfileStepperSchool />
+          : <MatchProfileStepperTeacher updateProfile={this.props.updateProfile} />}
       </Dialog>
     );
   }
 }
+
+export const $ = inject("currentUser", "menus")(
+  observer(MatchProfileContainer)
+);

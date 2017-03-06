@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Checkbox from "material-ui/Checkbox";
+import { inject, observer } from "mobx-react";
 
 const styles = {
   block: {
@@ -10,113 +11,54 @@ const styles = {
   }
 };
 
-export default class AgesTeacher extends Component {
-  constructor(props) {
-    super(props);
-    localStorage.setItem(`ageRanges`, JSON.stringify([]));
-  }
-
-  handle03Checked(event, isInputChecked) {
+class AgesTeacher extends Component {
+  handle03Checked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      ageRanges.push(0);
-      localStorage.setItem(`ageRanges`, JSON.stringify(ageRanges));
+      this.props.currentUser.pushToMatchProfileArray("ageRanges", 0);
     } else {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      const newRanges = ageRanges.filter(el => {
-        if (el !== 0) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`ageRanges`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("ageRanges", 0);
     }
-  }
+  };
 
-  handle36Checked(event, isInputChecked) {
+  handle36Checked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      ageRanges.push(1);
-      localStorage.setItem(`ageRanges`, JSON.stringify(ageRanges));
+      this.props.currentUser.pushToMatchProfileArray("ageRanges", 1);
     } else {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      const newRanges = ageRanges.filter(el => {
-        if (el !== 1) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`ageRanges`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("ageRanges", 1);
     }
-  }
+  };
 
-  handle69Checked(event, isInputChecked) {
+  handle69Checked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      ageRanges.push(2);
-      localStorage.setItem(`ageRanges`, JSON.stringify(ageRanges));
+      this.props.currentUser.pushToMatchProfileArray("ageRanges", 2);
     } else {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      const newRanges = ageRanges.filter(el => {
-        if (el !== 2) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`ageRanges`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("ageRanges", 2);
     }
-  }
+  };
 
-  handle912Checked(event, isInputChecked) {
+  handle912Checked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      ageRanges.push(3);
-      localStorage.setItem(`ageRanges`, JSON.stringify(ageRanges));
+      this.props.currentUser.pushToMatchProfileArray("ageRanges", 3);
     } else {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      const newRanges = ageRanges.filter(el => {
-        if (el !== 3) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`ageRanges`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("ageRanges", 3);
     }
-  }
+  };
 
-  handle1215Checked(event, isInputChecked) {
+  handle1215Checked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      ageRanges.push(4);
-      localStorage.setItem(`ageRanges`, JSON.stringify(ageRanges));
+      this.props.currentUser.pushToMatchProfileArray("ageRanges", 4);
     } else {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      const newRanges = ageRanges.filter(el => {
-        if (el !== 4) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`ageRanges`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("ageRanges", 4);
     }
-  }
+  };
 
-  handle1518Checked(event, isInputChecked) {
+  handle1518Checked = (event, isInputChecked) => {
     if (isInputChecked) {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      ageRanges.push(5);
-      localStorage.setItem(`ageRanges`, JSON.stringify(ageRanges));
+      this.props.currentUser.pushToMatchProfileArray("ageRanges", 5);
     } else {
-      const ageRanges = JSON.parse(localStorage.getItem(`ageRanges`));
-      const newRanges = ageRanges.filter(el => {
-        if (el !== 5) {
-          return el;
-        }
-        return null;
-      });
-      localStorage.setItem(`ageRanges`, JSON.stringify(newRanges));
+      this.props.currentUser.removeFromMatchProfileArray("ageRanges", 5);
     }
-  }
+  };
 
   render() {
     return (
@@ -125,33 +67,41 @@ export default class AgesTeacher extends Component {
           label="0 to 3"
           style={styles.checkbox}
           onCheck={this.handle03Checked}
+          checked={this.props.currentUser.matchingProfile.ageRanges.includes(0)}
         />
         <Checkbox
           label="3 to 6"
           style={styles.checkbox}
           onCheck={this.handle36Checked}
+          checked={this.props.currentUser.matchingProfile.ageRanges.includes(1)}
         />
         <Checkbox
           label="6 to 9"
           style={styles.checkbox}
           onCheck={this.handle69Checked}
+          checked={this.props.currentUser.matchingProfile.ageRanges.includes(2)}
         />
         <Checkbox
           label="9 to 12"
           style={styles.checkbox}
           onCheck={this.handle912Checked}
+          checked={this.props.currentUser.matchingProfile.ageRanges.includes(3)}
         />
         <Checkbox
           label="12 to 15"
           style={styles.checkbox}
           onCheck={this.handle1215Checked}
+          checked={this.props.currentUser.matchingProfile.ageRanges.includes(4)}
         />
         <Checkbox
           label="15 to 18"
           style={styles.checkbox}
           onCheck={this.handle1518Checked}
+          checked={this.props.currentUser.matchingProfile.ageRanges.includes(5)}
         />
       </div>
     );
   }
 }
+
+export const $ = inject("currentUser")(observer(AgesTeacher));
