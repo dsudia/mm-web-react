@@ -19,6 +19,17 @@ export const initialState = observable({
     states: [],
     statesWgt: 10
   },
+  translatedMatchingProfile: {
+    exists: false
+  },
+  setTranslatedMatchingProfile: action.bound(
+    function _setTranslatedMatchingProfile(profile) {
+      this.translatedMatchingProfile = profile;
+    }
+  ),
+  setMatchingProfile: action.bound(function _setMatchingProfile(profile) {
+    this.matchingProfile = profile;
+  }),
   updateMatchingProfile: action.bound(function _updateMatchingProfile(
     newProps
   ) {

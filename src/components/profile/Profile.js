@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { List, ListItem, Subheader } from "material-ui/List";
+import { List, ListItem } from "material-ui/List";
+import Subheader from 'material-ui/Subheader';
 import AccountCircle from "material-ui/svg-icons/action/account-circle";
 import FaceIcon from "material-ui/svg-icons/action/face";
 import PersonIcon from "material-ui/svg-icons/social/person";
@@ -11,56 +12,26 @@ import RaisedButton from "material-ui/RaisedButton";
 import {
   $ as MatchProfileContainer
 } from "../match-profile/container/MatchProfCont";
-import * as translators from "./translators";
 import firebase from "firebase";
-import { getProfileData } from "../../databaseCalls/userCalls";
 import { inject, observer } from "mobx-react";
 import { browserHistory } from "react-router";
 import Avatar from "material-ui/Avatar";
+import * as mobx from "mobx";
 
 class Profile extends Component {
   constructor(props) {
     super(props);
-    const traits = localStorage.getItem(`traits`);
-    this.state = {
-      user: {},
-      open: false,
-      matchingProfile: {
-        exists: traits ? true : false,
-        ageRanges: translators.translateAgeRanges(),
-        cals: translators.translateCals(),
-        orgType: translators.translateOrgTypes(),
-        sizes: translators.translateSizes(),
-        states: localStorage.getItem(`states`),
-        trainings: translators.translateTrainings(),
-        traits: translators.translateTraits()
-      }
-    };
-  }
-
-  componentWillMount() {
     const user = firebase.auth().currentUser;
-    if (user) {
-      return getProfileData(user.uid, "development").then(data => {
-        const userData = data.val();
-        this.props.currentUser.setProfile({
-          username: userData.displayName,
-          firstName: userData.firstName,
-          lastName: userData.lastName,
-          email: user.email
-        });
-      });
-    } else {
+    if (!user) {
       console.log("no user is signed in");
       browserHistory.push("/");
     }
   }
 
-  handleFillProfileClick() {
-    this.setState({ open: true });
-  }
-
   render() {
+    const translatedMatchingProfile = mobx.toJS(
+      this.props.currentUser.translatedMatchingProfile
+    );
     const profile = this.props.currentUser.profile;
     return (
       <div>
@@ -93,7 +64,7 @@ class Profile extends Component {
               />
             </List>
             <div>
-              {!this.state.matchingProfile.exists
+              {!translatedMatchingProfile.ageRanges.length > 0
                 ? <div>
                     <p>
                       Looking a little spare here, huh?
@@ -104,38 +75,38 @@ class Profile extends Component {
                     <RaisedButton
                       label="fill out your matching profile!"
                       primary={true}
-                      onClick={this.handleFillProfileClick.bind(this)}
+                      onClick={this.props.menus.openMatchProfCont}
                     />
                   </div>
                 : <div>
                     <List>
                       <Subheader>Matching Profile</Subheader>
                       <ListItem
-                        primaryText={this.state.matchingProfile.ageRanges}
+                        primaryText={translatedMatchingProfile.ageRanges}
                         leftIcon={<FaceIcon />}
                       />
                       <ListItem
-                        primaryText={this.state.matchingProfile.cals}
+                        primaryText={translatedMatchingProfile.cals}
                         leftIcon={<DateIcon />}
                       />
                       <ListItem
-                        primaryText={this.state.matchingProfile.orgType}
+                        primaryText={translatedMatchingProfile.orgType}
                         leftIcon={<PersonOutlineIcon />}
                       />
                       <ListItem
-                        primaryText={this.state.matchingProfile.sizes}
+                        primaryText={translatedMatchingProfile.traits}
                         leftIcon={<EmailIcon />}
                       />
                       <ListItem
-                        primaryText={this.state.matchingProfile.states}
+                        primaryText={translatedMatchingProfile.trainings}
                         leftIcon={<EmailIcon />}
                       />
                       <ListItem
-                        primaryText={this.state.matchingProfile.trainings}
+                        primaryText={translatedMatchingProfile.sizes}
                         leftIcon={<EmailIcon />}
                       />
                       <ListItem
-                        primaryText={this.state.matchingProfile.traits}
+                        primaryText={translatedMatchingProfile.states}
                         leftIcon={<EmailIcon />}
                       />
                     </List>
@@ -145,11 +116,11 @@ class Profile extends Component {
           <CardActions>
             <RaisedButton label="Edit" />
           </CardActions>
-          <MatchProfileContainer open={this.state.open} />
+          <MatchProfileContainer />
         </Card>
       </div>
     );
   }
 }
 
-export default inject("currentUser")(observer(Profile));
+export default inject("currentUser", "menus")(observer(Profile));

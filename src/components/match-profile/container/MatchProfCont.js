@@ -8,18 +8,6 @@ import {
 import { inject, observer } from "mobx-react";
 
 class MatchProfileContainer extends Component {
-  state = {
-    open: this.props.open
-  };
-
-  componentWillReceiveProps = nextProps => {
-    this.setState({ open: nextProps.open });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
   render() {
     const actions = [
       (
@@ -37,8 +25,8 @@ class MatchProfileContainer extends Component {
         title="Fill out your matching profile"
         actions={actions}
         modal={false}
-        open={this.state.open}
-        onRequestClose={this.handleClose}
+        open={this.props.menus.matchProfContIsOpen}
+        onRequestClose={this.props.menus.closeMatchProfCont}
         autoScrollBodyContent={true}
       >
         {this.props.currentUser.memberType === "school"
@@ -49,4 +37,6 @@ class MatchProfileContainer extends Component {
   }
 }
 
-export const $ = inject("currentUser")(observer(MatchProfileContainer));
+export const $ = inject("currentUser", "menus")(
+  observer(MatchProfileContainer)
+);
