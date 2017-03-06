@@ -7,6 +7,12 @@ import firebase from "firebase";
 import { browserHistory } from "react-router";
 import { writeInitialData } from "../../databaseCalls/userCalls";
 import { inject, observer } from "mobx-react";
+import validator from "validator"
+import passValidator from "password-validator"
+
+const schema = new passValidator()
+
+schema.isMin(8).isMax(24).has().uppercase().has().lowercase().has().digits().not().spaces().has().symbols()
 
 const styles = {
   title: {
@@ -91,7 +97,10 @@ class RegisterForm extends Component {
 
   handleFirstNameChange = (event, value) => {
     if (value === "" || value === undefined || value === null) {
-      this.setState({ firstNameError: "First name is required" });
+      this.setState({
+        firstNameError: "First name is required",
+        firstName: value
+      });
       return;
     }
     this.setState({
@@ -101,19 +110,68 @@ class RegisterForm extends Component {
   };
 
   handleLastNameChange = (event, value) => {
-    this.setState({ lastName: value });
+    if (value === "" || value === undefined || value === null) {
+      this.setState({
+        lastNameError: "Last name is required",
+        lastName: value
+      });
+      return;
+    }
+    this.setState({
+      lastName: value,
+      lastNameError: false
+    });
   };
 
   handleDisplayNameChange = (event, value) => {
-    this.setState({ displayName: value });
+    if (value === "" || value === undefined || value === null) {
+      this.setState({
+        displayNameError: "Display name is required",
+        displayName: value
+      });
+      return;
+    }
+    this.setState({
+      displayName: value,
+      displayNameError: false
+    });
   };
 
   handleEmailChange = (event, value) => {
-    this.setState({ email: value });
+    if (value === "" || value === undefined || value === null) {
+      this.setState({
+        emailError: "Email is required",
+        email: value
+      });
+      return;
+    }
+    if (!validator.isEmail(value)) {
+      this.setState({
+        emailError: "Please enter an email address",
+        email: value
+      })
+      return
+    }
+    this.setState({
+      email: value,
+      emailError: false
+    });
   };
 
   handlePasswordChange = (event, value) => {
-    this.setState({ password: value });
+    const validPass = schema.validate(value)
+    console.log(validPass)
+    if (validPass) {
+      this.setState({
+        password: value,
+        passError: false
+      });
+      return
+    }
+    this.setState({
+      passError: "Password: > 8 characters, >= one number, one uppercase, one lowercase, one symbol",
+      password: value
+    })
   };
 
   handleConfPassChange = (event, value) => {
@@ -196,6 +254,11 @@ class RegisterForm extends Component {
                     hintText="Last Name"
                     onChange={this.handleLastNameChange}
                     data-test="field-last-name"
+                    errorText={
+                      this.state.lastNameError
+                        ? this.state.lastNameError
+                        : null
+                    }
                   />
                 </div>
                 <div style={styles.form}>
@@ -204,12 +267,22 @@ class RegisterForm extends Component {
                     hintText="Email"
                     onChange={this.handleEmailChange}
                     data-test="field-email"
+                    errorText={
+                      this.state.emailError
+                        ? this.state.emailError
+                        : null
+                    }
                   />
                   <TextField
                     className="half-width"
                     hintText="Display Name"
                     onChange={this.handleDisplayNameChange}
                     data-test="field-display-name"
+                    errorText={
+                      this.state.displayNameError
+                        ? this.state.displayNameError
+                        : null
+                    }
                   />
                 </div>
                 <div style={styles.form}>
@@ -219,6 +292,11 @@ class RegisterForm extends Component {
                     type="password"
                     onChange={this.handlePasswordChange}
                     data-test="field-password"
+                    errorText={
+                      this.state.passError
+                        ? this.state.passError
+                        : null
+                    }
                   />
                   <TextField
                     className="half-width"
