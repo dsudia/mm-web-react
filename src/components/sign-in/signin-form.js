@@ -64,10 +64,6 @@ class SignInForm extends Component {
     return translatedMatchingProfile;
   }
 
-  handleClose = () => {
-    this.props.menus.closeSignIn();
-  };
-
   signIn = () => {
     return firebase
       .auth()
@@ -98,7 +94,7 @@ class SignInForm extends Component {
                   this.translateMatchingProfile()
                 );
               }
-              this.handleClose();
+              this.props.menus.closeSignIn();
               browserHistory.push("/profile");
             });
           } else {
@@ -122,14 +118,17 @@ class SignInForm extends Component {
 
   render() {
     const actions = [
-      (
+        <FlatButton
+          label="Cancel"
+          primary={true}
+          onTouchTap={this.props.menus.closeSignIn}
+        />,
         <FlatButton
           label="Sign In"
           primary={true}
           keyboardFocused={true}
           onTouchTap={this.signIn}
         />
-      )
     ];
 
     return (

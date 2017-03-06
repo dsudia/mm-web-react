@@ -44,10 +44,6 @@ class RegisterForm extends Component {
     userId: null
   };
 
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
   createNewUser = () => {
     if (
       this.state.firstNameError ||
@@ -74,7 +70,7 @@ class RegisterForm extends Component {
               this.state.memberType,
               process.env.NODE_ENV
             );
-            this.handleClose();
+            this.props.menus.closeRegister();
             browserHistory.push("/profile");
           } else {
             console.log("no user is signed in");
@@ -190,7 +186,11 @@ class RegisterForm extends Component {
 
   render() {
     const actions = [
-      (
+        <FlatButton
+          label="Cancel"
+          primary={true}
+          onTouchTap={this.props.menus.closeRegister}
+        />,
         <FlatButton
           label="Register"
           primary={true}
@@ -198,7 +198,6 @@ class RegisterForm extends Component {
           onTouchTap={this.createNewUser}
           data-test="button-submit-sign-up"
         />
-      )
     ];
 
     return (
