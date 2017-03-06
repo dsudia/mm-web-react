@@ -1,11 +1,10 @@
-import { match } from './algorithm/algorithm'
+import { match } from "./algorithm/algorithm";
 
 export function runMatchComparison(uid) {
-    let allUsers = [];
-    let currentId = '';
-    let matchPercent = 0;
-    let userProfile;
-
+  let allUsers = [];
+  let currentId = "";
+  let matchPercent = 0;
+  let userProfile;
 }
 
 // Run matches

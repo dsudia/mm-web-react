@@ -65,10 +65,10 @@ export default class StatesSchool extends Component {
 
   handleRequestDelete(index) {
     const withoutRemovedState = this.state.currentStates.filter(st => {
-      return st !== index
-    })
-    this.setState({currentStates: withoutRemovedState})
-    this.props.currentUser.removeFromMatchProfileArray("states", index)
+      return st !== index;
+    });
+    this.setState({ currentStates: withoutRemovedState });
+    this.props.currentUser.removeFromMatchProfileArray("states", index);
   }
 
   componentWillMount() {
@@ -79,23 +79,23 @@ export default class StatesSchool extends Component {
   }
 
   handleNewRequest = (chosenRequest, index) => {
-    const states = this.state.currentStates
-    states.push(this.state.stateMap[chosenRequest])
-    this.setState({currentStates: states})
-    this.props.currentUser.pushToMatchProfileArray("states", chosenRequest)
+    const states = this.state.currentStates;
+    states.push(this.state.stateMap[chosenRequest]);
+    this.setState({ currentStates: states });
+    this.props.currentUser.pushToMatchProfileArray("states", chosenRequest);
   };
 
   render() {
-    const stateNameList = Object.keys(this.state.stateMap)
+    const stateNameList = Object.keys(this.state.stateMap);
     return (
       <div>
-        {this.state.currentStates.map(
-          stateIndex => {
-            return <Chip key={stateIndex} onRequestDelete={this.handleRequestDelete}>
+        {this.state.currentStates.map(stateIndex => {
+          return (
+            <Chip key={stateIndex} onRequestDelete={this.handleRequestDelete}>
               {stateNameList[stateIndex]}
             </Chip>
-          }
-        )}
+          );
+        })}
         <AutoComplete
           hintText="Two Letter Abbrev (i.e. CO)"
           dataSource={Object.keys(this.state.stateMap)}

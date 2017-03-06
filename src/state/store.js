@@ -3,5 +3,5 @@ import { initialState as menus } from "./menus";
 
 export const store = {
   currentUser,
-  menus,
+  menus
 };

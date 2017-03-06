@@ -33,7 +33,7 @@ class MatchProfileStepperSchool extends Component {
       traits: [],
       traitsWgt: 10,
       states: [],
-      statesWgt: 10,
+      statesWgt: 10
     });
   }
 

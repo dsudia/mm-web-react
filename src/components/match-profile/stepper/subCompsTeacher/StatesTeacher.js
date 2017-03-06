@@ -8,7 +8,7 @@ import { inject, observer } from "mobx-react";
  */
 export default class StatesTeacher extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       currentStates: [],
       stateMap: {
@@ -63,42 +63,50 @@ export default class StatesTeacher extends Component {
         WI: 48,
         WY: 49
       }
-    }
+    };
   }
 
   componentWillMount() {
-    const storeStates = this.props.currentUser.matchingProfile.states.map(el => {
-      return el
-    })
-    this.setState({currentStates: storeStates})
+    const storeStates = this.props.currentUser.matchingProfile.states.map(
+      el => {
+        return el;
+      }
+    );
+    this.setState({ currentStates: storeStates });
   }
 
   handleRequestDelete(index) {
     const withoutRemovedState = this.state.currentStates.filter(st => {
-      return st !== index
-    })
-    this.setState({currentStates: withoutRemovedState})
-    this.props.currentUser.removeFromMatchProfileArray("states", index)
+      return st !== index;
+    });
+    this.setState({ currentStates: withoutRemovedState });
+    this.props.currentUser.removeFromMatchProfileArray("states", index);
   }
 
   handleNewRequest = (chosenRequest, index) => {
-    const states = this.state.currentStates
-    states.push(this.state.stateMap[chosenRequest])
-    this.setState({currentStates: states})
-    this.props.currentUser.pushToMatchProfileArray("states", this.state.stateMap[chosenRequest])
+    const states = this.state.currentStates;
+    states.push(this.state.stateMap[chosenRequest]);
+    this.setState({ currentStates: states });
+    this.props.currentUser.pushToMatchProfileArray(
+      "states",
+      this.state.stateMap[chosenRequest]
+    );
   };
 
   render() {
-    const stateNameList = Object.keys(this.state.stateMap)
+    const stateNameList = Object.keys(this.state.stateMap);
     return (
       <div>
-        {this.state.currentStates.map(
-          stateIndex => {
-            return <Chip key={stateIndex} onRequestDelete={() => this.handleRequestDelete(stateIndex)}>
+        {this.state.currentStates.map(stateIndex => {
+          return (
+            <Chip
+              key={stateIndex}
+              onRequestDelete={() => this.handleRequestDelete(stateIndex)}
+            >
               {stateNameList[stateIndex]}
             </Chip>
-          }
-        )}
+          );
+        })}
         <AutoComplete
           hintText="Two Letter Abbrev (i.e. CO)"
           dataSource={Object.keys(this.state.stateMap)}

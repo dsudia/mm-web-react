@@ -17,7 +17,7 @@ export const initialState = observable({
     traits: [],
     traitsWgt: 10,
     states: [],
-    statesWgt: 10,
+    statesWgt: 10
   },
   updateMatchingProfile: action.bound(function _updateMatchingProfile(
     newProps
