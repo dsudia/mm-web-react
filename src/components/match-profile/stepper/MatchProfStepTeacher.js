@@ -64,8 +64,8 @@ export default class MatchProfileStepperTeacher extends Component {
         this.translateMatchingProfile()
       );
     }
-    this.props.menus.closeMatchProfCont()
-    this.props.updateProfile()
+    this.props.menus.closeMatchProfCont();
+    this.props.updateProfile();
   };
 
   handleNext = () => {
@@ -118,7 +118,7 @@ export default class MatchProfileStepperTeacher extends Component {
   };
 
   render() {
-    console.log(this.props.updateProfile)
+    console.log(this.props.updateProfile);
     const { finished, stepIndex } = this.state;
 
     return (
@@ -210,4 +210,6 @@ export default class MatchProfileStepperTeacher extends Component {
   }
 }
 
-export const $ = inject("currentUser", "menus")(observer(MatchProfileStepperTeacher));
+export const $ = inject("currentUser", "menus")(
+  observer(MatchProfileStepperTeacher)
+);

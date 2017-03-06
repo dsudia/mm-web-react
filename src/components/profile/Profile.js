@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import { List, ListItem } from "material-ui/List";
-import Subheader from 'material-ui/Subheader';
+import Subheader from "material-ui/Subheader";
 import AccountCircle from "material-ui/svg-icons/action/account-circle";
 import FaceIcon from "material-ui/svg-icons/action/face";
-import BusinessIcon from "material-ui/svg-icons/communication/business"
+import BusinessIcon from "material-ui/svg-icons/communication/business";
 import PersonIcon from "material-ui/svg-icons/social/person";
-import ChildCareIcon from "material-ui/svg-icons/places/child-care"
-import FingerprintIcon from "material-ui/svg-icons/action/fingerprint"
-import ImportExportIcon from "material-ui/svg-icons/communication/import-export"
+import ChildCareIcon from "material-ui/svg-icons/places/child-care";
+import FingerprintIcon from "material-ui/svg-icons/action/fingerprint";
+import ImportExportIcon
+  from "material-ui/svg-icons/communication/import-export";
 import DateIcon from "material-ui/svg-icons/action/date-range";
-import CardMembershipIcon from "material-ui/svg-icons/action/card-membership"
+import CardMembershipIcon from "material-ui/svg-icons/action/card-membership";
 import PersonOutlineIcon from "material-ui/svg-icons/social/person-outline";
 import EmailIcon from "material-ui/svg-icons/communication/mail-outline";
-import PlaceIcon from "material-ui/svg-icons/maps/place"
+import PlaceIcon from "material-ui/svg-icons/maps/place";
 import { Card, CardActions, CardHeader, CardText } from "material-ui/Card";
 import RaisedButton from "material-ui/RaisedButton";
 import {
@@ -35,8 +36,8 @@ class Profile extends Component {
   }
 
   updateIt() {
-    console.log("update it got called")
-    this.forceUpdate()
+    console.log("update it got called");
+    this.forceUpdate();
   }
 
   render() {

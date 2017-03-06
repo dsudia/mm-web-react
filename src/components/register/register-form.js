@@ -43,6 +43,16 @@ class RegisterForm extends Component {
   };
 
   createNewUser = () => {
+    if (
+      this.state.firstNameError ||
+        this.state.lastNameError ||
+        this.state.emailError ||
+        this.state.displayNameError ||
+        this.state.passError ||
+        this.state.confPassError
+    ) {
+      return;
+    }
     firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
@@ -80,7 +90,14 @@ class RegisterForm extends Component {
   };
 
   handleFirstNameChange = (event, value) => {
-    this.setState({ firstName: value });
+    if (value === "" || value === undefined || value === null) {
+      this.setState({ firstNameError: "First name is required" });
+      return;
+    }
+    this.setState({
+      firstName: value,
+      firstNameError: false
+    });
   };
 
   handleLastNameChange = (event, value) => {
@@ -104,8 +121,8 @@ class RegisterForm extends Component {
       this.setState({
         confirmPassword: value,
         confPassError: true
-      })
-      return
+      });
+      return;
     }
     this.setState({
       confirmPassword: value,
@@ -168,6 +185,11 @@ class RegisterForm extends Component {
                     hintText="First Name"
                     onChange={this.handleFirstNameChange}
                     data-test="field-first-name"
+                    errorText={
+                      this.state.firstNameError
+                        ? this.state.firstNameError
+                        : null
+                    }
                   />
                   <TextField
                     className="half-width"
@@ -204,7 +226,9 @@ class RegisterForm extends Component {
                     type="password"
                     onChange={this.handleConfPassChange}
                     data-test="field-conf-password"
-                    errorText={this.state.confPassError ? "Passwords do not match" : null}
+                    errorText={
+                      this.state.confPassError ? "Passwords do not match" : null
+                    }
                   />
                 </div>
               </div>
