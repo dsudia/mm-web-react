@@ -1,20 +1,20 @@
-module.exports = {
-  trainingTypes: {
-    1: 'AMI',
-    2: 'AMS',
-    3: 'MCI',
-    4: 'SNM',
-    5: 'Other'
-  },
 
-  locationTypes: {
-    1: 'Urban',
-    2: 'Suburban',
-    3: 'Small City',
-    4: 'Rural'
-  },
+export const trainingTypes = {
+  1: 'AMI',
+  2: 'AMS',
+  3: 'MCI',
+  4: 'SNM',
+  5: 'Other'
+}
 
-  orgStructures: {
+export const locationTypes = {
+  1: 'Urban',
+  2: 'Suburban',
+  3: 'Small City',
+  4: 'Rural'
+}
+
+export const orgStructures = {
     1: 'Public District',
     2: 'Public Magnet',
     3: 'Public Charter',
@@ -22,21 +22,21 @@ module.exports = {
     5: 'Private For Profit Single Owner',
     6: 'Private For Profit Corporate Owner',
     7: 'Private Non-Profit'
-  },
+  }
 
-  sizes: {
+export const sizes = {
     1: 'Small',
     2: 'Medium',
     3: 'Large',
     4: 'Extra Large'
-  },
+  }
 
-  cals: {
+export const cals = {
     1: 'Traditional',
     2: 'Year-Round'
-  },
+  }
 
-  states: {
+export const states = {
     1:	'Alabama',
     2:	'Alaska',
     3:	'Arizona',
@@ -87,9 +87,9 @@ module.exports = {
     48:	'West Virginia',
     49:	'Wisconsin',
     50:	'Wyoming'
-  },
+  }
 
-  traits: {
+export const traits = {
     1: 'ambitious',
     2: 'humorous',
     3: 'collaborative',
@@ -110,9 +110,9 @@ module.exports = {
     18: 'patient',
     19: 'spontaneous',
     20: 'routine oriented'
-  },
+  }
 
-  ageRanges: {
+export const ageRanges = {
     1: '0-3',
     2: '3-6',
     3: '6-9',
@@ -120,4 +120,3 @@ module.exports = {
     5: '12-14',
     6: '15-18'
   }
-};

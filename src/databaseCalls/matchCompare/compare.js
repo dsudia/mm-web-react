@@ -1,10 +1,12 @@
-'use strict'
+import { match } from './algorithm/algorithm'
 
-const express = require('express');
-const router = express.Router();
-const matchAlgorithm = require('../algorithm/algorithm');
-const config = require('../config');
-let db = require('../db');
+export function runMatchComparison(uid) {
+    let allUsers = [];
+    let currentId = '';
+    let matchPercent = 0;
+    let userProfile;
+
+}
 
 // Run matches
 router.post('/notify', (req, res, next) => {

@@ -1,6 +1,6 @@
 // does this teacher's choices match any of the school choices?
 export function someMatch(memOneArr, memTwoArr) {
-    var someMatch = memTwoArr.some(elOne => {
+    const someMatch = memTwoArr.some(elOne => {
         for (i = 0; i < memOneArr.length; i++) {
             if (elOne === memOneArr[i]) {
                 return elOne === memOneArr[i];
@@ -14,7 +14,7 @@ export function someMatch(memOneArr, memTwoArr) {
 
 // how many?
 export function countNumOfMatches(memOneArr, memTwoArr) {
-    var countOfMatches = 0;
+    const countOfMatches = 0;
     memTwoArr.forEach((elOne) => {
         return memOneArr.forEach((elTwo) => {
             if (elOne === elTwo) {
@@ -33,18 +33,18 @@ export function findDecimal(divisor, dividend) {
 // calculate match percent
 export function matchPercentOneWay(age, ageWgt, cal, calWgt, loc, locWgt, org, orgWgt, size, sizeWgt, state, stateWgt, training, trainingWgt, traits, traitsWgt) {
     // individual scores
-    var ageScore = ageWgt * age;
-    var calScore = calWgt * cal;
-    var locScore = locWgt * loc;
-    var orgScore = orgWgt * org;
-    var sizeScore = sizeWgt * size;
-    var stateScore = stateWgt & state;
-    var trainingScore = trainingWgt * training;
-    var traitsScore = traitsWgt * traits;
+    const ageScore = ageWgt * age;
+    const calScore = calWgt * cal;
+    const locScore = locWgt * loc;
+    const orgScore = orgWgt * org;
+    const sizeScore = sizeWgt * size;
+    const stateScore = stateWgt & state;
+    const trainingScore = trainingWgt * training;
+    const traitsScore = traitsWgt * traits;
 
     // sub totals
-    var score = ageScore + calScore + locScore + orgScore + sizeScore + stateScore + trainingScore + traitsScore;
-    var divisor = ageWgt + calWgt + locWgt + orgWgt + sizeWgt + stateWgt + trainingWgt + traitsWgt;
+    const score = ageScore + calScore + locScore + orgScore + sizeScore + stateScore + trainingScore + traitsScore;
+    const divisor = ageWgt + calWgt + locWgt + orgWgt + sizeWgt + stateWgt + trainingWgt + traitsWgt;
 
     return this.findDecimal(score, divisor);
 }
