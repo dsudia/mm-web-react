@@ -12,13 +12,6 @@ const styles = {
 };
 
 export default class SizesTeacher extends Component {
-  componentWillMount() {
-    this.props.currentUser.updateMatchingProfile({
-      sizes: [],
-      sizesWgt: 10
-    });
-  }
-
   handle4OrLessChecked = (event, isInputChecked) => {
     if (isInputChecked) {
       this.props.currentUser.pushToMatchProfileArray("sizes", 0);
@@ -58,21 +51,25 @@ export default class SizesTeacher extends Component {
           label="4 or less"
           style={styles.checkbox}
           onCheck={this.handle4OrLessChecked}
+          checked={this.props.currentUser.matchingProfile.sizes.includes(0)}
         />
         <Checkbox
           label="5 to 9"
           style={styles.checkbox}
           onCheck={this.handle5To9Checked}
+          checked={this.props.currentUser.matchingProfile.sizes.includes(1)}
         />
         <Checkbox
           label="10 to 19"
           style={styles.checkbox}
           onCheck={this.handle10To19Checked}
+          checked={this.props.currentUser.matchingProfile.sizes.includes(2)}
         />
         <Checkbox
           label="20 or more"
           style={styles.checkbox}
           onCheck={this.handle20OrMoreChecked}
+          checked={this.props.currentUser.matchingProfile.sizes.includes(3)}
         />
       </div>
     );

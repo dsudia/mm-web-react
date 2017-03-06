@@ -9,7 +9,6 @@ import { $ as SizesSchool } from "./subCompsSchool/SizesSchool";
 import { $ as AgesSchool } from "./subCompsSchool/AgesSchool";
 import { $ as TrainingsSchool } from "./subCompsSchool/TrainingsSchool";
 import { $ as TraitsSchool } from "./subCompsSchool/TraitsSchool";
-import { $ as CurrentStatesSchool } from "./subCompsSchool/CurrentStatesSchool";
 import { inject, observer } from "mobx-react";
 import { writeMatchProfile } from "../../../databaseCalls/userCalls";
 
@@ -18,6 +17,25 @@ class MatchProfileStepperSchool extends Component {
     finished: false,
     stepIndex: 0
   };
+
+  componentWillMount() {
+    this.props.currentUser.updateMatchingProfile({
+      ageRanges: [],
+      ageRangesWgt: 10,
+      cals: [],
+      calsWgt: 10,
+      orgTypes: [],
+      orgTypesWgt: 10,
+      sizes: [],
+      sizesWgt: 10,
+      trainings: [],
+      trainingsWgt: 10,
+      traits: [],
+      traitsWgt: 10,
+      states: [],
+      statesWgt: 10,
+    });
+  }
 
   handleNext = () => {
     const { stepIndex } = this.state;
@@ -100,7 +118,6 @@ class MatchProfileStepperSchool extends Component {
               <p>
                 What state is your school in?
               </p>
-              <CurrentStatesSchool />
               <StatesSchool />
               {this.renderStepActions(3)}
             </StepContent>

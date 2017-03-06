@@ -66,26 +66,31 @@ export default class TrainingsSchool extends Component {
           label="AMI"
           style={styles.checkbox}
           onCheck={this.handleAMIChecked}
+          checked={this.props.currentUser.trainings.includes(0)}
         />
         <Checkbox
           label="AMS"
           style={styles.checkbox}
           onCheck={this.handleAMSChecked}
+          checked={this.props.currentUser.trainings.includes(1)}
         />
         <Checkbox
           label="MCI"
           style={styles.checkbox}
           onCheck={this.handleMCIChecked}
+          checked={this.props.currentUser.trainings.includes(2)}
         />
         <Checkbox
           label="SNM"
           style={styles.checkbox}
           onCheck={this.handleSNMChecked}
+          checked={this.props.currentUser.trainings.includes(3)}
         />
         <Checkbox
           label="Other"
           style={styles.checkbox}
           onCheck={this.handleOtherChecked}
+          checked={this.props.currentUser.trainings.includes(4)}
         />
       </div>
     );

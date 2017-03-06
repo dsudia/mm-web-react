@@ -1,4 +1,4 @@
-import { someMatch, countNumOfMatches, findDecimal } from '../calculators'
+import { someMatch, countNumOfMatches, findDecimal } from "../calculators";
 
 export function matchAge(memOneAge, memTwoAge) {
     if (someMatch(memOneAge, memTwoAge) === true) {

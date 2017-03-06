@@ -12,13 +12,6 @@ const styles = {
 };
 
 export default class TrainingsTeacher extends Component {
-  componentWillMount() {
-    this.props.currentUser.updateMatchingProfile({
-      trainings: [],
-      trainingsWgt: 10
-    });
-  }
-
   handleAMIChecked = (event, isInputChecked) => {
     if (isInputChecked) {
       this.props.currentUser.pushToMatchProfileArray("trainings", 0);
@@ -66,26 +59,31 @@ export default class TrainingsTeacher extends Component {
           label="AMI"
           style={styles.checkbox}
           onCheck={this.handleAMIChecked}
+          checked={this.props.currentUser.matchingProfile.trainings.includes(0)}
         />
         <Checkbox
           label="AMS"
           style={styles.checkbox}
           onCheck={this.handleAMSChecked}
+          checked={this.props.currentUser.matchingProfile.trainings.includes(1)}
         />
         <Checkbox
           label="MCI"
           style={styles.checkbox}
           onCheck={this.handleMCIChecked}
+          checked={this.props.currentUser.matchingProfile.trainings.includes(2)}
         />
         <Checkbox
           label="SNM"
           style={styles.checkbox}
           onCheck={this.handleSNMChecked}
+          checked={this.props.currentUser.matchingProfile.trainings.includes(3)}
         />
         <Checkbox
           label="Other"
           style={styles.checkbox}
           onCheck={this.handleOtherChecked}
+          checked={this.props.currentUser.matchingProfile.trainings.includes(4)}
         />
       </div>
     );

@@ -22,12 +22,12 @@ export function countNumOfMatches(memOneArr, memTwoArr) {
             }
         });
     });
-    return countOfMatches;
+  return countOfMatches;
 }
 
 // divide number of matches by number of school grade bands
 export function findDecimal(divisor, dividend) {
-    return (divisor / dividend);
+  return divisor / dividend;
 }
 
 // calculate match percent
@@ -46,9 +46,9 @@ export function matchPercentOneWay(age, ageWgt, cal, calWgt, loc, locWgt, org, o
     const score = ageScore + calScore + locScore + orgScore + sizeScore + stateScore + trainingScore + traitsScore;
     const divisor = ageWgt + calWgt + locWgt + orgWgt + sizeWgt + stateWgt + trainingWgt + traitsWgt;
 
-    return this.findDecimal(score, divisor);
+  return this.findDecimal(score, divisor);
 }
 
 export function matchPercentMutual(score1, score2) {
-    return Math.sqrt(score1 * score2);
+  return Math.sqrt(score1 * score2);
 }

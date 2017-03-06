@@ -1,4 +1,3 @@
-
 export const trainingTypes = {
   1: 'AMI',
   2: 'AMS',

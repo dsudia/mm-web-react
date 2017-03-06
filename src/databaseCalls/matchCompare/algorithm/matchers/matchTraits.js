@@ -1,4 +1,4 @@
-import { someMatch, countNumOfMatches, findDecimal } from '../calculators'
+import { someMatch, countNumOfMatches, findDecimal } from "../calculators";
 
 export function matchTraits(memOneTraits, memTwoTraits) {
     if (someMatch(memOneTraits, memTwoTraits) === true) {

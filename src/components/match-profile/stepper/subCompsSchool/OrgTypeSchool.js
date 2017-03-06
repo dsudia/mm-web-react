@@ -26,36 +26,43 @@ export default class OrgTypeSchool extends Component {
           value={0}
           label="Public District"
           style={styles.radioButton}
+          checked={this.props.currentUser.orgTypes.includes(0)}
         />
         <RadioButton
           value={1}
           label="Public Magnet"
           style={styles.radioButton}
+          checked={this.props.currentUser.orgTypes.includes(1)}
         />
         <RadioButton
           value={2}
           label="Public Charter"
           style={styles.radioButton}
+          checked={this.props.currentUser.orgTypes.includes(2)}
         />
         <RadioButton
           value={3}
           label="Public Innovation"
           style={styles.radioButton}
+          checked={this.props.currentUser.orgTypes.includes(3)}
         />
         <RadioButton
           value={4}
           label="Private For-Profit, Single Owner"
           style={styles.radioButton}
+          checked={this.props.currentUser.orgTypes.includes(4)}
         />
         <RadioButton
           value={5}
           label="Private For-Profit, Corporate Owner"
           style={styles.radioButton}
+          checked={this.props.currentUser.orgTypes.includes(5)}
         />
         <RadioButton
           value={6}
           label="Private Non-Profit"
           style={styles.radioButton}
+          checked={this.props.currentUser.orgTypes.includes(6)}
         />
       </RadioButtonGroup>
     );
