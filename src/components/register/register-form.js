@@ -57,27 +57,27 @@ class RegisterForm extends Component {
     userId: null
   };
 
-  postToMailchimp(email, firstName, lastName, type) {
-    let mmerge;
-    if (type === "teacher") {
-      mmerge = "I'm a teacher";
-    } else {
-      mmerge = "I represent a school";
-    }
+  // postToMailchimp(email, firstName, lastName, type) {
+  //   let mmerge;
+  //   if (type === "teacher") {
+  //     mmerge = "I'm a teacher";
+  //   } else {
+  //     mmerge = "I represent a school";
+  //   }
 
-    const options = {
-      method: "POST",
-      uri: process.env.REACT_APP_MAILCHIMP_URI,
-      form: {
-        EMAIL: email,
-        FNAME: firstName,
-        LNAME: lastName,
-        MMERGE3: mmerge
-      }
-    };
+  //   const options = {
+  //     method: "POST",
+  //     uri: process.env.REACT_APP_MAILCHIMP_URI,
+  //     form: {
+  //       EMAIL: email,
+  //       FNAME: firstName,
+  //       LNAME: lastName,
+  //       MMERGE3: mmerge
+  //     }
+  //   };
 
-    return rp(options);
-  }
+  //   return rp(options);
+  // }
 
   createNewUser = () => {
     if (
@@ -105,17 +105,23 @@ class RegisterForm extends Component {
               this.state.memberType,
               process.env.NODE_ENV
             );
+            this.props.currentUser.setProfile({
+                username: this.state.displayName,
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                email: this.state.email
+              });
             this.props.menus.closeRegister();
             browserHistory.push("/profile");
           } else {
             console.log("no user is signed in");
           }
-          return this.postToMailchimp(
-            this.state.email,
-            this.state.firstName,
-            this.state.lastName,
-            this.state.memberType
-          );
+          // return this.postToMailchimp(
+          //   this.state.email,
+          //   this.state.firstName,
+          //   this.state.lastName,
+          //   this.state.memberType
+          // );
         });
       })
       .catch(error => {

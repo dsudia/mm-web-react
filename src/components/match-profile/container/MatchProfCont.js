@@ -9,7 +9,6 @@ import { inject, observer } from "mobx-react";
 
 class MatchProfileContainer extends Component {
   render() {
-    console.log(this.props.updateProfile);
     const actions = [
       (
         <FlatButton

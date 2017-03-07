@@ -41,6 +41,7 @@ class Profile extends Component {
   }
 
   render() {
+    console.log(mobx.toJS(this.props.currentUser));
     const translatedMatchingProfile = mobx.toJS(
       this.props.currentUser.translatedMatchingProfile
     );
