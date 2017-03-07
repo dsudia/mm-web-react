@@ -58,9 +58,9 @@ class Logged extends Component {
       .auth()
       .signOut()
       .then(() => {
+        browserHistory.push(`/`);
         this.props.currentUser.clearUser();
         console.log(`user signed out`);
-        browserHistory.push(`/`);
       })
       .catch(err => {
         console.log(err);

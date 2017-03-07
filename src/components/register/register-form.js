@@ -106,11 +106,11 @@ class RegisterForm extends Component {
               process.env.NODE_ENV
             );
             this.props.currentUser.setProfile({
-                username: this.state.displayName,
-                firstName: this.state.firstName,
-                lastName: this.state.lastName,
-                email: this.state.email
-              });
+              username: this.state.displayName,
+              firstName: this.state.firstName,
+              lastName: this.state.lastName,
+              email: this.state.email
+            });
             this.props.menus.closeRegister();
             browserHistory.push("/profile");
           } else {
@@ -379,4 +379,4 @@ class RegisterForm extends Component {
   }
 }
 
-export default inject("menus")(observer(RegisterForm));
+export default inject("currentUser", "menus")(observer(RegisterForm));

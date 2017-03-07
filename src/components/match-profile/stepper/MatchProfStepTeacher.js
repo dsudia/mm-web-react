@@ -118,7 +118,6 @@ export default class MatchProfileStepperTeacher extends Component {
   };
 
   render() {
-    console.log(this.props.updateProfile);
     const { finished, stepIndex } = this.state;
 
     return (

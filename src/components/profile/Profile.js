@@ -36,12 +36,10 @@ class Profile extends Component {
   }
 
   updateIt() {
-    console.log("update it got called");
     this.forceUpdate();
   }
 
   render() {
-    console.log(mobx.toJS(this.props.currentUser));
     const translatedMatchingProfile = mobx.toJS(
       this.props.currentUser.translatedMatchingProfile
     );
@@ -77,7 +75,7 @@ class Profile extends Component {
               />
             </List>
             <div>
-              {translatedMatchingProfile.ageRanges
+              {!translatedMatchingProfile.ageRanges
                 ? <div>
                     <p>
                       Looking a little spare here, huh?
