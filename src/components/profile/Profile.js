@@ -66,14 +66,13 @@ class Profile extends Component {
                 leftIcon={<PersonIcon />}
                 data-test="item-first-name"
               />
-              {this.props.currentUser.profile.memberType === "teacher" ?
-                <ListItem
-                  primaryText={profile.lastName}
-                  leftIcon={<PersonOutlineIcon />}
-                  data-test="item-last-name"
-                /> :
-                null
-              }
+              {this.props.currentUser.profile.memberType === "teacher"
+                ? <ListItem
+                    primaryText={profile.lastName}
+                    leftIcon={<PersonOutlineIcon />}
+                    data-test="item-last-name"
+                  />
+                : null}
               <ListItem
                 primaryText={profile.email}
                 leftIcon={<EmailIcon />}

@@ -19,7 +19,9 @@ class MatchProfileStepperSchool extends Component {
   };
 
   componentWillMount() {
+    const uid = this.props.currentUser.id
     this.props.currentUser.updateMatchingProfile({
+      id: uid,
       ageRanges: [],
       ageRangesWgt: 10,
       cals: [],

@@ -1,13 +1,22 @@
 import { match } from "./algorithm/algorithm";
+import firebase from "firebase";
+import Promise from "bluebird";
 
-export function runMatchComparison(uid) {
+export function runMatchComparison(uid, memberType, env = process.env.NODE_ENV) {
   let allUsers = [];
   let currentId = "";
   let matchPercent = 0;
   let userProfile;
-}
 
-function runComparison(userId, memberType)
+  let oppositeType;
+  if (memberType === "teacher") {
+    oppositeType = "school";
+  } else {
+    oppositeType = "teacher";
+  };
+
+  return Promise.all([firebase.database().ref(`${env}matchingProfiles/${oppositeType}`).once("value"), firebase.database().ref(`${env}/potentialMatches/${memberType}/${uid}`)])
+}
 
 // Run matches
 router.post("/notify", (req, res, next) => {

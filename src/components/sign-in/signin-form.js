@@ -65,7 +65,7 @@ class SignInForm extends Component {
   }
 
   signIn = () => {
-    let userData
+    let userData;
     return firebase
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
@@ -73,11 +73,12 @@ class SignInForm extends Component {
         firebase.auth().onAuthStateChanged(user => {
           if (user) {
             this.props.currentUser.setId(user.uid);
-            return getProfileData(user.uid)
-            .then(profileData => {
+            return getProfileData(user.uid).then(profileData => {
               userData = profileData.val();
-              return getMatchProfile(user.uid, userData.memberType)
-              .then(matchProfileData => {
+              return getMatchProfile(
+                user.uid,
+                userData.memberType
+              ).then(matchProfileData => {
                 const matchProfile = matchProfileData.val();
                 this.props.currentUser.setProfile({
                   username: userData.displayName,
@@ -87,7 +88,7 @@ class SignInForm extends Component {
                   memberType: userData.memberType
                 });
                 if (matchProfile !== null) {
-                  this.props.currentUser.setMatchingProfile(matchProfile);
+                  this.props.currentUser.setMatchingProfile(matchProfile[0]);
                 }
                 const exists = this.props.currentUser.matchingProfile.ageRanges !==
                   undefined;
@@ -98,8 +99,8 @@ class SignInForm extends Component {
                 }
                 this.props.menus.closeSignIn();
                 browserHistory.push("/profile");
-                })
-            })
+              });
+            });
           } else {
             console.log("no user is signed in");
           }

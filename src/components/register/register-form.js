@@ -9,7 +9,7 @@ import { writeInitialData } from "../../databaseCalls/userCalls";
 import { inject, observer } from "mobx-react";
 import validator from "validator";
 import passValidator from "password-validator";
-import rp from "request-promise";
+// import rp from "request-promise";
 
 const schema = new passValidator();
 
@@ -93,7 +93,7 @@ class RegisterForm extends Component {
         firebase.auth().onAuthStateChanged(user => {
           if (user) {
             this.setState({ userId: user.uid });
-            this.props.currentUser.setId(user.uid)
+            this.props.currentUser.setId(user.uid);
             writeInitialData(
               user.uid,
               this.state.firstName,
