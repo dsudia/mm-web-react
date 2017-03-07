@@ -91,6 +91,7 @@ class RegisterForm extends Component {
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => {
         firebase.auth().onAuthStateChanged(user => {
+          console.log(this.state)
           if (user) {
             this.setState({ userId: user.uid });
             this.props.currentUser.setId(user.uid);

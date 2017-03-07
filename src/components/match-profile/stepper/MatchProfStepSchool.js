@@ -11,6 +11,8 @@ import { $ as TrainingsSchool } from "./subCompsSchool/TrainingsSchool";
 import { $ as TraitsSchool } from "./subCompsSchool/TraitsSchool";
 import { inject, observer } from "mobx-react";
 import { writeMatchProfile } from "../../../databaseCalls/userCalls";
+import * as translators from "../../profile/translators";
+import * as mobx from "mobx";
 
 class MatchProfileStepperSchool extends Component {
   state = {

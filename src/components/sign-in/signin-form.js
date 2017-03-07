@@ -6,7 +6,7 @@ import firebase from "firebase";
 import { inject, observer } from "mobx-react";
 import { browserHistory } from "react-router";
 import * as translators from "../profile/translators";
-import { getMatchProfile, getProfileData } from "../../databaseCalls/userCalls";
+import { getMatchProfiles, getProfileData } from "../../databaseCalls/userCalls";
 import validator from "validator";
 
 const styles = {
@@ -75,7 +75,7 @@ class SignInForm extends Component {
             this.props.currentUser.setId(user.uid);
             return getProfileData(user.uid).then(profileData => {
               userData = profileData.val();
-              return getMatchProfile(
+              return getMatchProfiles(
                 user.uid,
                 userData.memberType
               ).then(matchProfileData => {
@@ -90,7 +90,7 @@ class SignInForm extends Component {
                 if (matchProfile !== null) {
                   this.props.currentUser.setMatchingProfile(matchProfile[0]);
                 }
-                const exists = this.props.currentUser.matchingProfile.ageRanges !==
+                const exists = this.props.currentUser.matchingProfile !==
                   undefined;
                 if (exists) {
                   this.props.currentUser.setTranslatedMatchingProfile(

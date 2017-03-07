@@ -69,6 +69,7 @@ export default class OrgTypeTeacher extends Component {
   };
 
   render() {
+    console.log(this.props.currentUser)
     return (
       <div style={styles.block}>
         <Checkbox

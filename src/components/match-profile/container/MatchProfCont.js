@@ -29,7 +29,7 @@ class MatchProfileContainer extends Component {
         onRequestClose={this.props.menus.closeMatchProfCont}
         autoScrollBodyContent={true}
       >
-        {this.props.currentUser.memberType === "school"
+        {this.props.currentUser.profile.memberType === "school"
           ? <MatchProfileStepperSchool />
           : <MatchProfileStepperTeacher
               updateProfile={this.props.updateProfile}
