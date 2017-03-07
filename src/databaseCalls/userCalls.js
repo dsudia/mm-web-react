@@ -1,5 +1,4 @@
 import firebase from "firebase";
-import { v4 } from "uuid";
 
 export function writeInitialData(
   userId,
@@ -39,11 +38,16 @@ export function writeMatchProfile(
   userId,
   matchProfile,
   memberType,
+  uid,
   env = process.env.NODE_ENV
 ) {
-  const uid = v4();
   firebase
     .database()
     .ref(`${env}/matchingProfiles/${memberType}/${userId}/${uid}`)
     .set(matchProfile);
+}
+
+export function createPotentialMatches(userId, uid, memberType, env = process.env.NODE_ENV) {
+  firebase.database().ref(`${env}/potentialMatches/${userId}/${uid}`)
+  .set([0])
 }

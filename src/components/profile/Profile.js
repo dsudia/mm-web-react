@@ -31,7 +31,6 @@ class Profile extends Component {
     super(props);
     const user = firebase.auth().currentUser;
     if (!user) {
-      console.log("no user is signed in");
       browserHistory.push("/");
     }
   }

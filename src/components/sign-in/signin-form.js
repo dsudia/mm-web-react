@@ -8,6 +8,7 @@ import { browserHistory } from "react-router";
 import * as translators from "../profile/translators";
 import { getMatchProfiles, getProfileData } from "../../databaseCalls/userCalls";
 import validator from "validator";
+import { runMatchComparison } from "../../databaseCalls/matchCompare/compare"
 
 const styles = {
   title: {
@@ -80,6 +81,7 @@ class SignInForm extends Component {
                 userData.memberType
               ).then(matchProfileData => {
                 const matchProfile = matchProfileData.val();
+                const matchProfiles = Object.keys(matchProfile).map(key => matchProfile[key])
                 this.props.currentUser.setProfile({
                   username: userData.displayName,
                   firstName: userData.firstName,
@@ -87,8 +89,26 @@ class SignInForm extends Component {
                   email: user.email,
                   memberType: userData.memberType
                 });
+                runMatchComparison(user.uid, userData.memberType)
                 if (matchProfile !== null) {
-                  this.props.currentUser.setMatchingProfile(matchProfile[0]);
+                  this.props.currentUser.setMatchingProfile(matchProfiles[0]);
+                } else {
+                  this.props.currentUser.setMatchingProfile({
+                    ageRanges: [],
+                    ageRangesWgt: 10,
+                    cals: [],
+                    calsWgt: 10,
+                    orgTypes: [],
+                    orgTypesWgt: 10,
+                    sizes: [],
+                    sizesWgt: 10,
+                    trainings: [],
+                    trainingsWgt: 10,
+                    traits: [],
+                    traitsWgt: 10,
+                    states: [],
+                    statesWgt: 10
+                  })
                 }
                 const exists = this.props.currentUser.matchingProfile !==
                   undefined;
@@ -101,8 +121,6 @@ class SignInForm extends Component {
                 browserHistory.push("/profile");
               });
             });
-          } else {
-            console.log("no user is signed in");
           }
         });
       })

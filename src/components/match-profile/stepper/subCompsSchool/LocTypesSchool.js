@@ -11,44 +11,44 @@ const styles = {
   }
 };
 
-export default class SizesSchool extends Component {
+export default class LocTypesSchool extends Component {
   handleOnChange = (event, value) => {
     this.props.currentUser.updateMatchingProfile({
-      sizes: [value],
-      sizesWgt: 10
+      locTypes: [value],
+      locTypesWgt: 10
     });
   };
 
   render() {
     return (
-      <RadioButtonGroup name="sizes" onChange={this.handleOnChange}>
+      <RadioButtonGroup name="locTypes" onChange={this.handleOnChange}>
         <RadioButton
           value={0}
-          label="4 or less"
+          label="Urban"
           style={styles.radioButton}
-          checked={this.props.currentUser.matchingProfile.sizes.includes(0)}
+          checked={this.props.currentUser.matchingProfile.locTypes.includes(0)}
         />
         <RadioButton
           value={1}
-          label="4 to 9"
+          label="Suburban"
           style={styles.radioButton}
-          checked={this.props.currentUser.matchingProfile.sizes.includes(1)}
+          checked={this.props.currentUser.matchingProfile.locTypes.includes(1)}
         />
         <RadioButton
           value={2}
-          label="10 to 19"
+          label="Small City"
           style={styles.radioButton}
-          checked={this.props.currentUser.matchingProfile.sizes.includes(2)}
+          checked={this.props.currentUser.matchingProfile.locTypes.includes(2)}
         />
         <RadioButton
           value={3}
-          label="20 or more"
+          label="Rural"
           style={styles.radioButton}
-          checked={this.props.currentUser.matchingProfile.sizes.includes(3)}
+          checked={this.props.currentUser.matchingProfile.locTypes.includes(3)}
         />
       </RadioButtonGroup>
     );
   }
 }
 
-export const $ = inject("currentUser")(observer(SizesSchool));
+export const $ = inject("currentUser")(observer(LocTypesSchool));

@@ -12,7 +12,7 @@ const styles = {
 };
 
 export default class CalsSchool extends Component {
-  handleOnChange(event, value) {
+  handleOnChange = (event, value) => {
     this.props.currentUser.updateMatchingProfile({
       cals: [value],
       calsWgt: 10
@@ -26,13 +26,13 @@ export default class CalsSchool extends Component {
           value={0}
           label="Traditional"
           style={styles.radioButton}
-          checked={this.props.currentUser.cals.includes(0)}
+          checked={this.props.currentUser.matchingProfile.cals.includes(0)}
         />
         <RadioButton
           value={1}
           label="Year-Round"
           style={styles.radioButton}
-          checked={this.props.currentUser.cals.includes(1)}
+          checked={this.props.currentUser.matchingProfile.cals.includes(1)}
         />
       </RadioButtonGroup>
     );

@@ -11,62 +11,56 @@ const styles = {
   }
 };
 
-export default class OrgTypeSchool extends Component {
+export default class EdTypesTeacher extends Component {
   handleOnChange = (event, value) => {
     this.props.currentUser.updateMatchingProfile({
-      orgTypes: [value],
-      orgTypeWgt: 10
+      edTypes: [value],
+      edTypesWgt: 10
     });
   };
 
   render() {
     return (
-      <RadioButtonGroup name="orgTypes" onChange={this.handleOnChange}>
+      <RadioButtonGroup name="edTypes" onChange={this.handleOnChange}>
         <RadioButton
           value={0}
-          label="Public District"
+          label="No College"
           style={styles.radioButton}
           checked={this.props.currentUser.matchingProfile.orgTypes.includes(0)}
         />
         <RadioButton
           value={1}
-          label="Public Magnet"
+          label="Some College"
           style={styles.radioButton}
           checked={this.props.currentUser.matchingProfile.orgTypes.includes(1)}
         />
         <RadioButton
           value={2}
-          label="Public Charter"
+          label="Associate's Degree"
           style={styles.radioButton}
           checked={this.props.currentUser.matchingProfile.orgTypes.includes(2)}
         />
         <RadioButton
           value={3}
-          label="Public Innovation"
+          label="Bachelor's Degree"
           style={styles.radioButton}
           checked={this.props.currentUser.matchingProfile.orgTypes.includes(3)}
         />
         <RadioButton
-          value={4}
-          label="Private For-Profit, Single Owner"
+          value={3}
+          label="Master's Degree"
           style={styles.radioButton}
           checked={this.props.currentUser.matchingProfile.orgTypes.includes(4)}
         />
         <RadioButton
-          value={5}
-          label="Private For-Profit, Corporate Owner"
+          value={3}
+          label="Doctorate"
           style={styles.radioButton}
           checked={this.props.currentUser.matchingProfile.orgTypes.includes(5)}
-        />
-        <RadioButton
-          value={6}
-          label="Private Non-Profit"
-          style={styles.radioButton}
-          checked={this.props.currentUser.matchingProfile.orgTypes.includes(6)}
         />
       </RadioButtonGroup>
     );
   }
 }
 
-export const $ = inject("currentUser")(observer(OrgTypeSchool));
+export const $ = inject("currentUser")(observer(EdTypesTeacher));

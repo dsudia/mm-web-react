@@ -1,7 +1,7 @@
 // does this teacher's choices match any of the school choices?
 export function someMatch(memOneArr, memTwoArr) {
   const someMatch = memTwoArr.some(elOne => {
-    for (i = 0; i < memOneArr.length; i++) {
+    for (let i = 0; i < memOneArr.length; i++) {
       if (elOne === memOneArr[i]) {
         return elOne === memOneArr[i];
       } else {
@@ -14,7 +14,7 @@ export function someMatch(memOneArr, memTwoArr) {
 
 // how many?
 export function countNumOfMatches(memOneArr, memTwoArr) {
-  const countOfMatches = 0;
+  let countOfMatches = 0;
   memTwoArr.forEach(elOne => {
     return memOneArr.forEach(elTwo => {
       if (elOne === elTwo) {
@@ -47,7 +47,9 @@ export function matchPercentOneWay(
   training,
   trainingWgt,
   traits,
-  traitsWgt
+  traitsWgt,
+  ed,
+  edWgt
 ) {
   // individual scores
   const ageScore = ageWgt * age;
@@ -58,6 +60,7 @@ export function matchPercentOneWay(
   const stateScore = stateWgt & state;
   const trainingScore = trainingWgt * training;
   const traitsScore = traitsWgt * traits;
+  const edScore = edWgt * ed;
 
   // sub totals
   const score = ageScore +
@@ -67,7 +70,8 @@ export function matchPercentOneWay(
     sizeScore +
     stateScore +
     trainingScore +
-    traitsScore;
+    traitsScore +
+    edScore;
   const divisor = ageWgt +
     calWgt +
     locWgt +
@@ -75,7 +79,8 @@ export function matchPercentOneWay(
     sizeWgt +
     stateWgt +
     trainingWgt +
-    traitsWgt;
+    traitsWgt +
+    edWgt;
 
   return this.findDecimal(score, divisor);
 }

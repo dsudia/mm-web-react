@@ -9,10 +9,13 @@ import { $ as SizesSchool } from "./subCompsSchool/SizesSchool";
 import { $ as AgesSchool } from "./subCompsSchool/AgesSchool";
 import { $ as TrainingsSchool } from "./subCompsSchool/TrainingsSchool";
 import { $ as TraitsSchool } from "./subCompsSchool/TraitsSchool";
+import { $ as LocTypesSchool } from "./subCompsSchool/LocTypesSchool"
+import { $ as EdTypesSchool } from "./subCompsSchool/EdTypesSchool"
 import { inject, observer } from "mobx-react";
-import { writeMatchProfile } from "../../../databaseCalls/userCalls";
+import { createPotentialMatches, writeMatchProfile } from "../../../databaseCalls/userCalls";
 import * as translators from "../../profile/translators";
 import * as mobx from "mobx";
+import { v4 } from "uuid";
 
 class MatchProfileStepperSchool extends Component {
   state = {
@@ -49,12 +52,16 @@ class MatchProfileStepperSchool extends Component {
   }
 
   handleFinish = () => {
+    const uid = v4();
     const user = mobx.toJS(this.props.currentUser);
-    writeMatchProfile(user.id, user.matchingProfile, user.profile.memberType);
+    const matchingProfile = user.matchingProfile
+    matchingProfile.memberType = user.profile.memberType
+    writeMatchProfile(user.id, matchingProfile, user.profile.memberType, uid);
+    createPotentialMatches(user.id, uid);
     const { stepIndex } = this.state;
     this.setState({
       stepIndex: stepIndex + 1,
-      finished: stepIndex >= 7
+      finished: stepIndex >= 9
     });
     this.props.currentUser.setMatchingProfile(user.matchingProfile);
     const exists = this.props.currentUser.matchingProfile.ageRanges !==
@@ -72,7 +79,7 @@ class MatchProfileStepperSchool extends Component {
     const { stepIndex } = this.state;
     this.setState({
       stepIndex: stepIndex + 1,
-      finished: stepIndex >= 7
+      finished: stepIndex >= 9
     });
   };
 
@@ -88,7 +95,7 @@ class MatchProfileStepperSchool extends Component {
 
     return (
       <div style={{ margin: "12px 0" }}>
-        {stepIndex === 7
+        {stepIndex === 9
           ? <RaisedButton
               label={"Finish"}
               disableTouchRipple={true}
@@ -163,23 +170,33 @@ class MatchProfileStepperSchool extends Component {
             </StepContent>
           </Step>
           <Step>
+            <StepLabel>Location</StepLabel>
+            <StepContent>
+              <p>
+                What kind of area is your school in?
+              </p>
+              <LocTypesSchool />
+              {this.renderStepActions(4)}
+            </StepContent>
+          </Step>
+          <Step>
             <StepLabel>Size</StepLabel>
             <StepContent>
               <p>
                 How many classrooms does your school have?
               </p>
               <SizesSchool />
-              {this.renderStepActions(4)}
+              {this.renderStepActions(5)}
             </StepContent>
           </Step>
           <Step>
             <StepLabel>Age Ranges</StepLabel>
             <StepContent>
               <p>
-                What age bands do you teach?
+                What age bands does your school teach?
               </p>
               <AgesSchool />
-              {this.renderStepActions(5)}
+              {this.renderStepActions(6)}
             </StepContent>
           </Step>
           <Step>
@@ -189,7 +206,17 @@ class MatchProfileStepperSchool extends Component {
                 What teacher training standards do you accept?
               </p>
               <TrainingsSchool />
-              {this.renderStepActions(6)}
+              {this.renderStepActions(7)}
+            </StepContent>
+          </Step>
+          <Step>
+            <StepLabel>Education</StepLabel>
+            <StepContent>
+              <p>
+                What education levels do you accept?
+              </p>
+              <EdTypesSchool />
+              {this.renderStepActions(8)}
             </StepContent>
           </Step>
           <Step>
@@ -199,7 +226,7 @@ class MatchProfileStepperSchool extends Component {
                 Pick seven traits that describe your school culture. (We know you are all of these things!)
               </p>
               <TraitsSchool />
-              {this.renderStepActions(7)}
+              {this.renderStepActions(9)}
             </StepContent>
           </Step>
         </Stepper>
@@ -224,4 +251,4 @@ class MatchProfileStepperSchool extends Component {
   }
 }
 
-export const $ = inject("currentUser")(observer(MatchProfileStepperSchool));
+export const $ = inject("currentUser", "menus")(observer(MatchProfileStepperSchool));

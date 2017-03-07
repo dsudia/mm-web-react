@@ -9,10 +9,13 @@ import { $ as SizesTeacher } from "./subCompsTeacher/SizesTeacher";
 import { $ as AgesTeacher } from "./subCompsTeacher/AgesTeacher";
 import { $ as TrainingsTeacher } from "./subCompsTeacher/TrainingsTeacher";
 import { $ as TraitsTeacher } from "./subCompsTeacher/TraitsTeacher";
-import { writeMatchProfile } from "../../../databaseCalls/userCalls";
+import { $ as LocTypesTeacher } from "./subCompsTeacher/LocTypesTeacher"
+import { $ as EdTypesTeacher } from "./subCompsTeacher/EdTypesTeacher"
+import { createPotentialMatches, writeMatchProfile } from "../../../databaseCalls/userCalls";
 import { inject, observer } from "mobx-react";
 import * as mobx from "mobx";
 import * as translators from "../../profile/translators";
+import { v4 } from "uuid";
 
 export default class MatchProfileStepperTeacher extends Component {
   state = {
@@ -49,12 +52,16 @@ export default class MatchProfileStepperTeacher extends Component {
   }
 
   handleFinish = () => {
+    const uid = v4();
     const user = mobx.toJS(this.props.currentUser);
-    writeMatchProfile(user.id, user.matchingProfile, user.profile.memberType);
+    const matchingProfile = user.matchingProfile
+    matchingProfile.memberType = user.profile.memberType
+    writeMatchProfile(user.id, matchingProfile, user.profile.memberType, uid);
+    createPotentialMatches(user.id, uid)
     const { stepIndex } = this.state;
     this.setState({
       stepIndex: stepIndex + 1,
-      finished: stepIndex >= 7
+      finished: stepIndex >= 9
     });
     this.props.currentUser.setMatchingProfile(user.matchingProfile);
     const exists = this.props.currentUser.matchingProfile.ageRanges !==
@@ -72,7 +79,7 @@ export default class MatchProfileStepperTeacher extends Component {
     const { stepIndex } = this.state;
     this.setState({
       stepIndex: stepIndex + 1,
-      finished: stepIndex >= 7
+      finished: stepIndex >= 9
     });
   };
 
@@ -88,7 +95,7 @@ export default class MatchProfileStepperTeacher extends Component {
 
     return (
       <div style={{ margin: "12px 0" }}>
-        {stepIndex === 7
+        {stepIndex === 9
           ? <RaisedButton
               label={"Finish"}
               disableTouchRipple={true}
@@ -163,13 +170,23 @@ export default class MatchProfileStepperTeacher extends Component {
             </StepContent>
           </Step>
           <Step>
+            <StepLabel>Location</StepLabel>
+            <StepContent>
+              <p>
+                What kind of area is your idea school in?
+              </p>
+              <LocTypesTeacher />
+              {this.renderStepActions(4)}
+            </StepContent>
+          </Step>
+          <Step>
             <StepLabel>Size</StepLabel>
             <StepContent>
               <p>
                 How many classrooms does your ideal school have?
               </p>
               <SizesTeacher />
-              {this.renderStepActions(4)}
+              {this.renderStepActions(5)}
             </StepContent>
           </Step>
           <Step>
@@ -179,7 +196,7 @@ export default class MatchProfileStepperTeacher extends Component {
                 What age bands are you licensed to teach?
               </p>
               <AgesTeacher />
-              {this.renderStepActions(5)}
+              {this.renderStepActions(6)}
             </StepContent>
           </Step>
           <Step>
@@ -189,7 +206,17 @@ export default class MatchProfileStepperTeacher extends Component {
                 What training certifications do you have?
               </p>
               <TrainingsTeacher />
-              {this.renderStepActions(6)}
+              {this.renderStepActions(7)}
+            </StepContent>
+          </Step>
+          <Step>
+            <StepLabel>Education</StepLabel>
+            <StepContent>
+              <p>
+                What is your highest level of education?
+              </p>
+              <EdTypesTeacher />
+              {this.renderStepActions(8)}
             </StepContent>
           </Step>
           <Step>
@@ -199,7 +226,7 @@ export default class MatchProfileStepperTeacher extends Component {
                 Pick seven traits that describe your ideal school culture. (We know you are all of these things!)
               </p>
               <TraitsTeacher />
-              {this.renderStepActions(7)}
+              {this.renderStepActions(9)}
             </StepContent>
           </Step>
         </Stepper>

@@ -1,6 +1,7 @@
 import { matchState } from "./matchers/matchState";
 import { matchAge } from "./matchers/matchAge";
 import { matchTraining } from "./matchers/matchTraining";
+import { matchEd } from "./matchers/matchEd"
 import { matchCal } from "./matchers/matchCal";
 import { matchLoc } from "./matchers/matchLoc";
 import { matchOrg } from "./matchers/matchOrg";
@@ -9,12 +10,14 @@ import { matchTraits } from "./matchers/matchTraits";
 import { matchPercentOneWay, matchPercentMutual } from "./calculators";
 
 export function match(memberOne, memberTwo) {
+  console.log(memberOne)
+  console.log(memberTwo)
   let memOne;
   let memTwo;
-  if (memberOne.isTeacher === true) {
+  if (memberOne.memberType === "teacher") {
     memOne = memberOne;
     memTwo = memberTwo;
-  } else if (memberOne.isTeacher === false) {
+  } else if (memberOne.memberType === "school") {
     memOne = memberTwo;
     memTwo = memberOne;
   }
@@ -31,7 +34,7 @@ export function match(memberOne, memberTwo) {
     return 0;
   }
 
-  const trainingMatch = matchTraining(memOne.training, memTwo.training);
+  const trainingMatch = matchTraining(memOne.trainings, memTwo.trainings);
   if (trainingMatch === -1) {
     return 0;
   }
@@ -41,6 +44,7 @@ export function match(memberOne, memberTwo) {
   const locMatch = matchLoc(memTwo.locTypes, memOne.locTypes);
   const orgMatch = matchOrg(memTwo.orgTypes, memOne.orgTypes);
   const sizeMatch = matchSize(memTwo.sizes, memOne.sizes);
+  const edMatch = matchEd(memOne.edTypes, memTwo.edtypes)
 
   const matchPercentMemOne = matchPercentOneWay(
     ageMatch,
@@ -58,7 +62,9 @@ export function match(memberOne, memberTwo) {
     trainingMatch,
     memOne.trainingWgt,
     traitMatch,
-    memOne.traitsWgt
+    memOne.traitsWgt,
+    edMatch,
+    memOne.edTypesWgt
   );
 
   const matchPercentMemTwo = matchPercentOneWay(
@@ -77,7 +83,9 @@ export function match(memberOne, memberTwo) {
     trainingMatch,
     memTwo.trainingWgt,
     traitMatch,
-    memTwo.traitsWgt
+    memTwo.traitsWgt,
+    edMatch,
+    memTwo.edTypesWgt
   );
 
   const matchPercent = matchPercentMutual(

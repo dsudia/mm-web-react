@@ -91,7 +91,6 @@ class RegisterForm extends Component {
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => {
         firebase.auth().onAuthStateChanged(user => {
-          console.log(this.state)
           if (user) {
             this.setState({ userId: user.uid });
             this.props.currentUser.setId(user.uid);
@@ -112,8 +111,6 @@ class RegisterForm extends Component {
             });
             this.props.menus.closeRegister();
             browserHistory.push("/profile");
-          } else {
-            console.log("no user is signed in");
           }
           // return this.postToMailchimp(
           //   this.state.email,

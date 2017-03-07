@@ -8,6 +8,7 @@ import {
 import { inject, observer } from "mobx-react";
 
 class MatchProfileContainer extends Component {
+
   render() {
     const actions = [
       (
@@ -30,7 +31,7 @@ class MatchProfileContainer extends Component {
         autoScrollBodyContent={true}
       >
         {this.props.currentUser.profile.memberType === "school"
-          ? <MatchProfileStepperSchool />
+          ? <MatchProfileStepperSchool updateProfile={this.props.updateProfile} />
           : <MatchProfileStepperTeacher
               updateProfile={this.props.updateProfile}
             />}
