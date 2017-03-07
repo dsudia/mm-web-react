@@ -17,7 +17,7 @@ class Hero extends Component {
           >
             <RaisedButton
               label="Sign up for our mailing list to get updates!"
-              primary={true}
+              secondary={true}
             />
           </a>
         </CardActions>
