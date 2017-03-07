@@ -12,13 +12,6 @@ const styles = {
 };
 
 export default class TrainingsSchool extends Component {
-  componentWillMount() {
-    this.props.currentUser.updateMatchingProfile({
-      trainings: [],
-      trainingsWgt: 10
-    });
-  }
-
   handleAMIChecked = (event, isInputChecked) => {
     if (isInputChecked) {
       this.props.currentUser.pushToMatchProfileArray("trainings", 0);

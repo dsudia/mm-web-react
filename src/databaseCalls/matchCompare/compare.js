@@ -2,7 +2,11 @@ import { match } from "./algorithm/algorithm";
 import firebase from "firebase";
 import Promise from "bluebird";
 
-export function runMatchComparison(uid, memberType, env = process.env.NODE_ENV) {
+export function runMatchComparison(
+  uid,
+  memberType,
+  env = process.env.NODE_ENV
+) {
   let allUsers = [];
   let currentId = "";
   let matchPercent = 0;
@@ -13,9 +17,29 @@ export function runMatchComparison(uid, memberType, env = process.env.NODE_ENV) 
     oppositeType = "school";
   } else {
     oppositeType = "teacher";
-  };
+  }
 
-  return Promise.all([firebase.database().ref(`${env}matchingProfiles/${oppositeType}`).once("value"), firebase.database().ref(`${env}/potentialMatches/${memberType}/${uid}`)])
+  return Promise.all([
+    firebase
+      .database()
+      .ref(`${env}matchingProfiles/${oppositeType}`)
+      .once("value"),
+    firebase.database().ref(`${env}/potentialMatches/${memberType}/${uid}`)
+  ]).spread((oppositeUsers, currentUser) => {
+    userProfile = currentUser.val()[0];
+    allUsers = oppositeUsers.val().map(el => el);
+    console.log(userProfile);
+    console.log(allUsers);
+    // return allUsers.forEach((currentProfile, ind, arr) => {
+    //   try {
+    //     matchPercent = Number(
+    //       matchAlgorithm(userProfile, currentProfile)
+    //     );
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // })
+  });
 }
 
 // Run matches

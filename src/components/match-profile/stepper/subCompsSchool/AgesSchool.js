@@ -12,12 +12,6 @@ const styles = {
 };
 
 class AgesSchool extends Component {
-  componentWillMount() {
-    this.props.currentUser.updateMatchingProfile({
-      ageRanges: [],
-      agesWgt: 10
-    });
-  }
   handle03Checked = (event, isInputChecked) => {
     if (isInputChecked) {
       this.props.currentUser.pushToMatchProfileArray("ageRanges", 0);

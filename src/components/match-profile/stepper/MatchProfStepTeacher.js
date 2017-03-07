@@ -203,7 +203,22 @@ export default class MatchProfileStepperTeacher extends Component {
             </StepContent>
           </Step>
         </Stepper>
-        {finished && <p style={{ margin: "20px 0", textAlign: "center" }} />}
+        {finished &&
+          <p style={{ margin: "20px 0", textAlign: "center" }}>
+            <a
+              href="#"
+              onClick={event => {
+                event.preventDefault();
+                this.setState({ stepIndex: 0, finished: false });
+                writeMatchProfile(
+                  this.props.currentUser.id,
+                  this.props.currentUser.matchingProfile
+                );
+              }}
+            >
+              Click here
+            </a> to submit your matching profile!
+          </p>}
       </div>
     );
   }

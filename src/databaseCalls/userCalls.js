@@ -41,7 +41,7 @@ export function writeMatchProfile(
   memberType,
   env = process.env.NODE_ENV
 ) {
-  const uid = v4()
+  const uid = v4();
   firebase
     .database()
     .ref(`${env}/matchingProfiles/${memberType}/${userId}/${uid}`)

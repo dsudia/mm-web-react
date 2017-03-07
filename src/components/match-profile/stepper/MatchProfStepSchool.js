@@ -18,32 +18,59 @@ class MatchProfileStepperSchool extends Component {
     stepIndex: 0
   };
 
-  componentWillMount() {
-    const uid = this.props.currentUser.id
-    this.props.currentUser.updateMatchingProfile({
-      id: uid,
-      ageRanges: [],
-      ageRangesWgt: 10,
-      cals: [],
-      calsWgt: 10,
-      orgTypes: [],
-      orgTypesWgt: 10,
-      sizes: [],
-      sizesWgt: 10,
-      trainings: [],
-      trainingsWgt: 10,
-      traits: [],
-      traitsWgt: 10,
-      states: [],
-      statesWgt: 10
-    });
+  translateMatchingProfile() {
+    const translatedMatchingProfile = {
+      exists: true,
+      ageRanges: translators.translateAgeRanges(
+        this.props.currentUser.matchingProfile.ageRanges
+      ),
+      cals: translators.translateCals(
+        this.props.currentUser.matchingProfile.cals
+      ),
+      orgType: translators.translateOrgTypes(
+        this.props.currentUser.matchingProfile.orgTypes
+      ),
+      sizes: translators.translateSizes(
+        this.props.currentUser.matchingProfile.sizes
+      ),
+      states: translators.translateStates(
+        this.props.currentUser.matchingProfile.states
+      ),
+      trainings: translators.translateTrainings(
+        this.props.currentUser.matchingProfile.trainings
+      ),
+      traits: translators.translateTraits(
+        this.props.currentUser.matchingProfile.traits
+      )
+    };
+    return translatedMatchingProfile;
   }
+
+  handleFinish = () => {
+    const user = mobx.toJS(this.props.currentUser);
+    writeMatchProfile(user.id, user.matchingProfile, user.profile.memberType);
+    const { stepIndex } = this.state;
+    this.setState({
+      stepIndex: stepIndex + 1,
+      finished: stepIndex >= 7
+    });
+    this.props.currentUser.setMatchingProfile(user.matchingProfile);
+    const exists = this.props.currentUser.matchingProfile.ageRanges !==
+      undefined;
+    if (exists) {
+      this.props.currentUser.setTranslatedMatchingProfile(
+        this.translateMatchingProfile()
+      );
+    }
+    this.props.menus.closeMatchProfCont();
+    this.props.updateProfile();
+  };
 
   handleNext = () => {
     const { stepIndex } = this.state;
     this.setState({
       stepIndex: stepIndex + 1,
-      finished: stepIndex >= 8
+      finished: stepIndex >= 7
     });
   };
 
@@ -59,14 +86,23 @@ class MatchProfileStepperSchool extends Component {
 
     return (
       <div style={{ margin: "12px 0" }}>
-        <RaisedButton
-          label={stepIndex === 8 ? "Finish" : "Next"}
-          disableTouchRipple={true}
-          disableFocusRipple={true}
-          primary={true}
-          onTouchTap={this.handleNext}
-          style={{ marginRight: 12 }}
-        />
+        {stepIndex === 7
+          ? <RaisedButton
+              label={"Finish"}
+              disableTouchRipple={true}
+              disableFocusRipple={true}
+              primary={true}
+              onTouchTap={this.handleFinish}
+              style={{ marginRight: 12 }}
+            />
+          : <RaisedButton
+              label={"Next"}
+              disableTouchRipple={true}
+              disableFocusRipple={true}
+              primary={true}
+              onTouchTap={this.handleNext}
+              style={{ marginRight: 12 }}
+            />}
         {step > 0 &&
           <FlatButton
             label="Back"
