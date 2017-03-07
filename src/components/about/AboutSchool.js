@@ -47,7 +47,11 @@ class AboutSchool extends Component {
           </p>
         </CardText>
         <CardActions>
-          <RaisedButton label="Sign Up" primary={true} onTouchTap={this.props.menus.openRegister}/>
+          <RaisedButton
+            label="Sign Up"
+            primary={true}
+            onTouchTap={this.props.menus.openRegister}
+          />
         </CardActions>
       </Card>
     );
