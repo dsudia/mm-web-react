@@ -24,7 +24,7 @@ import { inject, observer } from "mobx-react";
 import { browserHistory } from "react-router";
 import Avatar from "material-ui/Avatar";
 import * as mobx from "mobx";
-import "./Profile.css"
+import "./Profile.css";
 
 class Profile extends Component {
   constructor(props) {
@@ -66,11 +66,14 @@ class Profile extends Component {
                 leftIcon={<PersonIcon />}
                 data-test="item-first-name"
               />
-              <ListItem
-                primaryText={profile.lastName}
-                leftIcon={<PersonOutlineIcon />}
-                data-test="item-last-name"
-              />
+              {this.props.currentUser.profile.memberType === "teacher" ?
+                <ListItem
+                  primaryText={profile.lastName}
+                  leftIcon={<PersonOutlineIcon />}
+                  data-test="item-last-name"
+                /> :
+                null
+              }
               <ListItem
                 primaryText={profile.email}
                 leftIcon={<EmailIcon />}

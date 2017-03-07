@@ -93,6 +93,7 @@ class RegisterForm extends Component {
         firebase.auth().onAuthStateChanged(user => {
           if (user) {
             this.setState({ userId: user.uid });
+            this.props.currentUser.setId(user.uid)
             writeInitialData(
               user.uid,
               this.state.firstName,
@@ -105,7 +106,8 @@ class RegisterForm extends Component {
               username: this.state.displayName,
               firstName: this.state.firstName,
               lastName: this.state.lastName,
-              email: this.state.email
+              email: this.state.email,
+              memberType: this.state.memberType
             });
             this.props.menus.closeRegister();
             browserHistory.push("/profile");

@@ -50,7 +50,7 @@ export default class MatchProfileStepperTeacher extends Component {
 
   handleFinish = () => {
     const user = mobx.toJS(this.props.currentUser);
-    writeMatchProfile(user.id, user.matchingProfile);
+    writeMatchProfile(user.id, user.matchingProfile, user.profile.memberType);
     const { stepIndex } = this.state;
     this.setState({
       stepIndex: stepIndex + 1,

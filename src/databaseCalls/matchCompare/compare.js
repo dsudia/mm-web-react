@@ -7,6 +7,8 @@ export function runMatchComparison(uid) {
   let userProfile;
 }
 
+function runComparison(userId, memberType)
+
 // Run matches
 router.post("/notify", (req, res, next) => {
   const userEmail = req.body.email;

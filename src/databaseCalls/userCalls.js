@@ -23,20 +23,21 @@ export function getProfileData(userId, env = process.env.NODE_ENV) {
     .once("value");
 }
 
-export function getMatchProfile(userId, env = process.env.NODE_ENV) {
+export function getMatchProfile(userId, memberType, env = process.env.NODE_ENV) {
   return firebase
     .database()
-    .ref(`/${env}/users/matchingProfiles/${userId}`)
+    .ref(`/${env}/users/matchingProfiles/${memberType}/${userId}`)
     .once("value");
 }
 
 export function writeMatchProfile(
   userId,
   matchProfile,
+  memberType,
   env = process.env.NODE_ENV
 ) {
   firebase
     .database()
-    .ref(`${env}/users/matchingProfiles/${userId}`)
+    .ref(`${env}/users/matchingProfiles/${memberType}/${userId}`)
     .set(matchProfile);
 }

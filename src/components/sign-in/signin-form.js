@@ -5,7 +5,6 @@ import TextField from "material-ui/TextField";
 import firebase from "firebase";
 import { inject, observer } from "mobx-react";
 import { browserHistory } from "react-router";
-import Promise from "bluebird";
 import * as translators from "../profile/translators";
 import { getMatchProfile, getProfileData } from "../../databaseCalls/userCalls";
 import validator from "validator";
@@ -66,6 +65,7 @@ class SignInForm extends Component {
   }
 
   signIn = () => {
+    let userData
     return firebase
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
@@ -73,31 +73,33 @@ class SignInForm extends Component {
         firebase.auth().onAuthStateChanged(user => {
           if (user) {
             this.props.currentUser.setId(user.uid);
-            return Promise.all([
-              getProfileData(user.uid),
-              getMatchProfile(user.uid)
-            ]).spread((profileData, matchProfileData) => {
-              const userData = profileData.val();
-              const matchProfile = matchProfileData.val();
-              this.props.currentUser.setProfile({
-                username: userData.displayName,
-                firstName: userData.firstName,
-                lastName: userData.lastName,
-                email: user.email
-              });
-              if (matchProfile !== null) {
-                this.props.currentUser.setMatchingProfile(matchProfile);
-              }
-              const exists = this.props.currentUser.matchingProfile.ageRanges !==
-                undefined;
-              if (exists) {
-                this.props.currentUser.setTranslatedMatchingProfile(
-                  this.translateMatchingProfile()
-                );
-              }
-              this.props.menus.closeSignIn();
-              browserHistory.push("/profile");
-            });
+            return getProfileData(user.uid)
+            .then(profileData => {
+              userData = profileData.val();
+              return getMatchProfile(user.uid, userData.memberType)
+              .then(matchProfileData => {
+                const matchProfile = matchProfileData.val();
+                this.props.currentUser.setProfile({
+                  username: userData.displayName,
+                  firstName: userData.firstName,
+                  lastName: userData.lastName,
+                  email: user.email,
+                  memberType: userData.memberType
+                });
+                if (matchProfile !== null) {
+                  this.props.currentUser.setMatchingProfile(matchProfile);
+                }
+                const exists = this.props.currentUser.matchingProfile.ageRanges !==
+                  undefined;
+                if (exists) {
+                  this.props.currentUser.setTranslatedMatchingProfile(
+                    this.translateMatchingProfile()
+                  );
+                }
+                this.props.menus.closeSignIn();
+                browserHistory.push("/profile");
+                })
+            })
           } else {
             console.log("no user is signed in");
           }
