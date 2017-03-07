@@ -287,9 +287,7 @@ class RegisterForm extends Component {
                   onChange={this.handleFirstNameChange}
                   data-test="field-first-name"
                   errorText={
-                    this.state.firstNameError
-                      ? this.state.firstNameError
-                      : null
+                    this.state.firstNameError ? this.state.firstNameError : null
                   }
                 />
                 <TextField
@@ -327,9 +325,7 @@ class RegisterForm extends Component {
                   type="password"
                   onChange={this.handlePasswordChange}
                   data-test="field-password"
-                  errorText={
-                    this.state.passError ? this.state.passError : null
-                  }
+                  errorText={this.state.passError ? this.state.passError : null}
                 />
                 <TextField
                   className="half-width"
@@ -349,9 +345,7 @@ class RegisterForm extends Component {
                   onChange={this.handleFirstNameChange}
                   data-test="field-first-name"
                   errorText={
-                    this.state.firstNameError
-                      ? this.state.firstNameError
-                      : null
+                    this.state.firstNameError ? this.state.firstNameError : null
                   }
                 />
                 <TextField
@@ -380,9 +374,7 @@ class RegisterForm extends Component {
                   type="password"
                   onChange={this.handlePasswordChange}
                   data-test="field-password"
-                  errorText={
-                    this.state.passError ? this.state.passError : null
-                  }
+                  errorText={this.state.passError ? this.state.passError : null}
                 />
                 <TextField
                   className="half-width"

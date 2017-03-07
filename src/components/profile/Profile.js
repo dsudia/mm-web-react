@@ -24,6 +24,7 @@ import { inject, observer } from "mobx-react";
 import { browserHistory } from "react-router";
 import Avatar from "material-ui/Avatar";
 import * as mobx from "mobx";
+import "./Profile.css"
 
 class Profile extends Component {
   constructor(props) {
@@ -52,7 +53,7 @@ class Profile extends Component {
             title={profile.username}
             avatar={<Avatar icon={<AccountCircle />} />}
           />
-          <CardText>
+          <CardText className="large-flex">
             <List>
               <Subheader>My Info</Subheader>
               <ListItem
@@ -92,7 +93,7 @@ class Profile extends Component {
                     />
                   </div>
                 : <div>
-                    <List>
+                    <List className="large-margin">
                       <Subheader>Matching Profile</Subheader>
                       <ListItem
                         primaryText={translatedMatchingProfile.ageRanges}
