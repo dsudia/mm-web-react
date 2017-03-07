@@ -76,7 +76,7 @@ class Profile extends Component {
               />
             </List>
             <div>
-              {!translatedMatchingProfile.ageRanges.length > 0
+              {translatedMatchingProfile.ageRanges
                 ? <div>
                     <p>
                       Looking a little spare here, huh?
