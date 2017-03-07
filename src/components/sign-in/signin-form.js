@@ -8,7 +8,7 @@ import { browserHistory } from "react-router";
 import Promise from "bluebird";
 import * as translators from "../profile/translators";
 import { getMatchProfile, getProfileData } from "../../databaseCalls/userCalls";
-import validator from "validator"
+import validator from "validator";
 
 const styles = {
   title: {
@@ -104,7 +104,7 @@ class SignInForm extends Component {
         });
       })
       .catch(error => {
-        this.setState({passError: "Invalid email or password"})
+        this.setState({ passError: "Invalid email or password" });
       });
   };
 
@@ -120,8 +120,8 @@ class SignInForm extends Component {
       this.setState({
         emailError: "Please enter an email address",
         email: value
-      })
-      return
+      });
+      return;
     }
     this.setState({
       email: value,
@@ -145,17 +145,21 @@ class SignInForm extends Component {
 
   render() {
     const actions = [
+      (
         <FlatButton
           label="Cancel"
           primary={true}
           onTouchTap={this.props.menus.closeSignIn}
-        />,
+        />
+      ),
+      (
         <FlatButton
           label="Sign In"
           primary={true}
           keyboardFocused={true}
           onTouchTap={this.signIn}
         />
+      )
     ];
 
     return (

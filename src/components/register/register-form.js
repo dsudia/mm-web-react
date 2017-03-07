@@ -7,13 +7,25 @@ import firebase from "firebase";
 import { browserHistory } from "react-router";
 import { writeInitialData } from "../../databaseCalls/userCalls";
 import { inject, observer } from "mobx-react";
-import validator from "validator"
-import passValidator from "password-validator"
-import rp from "request-promise"
+import validator from "validator";
+import passValidator from "password-validator";
+import rp from "request-promise";
 
-const schema = new passValidator()
+const schema = new passValidator();
 
-schema.isMin(8).isMax(24).has().uppercase().has().lowercase().has().digits().not().spaces().has().symbols()
+schema
+  .isMin(8)
+  .isMax(24)
+  .has()
+  .uppercase()
+  .has()
+  .lowercase()
+  .has()
+  .digits()
+  .not()
+  .spaces()
+  .has()
+  .symbols();
 
 const styles = {
   title: {
@@ -46,11 +58,11 @@ class RegisterForm extends Component {
   };
 
   postToMailchimp(email, firstName, lastName, type) {
-    let mmerge
+    let mmerge;
     if (type === "teacher") {
-      mmerge = "I'm a teacher"
+      mmerge = "I'm a teacher";
     } else {
-      mmerge = "I represent a school"
+      mmerge = "I represent a school";
     }
 
     const options = {
@@ -62,9 +74,9 @@ class RegisterForm extends Component {
         LNAME: lastName,
         MMERGE3: mmerge
       }
-    }
+    };
 
-    return rp(options)
+    return rp(options);
   }
 
   createNewUser = () => {
@@ -79,31 +91,36 @@ class RegisterForm extends Component {
       return;
     }
     firebase
-    .auth()
-    .createUserWithEmailAndPassword(this.state.email, this.state.password)
-    .then(() => {
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          this.setState({ userId: user.uid });
-          writeInitialData(
-            user.uid,
+      .auth()
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then(() => {
+        firebase.auth().onAuthStateChanged(user => {
+          if (user) {
+            this.setState({ userId: user.uid });
+            writeInitialData(
+              user.uid,
+              this.state.firstName,
+              this.state.lastName,
+              this.state.displayName,
+              this.state.memberType,
+              process.env.NODE_ENV
+            );
+            this.props.menus.closeRegister();
+            browserHistory.push("/profile");
+          } else {
+            console.log("no user is signed in");
+          }
+          return this.postToMailchimp(
+            this.state.email,
             this.state.firstName,
             this.state.lastName,
-            this.state.displayName,
-            this.state.memberType,
-            process.env.NODE_ENV
+            this.state.memberType
           );
-          this.props.menus.closeRegister();
-          browserHistory.push("/profile");
-        } else {
-          console.log("no user is signed in");
-        }
-        return this.postToMailchimp(this.state.email, this.state.firstName, this.state.lastName, this.state.memberType)
+        });
+      })
+      .catch(error => {
+        this.setState({ emailError: error.message });
       });
-    })
-    .catch(error => {
-      this.setState({emailError: error.message})
-    });
   };
 
   handleRadioChange = (event, value) => {
@@ -168,8 +185,8 @@ class RegisterForm extends Component {
       this.setState({
         emailError: "Please enter an email address",
         email: value
-      })
-      return
+      });
+      return;
     }
     this.setState({
       email: value,
@@ -178,18 +195,18 @@ class RegisterForm extends Component {
   };
 
   handlePasswordChange = (event, value) => {
-    const validPass = schema.validate(value)
+    const validPass = schema.validate(value);
     if (validPass) {
       this.setState({
         password: value,
         passError: false
       });
-      return
+      return;
     }
     this.setState({
       passError: "Password: > 8 characters, >= one number, one uppercase, one lowercase, one symbol",
       password: value
-    })
+    });
   };
 
   handleConfPassChange = (event, value) => {
@@ -208,11 +225,14 @@ class RegisterForm extends Component {
 
   render() {
     const actions = [
+      (
         <FlatButton
           label="Cancel"
           primary={true}
           onTouchTap={this.props.menus.closeRegister}
-        />,
+        />
+      ),
+      (
         <FlatButton
           label="Register"
           primary={true}
@@ -220,6 +240,7 @@ class RegisterForm extends Component {
           onTouchTap={this.createNewUser}
           data-test="button-submit-sign-up"
         />
+      )
     ];
 
     return (
@@ -276,9 +297,7 @@ class RegisterForm extends Component {
                     onChange={this.handleLastNameChange}
                     data-test="field-last-name"
                     errorText={
-                      this.state.lastNameError
-                        ? this.state.lastNameError
-                        : null
+                      this.state.lastNameError ? this.state.lastNameError : null
                     }
                   />
                 </div>
@@ -289,9 +308,7 @@ class RegisterForm extends Component {
                     onChange={this.handleEmailChange}
                     data-test="field-email"
                     errorText={
-                      this.state.emailError
-                        ? this.state.emailError
-                        : null
+                      this.state.emailError ? this.state.emailError : null
                     }
                   />
                   <TextField
@@ -314,9 +331,7 @@ class RegisterForm extends Component {
                     onChange={this.handlePasswordChange}
                     data-test="field-password"
                     errorText={
-                      this.state.passError
-                        ? this.state.passError
-                        : null
+                      this.state.passError ? this.state.passError : null
                     }
                   />
                   <TextField
