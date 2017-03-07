@@ -7,7 +7,8 @@ import {
   CardMedia,
   CardText
 } from "material-ui/Card";
-import FlatButton from "material-ui/FlatButton";
+import RaisedButton from "material-ui/RaisedButton";
+import { inject, observer } from "mobx-react";
 
 export default class AboutTeacher extends Component {
   render() {
@@ -42,9 +43,11 @@ export default class AboutTeacher extends Component {
           </p>
         </CardText>
         <CardActions>
-          <FlatButton label="Sign Up" />
+          <RaisedButton label="Sign Up" primary={true} onTouchTap={this.props.menus.openRegister}/>
         </CardActions>
       </Card>
     );
   }
 }
+
+export const $ = inject("menus")(observer(AboutTeacher));

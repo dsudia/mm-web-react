@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Hero from "../hero/Hero";
-import AboutSchool from "../about/AboutSchool";
-import AboutTeacher from "../about/AboutTeacher";
+import { $ as AboutSchool } from "../about/AboutSchool";
+import { $ as AboutTeacher } from "../about/AboutTeacher";
 
 class Home extends Component {
   render() {

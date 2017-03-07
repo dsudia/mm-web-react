@@ -20,11 +20,11 @@ import lightBaseTheme from "material-ui/styles/baseThemes/lightBaseTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 
-console.log(lightBaseTheme)
-lightBaseTheme.palette.primary1Color = "#40abfc"
-lightBaseTheme.palette.primary2Color = "#002eda"
-lightBaseTheme.palette.accent1Color = "#ff6600"
-lightBaseTheme.palette.pickerHeaderColor = "#40abfc"
+console.log(lightBaseTheme);
+lightBaseTheme.palette.primary1Color = "#40abfc";
+lightBaseTheme.palette.primary2Color = "#002eda";
+lightBaseTheme.palette.accent1Color = "#ff6600";
+lightBaseTheme.palette.pickerHeaderColor = "#40abfc";
 
 // components
 import Root from "./components/containers/Root";
