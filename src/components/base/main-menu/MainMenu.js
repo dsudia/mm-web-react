@@ -16,7 +16,7 @@ export class MainMenu extends Component {
         targetOrigin={{ horizontal: "left", vertical: "top" }}
         anchorOrigin={{ horizontal: "left", vertical: "top" }}
       >
-        <MenuItem primaryText="About" />
+        <MenuItem primaryText="Home" containerElement={<Link to="/" />} />
         <MenuItem primaryText="Legal" containerElement={<Link to="/legal" />} />
       </IconMenu>
     );

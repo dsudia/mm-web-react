@@ -47,12 +47,14 @@ class Profile extends Component {
     return (
       <div>
         <Card data-test="card-profile">
+          <Subheader>My Profile</Subheader>
           <CardHeader
             title={profile.username}
             avatar={<Avatar icon={<AccountCircle />} />}
           />
           <CardText>
             <List>
+              <Subheader>My Info</Subheader>
               <ListItem
                 primaryText={profile.username}
                 leftIcon={<FaceIcon />}

@@ -7,7 +7,13 @@ class Hero extends Component {
   render() {
     return (
       <Card>
-        <CardMedia>
+        <CardMedia
+          style={{
+            maxWidth: "70%",
+            maxHeight: "50%",
+            margin: "0 auto"
+          }}
+        >
           <img src={Logo} alt="Montessori Match Logo" />
         </CardMedia>
         <CardActions>
