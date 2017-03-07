@@ -38,10 +38,6 @@ const styles = {
   },
   marginTop: {
     marginTop: "2rem"
-  },
-  form: {
-    display: "flex",
-    textAlign: "left"
   }
 };
 
@@ -285,93 +281,119 @@ class RegisterForm extends Component {
           </div>
           {this.state.memberType === "teacher"
             ? <div>
-                <div style={styles.form}>
-                  <TextField
-                    className="half-width"
-                    hintText="First Name"
-                    onChange={this.handleFirstNameChange}
-                    data-test="field-first-name"
-                    errorText={
-                      this.state.firstNameError
-                        ? this.state.firstNameError
-                        : null
-                    }
-                  />
-                  <TextField
-                    className="half-width"
-                    hintText="Last Name"
-                    onChange={this.handleLastNameChange}
-                    data-test="field-last-name"
-                    errorText={
-                      this.state.lastNameError ? this.state.lastNameError : null
-                    }
-                  />
-                </div>
-                <div style={styles.form}>
-                  <TextField
-                    className="half-width"
-                    hintText="Email"
-                    onChange={this.handleEmailChange}
-                    data-test="field-email"
-                    errorText={
-                      this.state.emailError ? this.state.emailError : null
-                    }
-                  />
-                  <TextField
-                    className="half-width"
-                    hintText="Display Name"
-                    onChange={this.handleDisplayNameChange}
-                    data-test="field-display-name"
-                    errorText={
-                      this.state.displayNameError
-                        ? this.state.displayNameError
-                        : null
-                    }
-                  />
-                </div>
-                <div style={styles.form}>
-                  <TextField
-                    className="half-width"
-                    hintText="Password"
-                    type="password"
-                    onChange={this.handlePasswordChange}
-                    data-test="field-password"
-                    errorText={
-                      this.state.passError ? this.state.passError : null
-                    }
-                  />
-                  <TextField
-                    className="half-width"
-                    hintText="Confirm Password"
-                    type="password"
-                    onChange={this.handleConfPassChange}
-                    data-test="field-conf-password"
-                    errorText={
-                      this.state.confPassError ? "Passwords do not match" : null
-                    }
-                  />
-                </div>
+                <TextField
+                  className="half-width"
+                  hintText="First Name"
+                  onChange={this.handleFirstNameChange}
+                  data-test="field-first-name"
+                  errorText={
+                    this.state.firstNameError
+                      ? this.state.firstNameError
+                      : null
+                  }
+                />
+                <TextField
+                  className="half-width"
+                  hintText="Last Name"
+                  onChange={this.handleLastNameChange}
+                  data-test="field-last-name"
+                  errorText={
+                    this.state.lastNameError ? this.state.lastNameError : null
+                  }
+                />
+                <TextField
+                  className="half-width"
+                  hintText="Email"
+                  onChange={this.handleEmailChange}
+                  data-test="field-email"
+                  errorText={
+                    this.state.emailError ? this.state.emailError : null
+                  }
+                />
+                <TextField
+                  className="half-width"
+                  hintText="Display Name"
+                  onChange={this.handleDisplayNameChange}
+                  data-test="field-display-name"
+                  errorText={
+                    this.state.displayNameError
+                      ? this.state.displayNameError
+                      : null
+                  }
+                />
+                <TextField
+                  className="half-width"
+                  hintText="Password"
+                  type="password"
+                  onChange={this.handlePasswordChange}
+                  data-test="field-password"
+                  errorText={
+                    this.state.passError ? this.state.passError : null
+                  }
+                />
+                <TextField
+                  className="half-width"
+                  hintText="Confirm Password"
+                  type="password"
+                  onChange={this.handleConfPassChange}
+                  data-test="field-conf-password"
+                  errorText={
+                    this.state.confPassError ? "Passwords do not match" : null
+                  }
+                />
               </div>
             : <div>
-                <div style={styles.form}>
-                  <TextField className="half-width" hintText="School Name" />
-                </div>
-                <div style={styles.form}>
-                  <TextField className="half-width" hintText="Email" />
-                  <TextField className="half-width" hintText="Display Name" />
-                </div>
-                <div style={styles.form}>
-                  <TextField
-                    className="half-width"
-                    hintText="Password"
-                    type="password"
-                  />
-                  <TextField
-                    className="half-width"
-                    hintText="Confirm Password"
-                    type="password"
-                  />
-                </div>
+                <TextField
+                  className="half-width"
+                  hintText="School Name"
+                  onChange={this.handleFirstNameChange}
+                  data-test="field-first-name"
+                  errorText={
+                    this.state.firstNameError
+                      ? this.state.firstNameError
+                      : null
+                  }
+                />
+                <TextField
+                  className="half-width"
+                  hintText="Email"
+                  onChange={this.handleEmailChange}
+                  data-test="field-email"
+                  errorText={
+                    this.state.emailError ? this.state.emailError : null
+                  }
+                />
+                <TextField
+                  className="half-width"
+                  hintText="Display Name"
+                  onChange={this.handleDisplayNameChange}
+                  data-test="field-display-name"
+                  errorText={
+                    this.state.displayNameError
+                      ? this.state.displayNameError
+                      : null
+                  }
+                />
+                <TextField
+                  className="half-width"
+                  hintText="Password"
+                  type="password"
+                  onChange={this.handlePasswordChange}
+                  data-test="field-password"
+                  errorText={
+                    this.state.passError ? this.state.passError : null
+                  }
+                />
+                <TextField
+                  className="half-width"
+                  hintText="Confirm Password"
+                  type="password"
+                  onChange={this.handleConfPassChange}
+                  data-test="field-conf-password"
+                  errorText={
+                    this.state.confPassError ? "Passwords do not match" : null
+                  }
+                />
               </div>}
         </Dialog>
       </div>
