@@ -39,7 +39,7 @@
     "test": "CI=true react-scripts test --env=jsdom",
     "uitests": "testcafe chrome uitests/tests/ -a \"yarn start\"",
     "uitests-headless": "testcafe nightmare uitests/tests/ -a \"yarn start\"",
-    "prettier": "prettier --write \"src/**/*.js\"",
+    "prettier": "prettier --tab-width 4 --write \"src/**/*.js\"",
     "eject": "react-scripts eject"
   }
 }

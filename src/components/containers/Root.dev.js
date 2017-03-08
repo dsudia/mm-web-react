@@ -5,17 +5,17 @@ import { Router } from "react-router";
 import DevTools from "mobx-react-devtools";
 
 const Root = ({ store, history }) => (
-  <Provider {...store}>
-    <div>
-      <Router history={history} routes={routes} />
-      <DevTools />
-    </div>
-  </Provider>
+    <Provider {...store}>
+        <div>
+            <Router history={history} routes={routes} />
+            <DevTools />
+        </div>
+    </Provider>
 );
 
 Root.propTypes = {
-  store: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
+    store: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
 };
 
 export default Root;

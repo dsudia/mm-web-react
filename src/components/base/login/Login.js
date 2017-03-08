@@ -12,77 +12,84 @@ import { browserHistory } from "react-router";
 import { inject, observer } from "mobx-react";
 
 export class Login extends Component {
-  static muiName = "Login";
+    static muiName = "Login";
 
-  render() {
-    return (
-      <div>
-        <IconMenu
-          iconButtonElement={
-            (
-              <IconButton>
-                <FaceIcon color="#fff" data-test="button-auth-menu" />
-              </IconButton>
-            )
-          }
-          targetOrigin={{ horizontal: "right", vertical: "top" }}
-          anchorOrigin={{ horizontal: "right", vertical: "top" }}
-        >
-          <MenuItem>
-            <FlatButton
-              label="Sign Up"
-              onTouchTap={this.props.menus.openRegister}
-              data-test="button-open-sign-up"
-            />
-          </MenuItem>
-          <MenuItem>
-            <FlatButton
-              label="Sign In"
-              onTouchTap={this.props.menus.openSignIn}
-              data-test="button-open-sign-in"
-            />
-          </MenuItem>
-        </IconMenu>
-        <SignInForm />
-        <RegisterForm />
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <IconMenu
+                    iconButtonElement={
+                        (
+                            <IconButton>
+                                <FaceIcon
+                                    color="#fff"
+                                    data-test="button-auth-menu"
+                                />
+                            </IconButton>
+                        )
+                    }
+                    targetOrigin={{ horizontal: "right", vertical: "top" }}
+                    anchorOrigin={{ horizontal: "right", vertical: "top" }}
+                >
+                    <MenuItem>
+                        <FlatButton
+                            label="Sign Up"
+                            onTouchTap={this.props.menus.openRegister}
+                            data-test="button-open-sign-up"
+                        />
+                    </MenuItem>
+                    <MenuItem>
+                        <FlatButton
+                            label="Sign In"
+                            onTouchTap={this.props.menus.openSignIn}
+                            data-test="button-open-sign-in"
+                        />
+                    </MenuItem>
+                </IconMenu>
+                <SignInForm />
+                <RegisterForm />
+            </div>
+        );
+    }
 }
 
 export const $1 = inject("menus")(observer(Login));
 
 class Logged extends Component {
-  handleSignOut = () => {
-    return firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        browserHistory.push(`/`);
-        this.props.currentUser.clearUser();
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
+    handleSignOut = () => {
+        return firebase
+            .auth()
+            .signOut()
+            .then(() => {
+                browserHistory.push(`/`);
+                this.props.currentUser.clearUser();
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
 
-  render() {
-    return (
-      <IconMenu
-        {...this.props}
-        iconButtonElement={<IconButton><FaceIcon color="#fff" /></IconButton>}
-        targetOrigin={{ horizontal: "right", vertical: "top" }}
-        anchorOrigin={{ horizontal: "right", vertical: "top" }}
-      >
-        <Link to={`/profile`}><MenuItem primaryText="My Profile" /></Link>
-        <MenuItem
-          primaryText="Sign out"
-          onTouchTap={this.handleSignOut}
-          data-test="button-sign-out"
-        />
-      </IconMenu>
-    );
-  }
+    render() {
+        return (
+            <IconMenu
+                {...this.props}
+                iconButtonElement={
+                    <IconButton><FaceIcon color="#fff" /></IconButton>
+                }
+                targetOrigin={{ horizontal: "right", vertical: "top" }}
+                anchorOrigin={{ horizontal: "right", vertical: "top" }}
+            >
+                <Link to={`/profile`}>
+                    <MenuItem primaryText="My Profile" />
+                </Link>
+                <MenuItem
+                    primaryText="Sign out"
+                    onTouchTap={this.handleSignOut}
+                    data-test="button-sign-out"
+                />
+            </IconMenu>
+        );
+    }
 }
 
 export const $2 = inject("currentUser")(observer(Logged));

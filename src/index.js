@@ -1,10 +1,10 @@
 // firebase
 import firebase from "firebase";
 firebase.initializeApp({
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_DATABASE_URL,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_DATABASE_URL,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET
 });
 
 // react
@@ -31,8 +31,8 @@ import Root from "./components/containers/Root";
 injectTapEventPlugin();
 
 ReactDOM.render(
-  <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-    <Root store={store} history={browserHistory} />
-  </MuiThemeProvider>,
-  document.getElementById("root")
+    <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+        <Root store={store} history={browserHistory} />
+    </MuiThemeProvider>,
+    document.getElementById("root")
 );

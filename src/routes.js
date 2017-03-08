@@ -6,9 +6,9 @@ import Profile from "./components/profile/Profile";
 import Home from "./components/home/Home";
 
 export default (
-  <Route path="/" component={App}>
-    <IndexRoute component={Home} />
-    <Route path="/legal" component={Legal} />
-    <Route path="/profile" component={Profile} />
-  </Route>
+    <Route path="/" component={App}>
+        <IndexRoute component={Home} />
+        <Route path="/legal" component={Legal} />
+        <Route path="/profile" component={Profile} />
+    </Route>
 );

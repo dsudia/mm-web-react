@@ -6,19 +6,27 @@ import MenuIcon from "material-ui/svg-icons/navigation/menu";
 import { Link } from "react-router";
 
 export class MainMenu extends Component {
-  static muiName = "MainMenu";
+    static muiName = "MainMenu";
 
-  render() {
-    return (
-      <IconMenu
-        {...this.props}
-        iconButtonElement={<IconButton><MenuIcon color="#fff" /></IconButton>}
-        targetOrigin={{ horizontal: "left", vertical: "top" }}
-        anchorOrigin={{ horizontal: "left", vertical: "top" }}
-      >
-        <MenuItem primaryText="Home" containerElement={<Link to="/" />} />
-        <MenuItem primaryText="Legal" containerElement={<Link to="/legal" />} />
-      </IconMenu>
-    );
-  }
+    render() {
+        return (
+            <IconMenu
+                {...this.props}
+                iconButtonElement={
+                    <IconButton><MenuIcon color="#fff" /></IconButton>
+                }
+                targetOrigin={{ horizontal: "left", vertical: "top" }}
+                anchorOrigin={{ horizontal: "left", vertical: "top" }}
+            >
+                <MenuItem
+                    primaryText="Home"
+                    containerElement={<Link to="/" />}
+                />
+                <MenuItem
+                    primaryText="Legal"
+                    containerElement={<Link to="/legal" />}
+                />
+            </IconMenu>
+        );
+    }
 }

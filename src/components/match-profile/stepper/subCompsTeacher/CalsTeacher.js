@@ -3,49 +3,53 @@ import Checkbox from "material-ui/Checkbox";
 import { inject, observer } from "mobx-react";
 
 const styles = {
-  block: {
-    maxWidth: 250
-  },
-  checkbox: {
-    marginBottom: 16
-  }
+    block: {
+        maxWidth: 250
+    },
+    checkbox: {
+        marginBottom: 16
+    }
 };
 
 class CalsTeacher extends Component {
-  handleTraditionalChecked = (event, isInputChecked) => {
-    if (isInputChecked) {
-      this.props.currentUser.pushToMatchProfileArray("cals", 0);
-    } else {
-      this.props.currentUser.removeFromMatchProfileArray("cals", 0);
-    }
-  };
+    handleTraditionalChecked = (event, isInputChecked) => {
+        if (isInputChecked) {
+            this.props.currentUser.pushToMatchProfileArray("cals", 0);
+        } else {
+            this.props.currentUser.removeFromMatchProfileArray("cals", 0);
+        }
+    };
 
-  handleYearRoundChecked = (event, isInputChecked) => {
-    if (isInputChecked) {
-      this.props.currentUser.pushToMatchProfileArray("cals", 1);
-    } else {
-      this.props.currentUser.removeFromMatchProfileArray("cals", 1);
-    }
-  };
+    handleYearRoundChecked = (event, isInputChecked) => {
+        if (isInputChecked) {
+            this.props.currentUser.pushToMatchProfileArray("cals", 1);
+        } else {
+            this.props.currentUser.removeFromMatchProfileArray("cals", 1);
+        }
+    };
 
-  render() {
-    return (
-      <div style={styles.block}>
-        <Checkbox
-          label="Traditional"
-          style={styles.checkbox}
-          onCheck={this.handleTraditionalChecked}
-          checked={this.props.currentUser.matchingProfile.cals.includes(0)}
-        />
-        <Checkbox
-          label="Year-Round"
-          style={styles.checkbox}
-          onCheck={this.handleYearRoundChecked}
-          checked={this.props.currentUser.matchingProfile.cals.includes(1)}
-        />
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div style={styles.block}>
+                <Checkbox
+                    label="Traditional"
+                    style={styles.checkbox}
+                    onCheck={this.handleTraditionalChecked}
+                    checked={this.props.currentUser.matchingProfile.cals.includes(
+                        0
+                    )}
+                />
+                <Checkbox
+                    label="Year-Round"
+                    style={styles.checkbox}
+                    onCheck={this.handleYearRoundChecked}
+                    checked={this.props.currentUser.matchingProfile.cals.includes(
+                        1
+                    )}
+                />
+            </div>
+        );
+    }
 }
 
 export const $ = inject("currentUser")(observer(CalsTeacher));
