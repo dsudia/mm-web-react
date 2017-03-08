@@ -19,7 +19,14 @@ class AboutSchool extends Component {
           actAsExpander={true}
           showExpandableButton={true}
         />
-        <CardMedia expandable={true}>
+        <CardMedia
+          style={{
+            maxWidth: "70%",
+            maxHeight: "50%",
+            margin: "0 auto"
+          }}
+          expandable={true}
+        >
           <img src={SchoolImg} alt="A Montessori Classroom" />
         </CardMedia>
         <CardText expandable={true}>
