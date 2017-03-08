@@ -56,6 +56,17 @@ class Profile extends Component {
                         avatar={<Avatar icon={<AccountCircle />} />}
                     />
                     <CardText className="flex-container">
+                        <p>
+                            Thank you for being an early adopter of Montessori Match!
+                        </p>
+                        <p>
+                            For all of 2017 Montessori Match will be completely free for all users!
+                        </p>
+                        <p>
+                            We would love your feedback as we build out the site and improve things. Please email us at hello@montessorimatch.com with any suggestions you have.
+                        </p>
+                    </CardText>
+                    <CardText className="flex-container">
                         <List className="flex-item">
                             <Subheader>My Info</Subheader>
                             <ListItem

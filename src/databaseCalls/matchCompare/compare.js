@@ -101,8 +101,6 @@ export function runMatchComparison(
                             currentProfilePotentialMatches = snapshot.val();
                         })
                 ]).then(() => {
-                    console.log(thisUserPotentialMatches);
-                    console.log(currentProfilePotentialMatches);
                     if (thisUserPotentialMatches) {
                         thisUserPotentialMatches = Object.keys(
                             thisUserPotentialMatches
@@ -127,7 +125,6 @@ export function runMatchComparison(
                             }
                         );
                     }
-                    console.log(matchPercent);
                     if (matchPercent >= 80) {
                         if (
                             !thisUserPotentialMatches ||

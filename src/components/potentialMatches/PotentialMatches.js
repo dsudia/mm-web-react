@@ -40,7 +40,6 @@ class PotentialMatches extends Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <List>
                 <Subheader>Your Potential Matches</Subheader>

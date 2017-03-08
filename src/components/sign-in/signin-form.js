@@ -49,7 +49,7 @@ class SignInForm extends Component {
             cals: translators.translateCals(
                 this.props.currentUser.matchingProfile.cals
             ),
-            orgType: translators.translateOrgTypes(
+            orgTypes: translators.translateOrgTypes(
                 this.props.currentUser.matchingProfile.orgTypes
             ),
             sizes: translators.translateSizes(
@@ -64,7 +64,7 @@ class SignInForm extends Component {
             traits: translators.translateTraits(
                 this.props.currentUser.matchingProfile.traits
             ),
-            locTypes: translators.translateLoctypes(
+            locTypes: translators.translateLocTypes(
                 this.props.currentUser.matchingProfile.locTypes
             ),
             edTypes: translators.translateEdTypes(

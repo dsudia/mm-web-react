@@ -35,7 +35,7 @@ export default class MatchProfileStepperTeacher extends Component {
             cals: translators.translateCals(
                 this.props.currentUser.matchingProfile.cals
             ),
-            orgType: translators.translateOrgTypes(
+            orgTypes: translators.translateOrgTypes(
                 this.props.currentUser.matchingProfile.orgTypes
             ),
             sizes: translators.translateSizes(
