@@ -24,6 +24,54 @@ export function translateAgeRanges(ageRangeNums) {
     return null;
 }
 
+export function translateLocTypes(locsNums) {
+    if (locsNums) {
+        const locsWords = locsNums.map(el => {
+            switch (el) {
+                case 0:
+                    return "Urban";
+                case 1:
+                    return "Suburban";
+                case 2:
+                    return "Small City";
+                case 3:
+                    return "Rural";
+                default:
+                    return null;
+            }
+        });
+        const locsList = locsWords.join(`, `);
+        return locsList;
+    }
+    return null;
+}
+
+export function translateEdTypes(edsNums) {
+    if (edsNums) {
+        const edsWords = edsNums.map(el => {
+            switch (el) {
+                case 0:
+                    return "No College";
+                case 1:
+                    return "Some College";
+                case 2:
+                    return "Associate's Degree";
+                case 3:
+                    return "Bachelor's Degree";
+                case 4:
+                    return "Master's Degree";
+                case 5:
+                    return "Doctorate";
+                default:
+                    return null;
+            }
+        });
+        const edsList = edsWords.join(`, `);
+        return edsList;
+    }
+    return null;
+}
+
 export function translateCals(calsNums) {
     if (calsNums) {
         const calsWords = calsNums.map(el => {

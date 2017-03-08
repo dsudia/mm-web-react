@@ -35,7 +35,7 @@ class MatchProfileStepperSchool extends Component {
             cals: translators.translateCals(
                 this.props.currentUser.matchingProfile.cals
             ),
-            orgType: translators.translateOrgTypes(
+            orgTypes: translators.translateOrgTypes(
                 this.props.currentUser.matchingProfile.orgTypes
             ),
             sizes: translators.translateSizes(
@@ -49,6 +49,12 @@ class MatchProfileStepperSchool extends Component {
             ),
             traits: translators.translateTraits(
                 this.props.currentUser.matchingProfile.traits
+            ),
+            locTypes: translators.translateLoctypes(
+                this.props.currentUser.matchingProfile.locTypes
+            ),
+            edTypes: translators.translateEdTypes(
+                this.props.currentUser.matchingProfile.edTypes
             )
         };
         return translatedMatchingProfile;
@@ -146,7 +152,9 @@ class MatchProfileStepperSchool extends Component {
                         <StepContent>
                             The power of Montessori Match is finding teachers that will be
 
+
                             great cultural fits for your school. Fill out this quick
+
 
                             profile and we can start getting you matched up!
                             {this.renderStepActions(0)}

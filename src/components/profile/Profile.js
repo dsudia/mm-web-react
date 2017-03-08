@@ -9,6 +9,8 @@ import ChildCareIcon from "material-ui/svg-icons/places/child-care";
 import FingerprintIcon from "material-ui/svg-icons/action/fingerprint";
 import ImportExportIcon
     from "material-ui/svg-icons/communication/import-export";
+import InsertPhotoIcon from "material-ui/svg-icons/editor/insert-photo";
+import LocalLibraryIcon from "material-ui/svg-icons/maps/local-library";
 import DateIcon from "material-ui/svg-icons/action/date-range";
 import CardMembershipIcon from "material-ui/svg-icons/action/card-membership";
 import PersonOutlineIcon from "material-ui/svg-icons/social/person-outline";
@@ -116,7 +118,7 @@ class Profile extends Component {
                                           />
                                           <ListItem
                                               primaryText={
-                                                  translatedMatchingProfile.orgType
+                                                  translatedMatchingProfile.orgTypes
                                               }
                                               leftIcon={<BusinessIcon />}
                                           />
@@ -131,6 +133,18 @@ class Profile extends Component {
                                                   translatedMatchingProfile.trainings
                                               }
                                               leftIcon={<CardMembershipIcon />}
+                                          />
+                                          <ListItem
+                                              primaryText={
+                                                  translatedMatchingProfile.edTypes
+                                              }
+                                              leftIcon={<LocalLibraryIcon />}
+                                          />
+                                          <ListItem
+                                              primaryText={
+                                                  translatedMatchingProfile.locTypes
+                                              }
+                                              leftIcon={<InsertPhotoIcon />}
                                           />
                                           <ListItem
                                               primaryText={

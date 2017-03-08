@@ -49,6 +49,12 @@ export default class MatchProfileStepperTeacher extends Component {
             ),
             traits: translators.translateTraits(
                 this.props.currentUser.matchingProfile.traits
+            ),
+            locTypes: translators.translateLoctypes(
+                this.props.currentUser.matchingProfile.locTypes
+            ),
+            edTypes: translators.translateEdTypes(
+                this.props.currentUser.matchingProfile.edTypes
             )
         };
         return translatedMatchingProfile;
@@ -145,6 +151,7 @@ export default class MatchProfileStepperTeacher extends Component {
                         <StepLabel>Your Matching Profile</StepLabel>
                         <StepContent>
                             The power of Montessori Match is finding schools that will be
+
 
                             great cultural fits for you. Fill out this quick
                             profile and we can start getting you matched up!

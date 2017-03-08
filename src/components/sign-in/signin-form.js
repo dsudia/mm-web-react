@@ -63,6 +63,12 @@ class SignInForm extends Component {
             ),
             traits: translators.translateTraits(
                 this.props.currentUser.matchingProfile.traits
+            ),
+            locTypes: translators.translateLoctypes(
+                this.props.currentUser.matchingProfile.locTypes
+            ),
+            edTypes: translators.translateEdTypes(
+                this.props.currentUser.matchingProfile.edTypes
             )
         };
         return translatedMatchingProfile;
