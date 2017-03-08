@@ -113,14 +113,30 @@ export default class MatchProfileStepperTeacher extends Component {
         return (
             <div style={{ margin: "12px 0" }}>
                 {stepIndex === 9
-                    ? <RaisedButton
-                          label={"Finish"}
-                          disableTouchRipple={true}
-                          disableFocusRipple={true}
-                          primary={true}
-                          onTouchTap={this.handleFinish}
-                          style={{ marginRight: 12 }}
-                      />
+                    ? <div>
+                          <RaisedButton
+                              label={"Finish"}
+                              disableTouchRipple={true}
+                              disableFocusRipple={true}
+                              primary={true}
+                              onTouchTap={this.handleFinish}
+                              style={{ marginRight: 12 }}
+                              disabled={
+                                  this.props.currentUser.matchingProfile.traits.length >
+                                      7 ||
+                                      this.props.currentUser.matchingProfile.traits.length <
+                                          7
+                              }
+                          />
+                          {this.props.currentUser.matchingProfile.traits.length >
+                              7 ||
+                              this.props.currentUser.matchingProfile.traits.length <
+                                  7
+                              ? <p>
+                                    Please choose exactly 7 traits.
+                                </p>
+                              : null}
+                      </div>
                     : <RaisedButton
                           label={"Next"}
                           disableTouchRipple={true}

@@ -12,163 +12,287 @@ const styles = {
 };
 
 export default class TraitsSchool extends Component {
+    state = {
+        numChecked: 0
+    };
+
     handleAmbChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 0);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 0);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
     handleHumChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 1);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 1);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
     handleColChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 2);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 2);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
     handleIndChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 3);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 3);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
     handleExtChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 4);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 4);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
     handleIntChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 5);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 5);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
     handleArtChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 6);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 6);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
     handleMusChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 7);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 7);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
     handleCreChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 8);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 8);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
     handleOrgChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 9);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 9);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
     handlePlaChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 10);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 10);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
     handleQuiChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 11);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 11);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
     handleVerChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 12);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 12);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
     handleWriChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 13);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 13);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
     handleJoyChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 14);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 14);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
     handleTecChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 15);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 15);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
     handleAnaChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 16);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 16);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
     handlePatChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 17);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 17);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
     handleSpoChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 18);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 18);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
     handleRouChecked = (event, isInputChecked) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray("traits", 19);
+            this.setState({
+                numChecked: this.state.numChecked + 1
+            });
         } else {
             this.props.currentUser.removeFromMatchProfileArray("traits", 19);
+            this.setState({
+                numChecked: this.state.numChecked - 1
+            });
         }
     };
 
@@ -182,6 +306,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         0
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            0
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
                 <Checkbox
                     label="Humorous"
@@ -190,6 +320,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         1
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            1
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
                 <Checkbox
                     label="Collaborative"
@@ -198,6 +334,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         2
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            2
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
                 <Checkbox
                     label="Independent"
@@ -206,6 +348,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         3
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            3
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
                 <Checkbox
                     label="Extroverted"
@@ -214,6 +362,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         4
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            4
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
                 <Checkbox
                     label="Introverted"
@@ -222,6 +376,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         5
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            5
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
                 <Checkbox
                     label="Artistic"
@@ -230,6 +390,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         6
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            6
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
                 <Checkbox
                     label="Musical"
@@ -238,6 +404,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         7
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            7
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
                 <Checkbox
                     label="Creative"
@@ -246,6 +418,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         8
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            8
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
                 <Checkbox
                     label="Organized"
@@ -254,6 +432,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         9
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            9
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
                 <Checkbox
                     label="Playful"
@@ -262,6 +446,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         10
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            10
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
                 <Checkbox
                     label="Quiet"
@@ -270,6 +460,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         11
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            11
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
                 <Checkbox
                     label="Verbal Communicator"
@@ -278,6 +474,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         12
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            12
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
                 <Checkbox
                     label="Written Communicator"
@@ -286,6 +488,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         13
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            13
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
                 <Checkbox
                     label="Joyful"
@@ -294,6 +502,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         14
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            14
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
                 <Checkbox
                     label="Techie"
@@ -302,6 +516,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         15
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            15
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
                 <Checkbox
                     label="Analog"
@@ -310,6 +530,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         16
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            16
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
                 <Checkbox
                     label="Patient"
@@ -318,6 +544,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         17
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            17
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
                 <Checkbox
                     label="Spontaneous"
@@ -326,6 +558,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         18
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            18
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
                 <Checkbox
                     label="Routine Oriented"
@@ -334,6 +572,12 @@ export default class TraitsSchool extends Component {
                     checked={this.props.currentUser.matchingProfile.traits.includes(
                         19
                     )}
+                    disabled={
+                        !this.props.currentUser.matchingProfile.traits.includes(
+                            19
+                        ) &&
+                            this.state.numChecked >= 7
+                    }
                 />
             </div>
         );
