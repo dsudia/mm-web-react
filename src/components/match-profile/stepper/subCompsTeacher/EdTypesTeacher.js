@@ -26,37 +26,37 @@ export default class EdTypesTeacher extends Component {
           value={0}
           label="No College"
           style={styles.radioButton}
-          checked={this.props.currentUser.matchingProfile.orgTypes.includes(0)}
+          checked={this.props.currentUser.matchingProfile.edTypes.includes(0)}
         />
         <RadioButton
           value={1}
           label="Some College"
           style={styles.radioButton}
-          checked={this.props.currentUser.matchingProfile.orgTypes.includes(1)}
+          checked={this.props.currentUser.matchingProfile.edTypes.includes(1)}
         />
         <RadioButton
           value={2}
           label="Associate's Degree"
           style={styles.radioButton}
-          checked={this.props.currentUser.matchingProfile.orgTypes.includes(2)}
+          checked={this.props.currentUser.matchingProfile.edTypes.includes(2)}
         />
         <RadioButton
           value={3}
           label="Bachelor's Degree"
           style={styles.radioButton}
-          checked={this.props.currentUser.matchingProfile.orgTypes.includes(3)}
+          checked={this.props.currentUser.matchingProfile.edTypes.includes(3)}
         />
         <RadioButton
           value={3}
           label="Master's Degree"
           style={styles.radioButton}
-          checked={this.props.currentUser.matchingProfile.orgTypes.includes(4)}
+          checked={this.props.currentUser.matchingProfile.edTypes.includes(4)}
         />
         <RadioButton
           value={3}
           label="Doctorate"
           style={styles.radioButton}
-          checked={this.props.currentUser.matchingProfile.orgTypes.includes(5)}
+          checked={this.props.currentUser.matchingProfile.edTypes.includes(5)}
         />
       </RadioButtonGroup>
     );

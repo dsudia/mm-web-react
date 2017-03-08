@@ -82,7 +82,7 @@ export function matchPercentOneWay(
     traitsWgt +
     edWgt;
 
-  return this.findDecimal(score, divisor);
+  return findDecimal(score, divisor);
 }
 
 export function matchPercentMutual(score1, score2) {

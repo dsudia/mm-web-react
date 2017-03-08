@@ -44,11 +44,19 @@ export default class TrainingsTeacher extends Component {
     }
   };
 
-  handleOtherChecked = (event, isInputChecked) => {
+  handleCGSChecked = (event, isInputChecked) => {
     if (isInputChecked) {
       this.props.currentUser.pushToMatchProfileArray("trainings", 4);
     } else {
       this.props.currentUser.removeFromMatchProfileArray("trainings", 4);
+    }
+  };
+
+  handleOtherChecked = (event, isInputChecked) => {
+    if (isInputChecked) {
+      this.props.currentUser.pushToMatchProfileArray("trainings", 5);
+    } else {
+      this.props.currentUser.removeFromMatchProfileArray("trainings", 5);
     }
   };
 
@@ -80,10 +88,16 @@ export default class TrainingsTeacher extends Component {
           checked={this.props.currentUser.matchingProfile.trainings.includes(3)}
         />
         <Checkbox
+          label="CGS"
+          style={styles.checkbox}
+          onCheck={this.handleCGSChecked}
+          checked={this.props.currentUser.matchingProfile.trainings.includes(4)}
+        />
+        <Checkbox
           label="Other"
           style={styles.checkbox}
           onCheck={this.handleOtherChecked}
-          checked={this.props.currentUser.matchingProfile.trainings.includes(4)}
+          checked={this.props.currentUser.matchingProfile.trainings.includes(5)}
         />
       </div>
     );

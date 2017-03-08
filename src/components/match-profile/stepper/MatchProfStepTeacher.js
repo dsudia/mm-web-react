@@ -9,13 +9,16 @@ import { $ as SizesTeacher } from "./subCompsTeacher/SizesTeacher";
 import { $ as AgesTeacher } from "./subCompsTeacher/AgesTeacher";
 import { $ as TrainingsTeacher } from "./subCompsTeacher/TrainingsTeacher";
 import { $ as TraitsTeacher } from "./subCompsTeacher/TraitsTeacher";
-import { $ as LocTypesTeacher } from "./subCompsTeacher/LocTypesTeacher"
-import { $ as EdTypesTeacher } from "./subCompsTeacher/EdTypesTeacher"
-import { createPotentialMatches, writeMatchProfile } from "../../../databaseCalls/userCalls";
+import { $ as LocTypesTeacher } from "./subCompsTeacher/LocTypesTeacher";
+import { $ as EdTypesTeacher } from "./subCompsTeacher/EdTypesTeacher";
+import { writeMatchProfile } from "../../../databaseCalls/userCalls";
 import { inject, observer } from "mobx-react";
 import * as mobx from "mobx";
 import * as translators from "../../profile/translators";
 import { v4 } from "uuid";
+import {
+  runMatchComparison
+} from "../../../databaseCalls/matchCompare/compare";
 
 export default class MatchProfileStepperTeacher extends Component {
   state = {
@@ -54,10 +57,9 @@ export default class MatchProfileStepperTeacher extends Component {
   handleFinish = () => {
     const uid = v4();
     const user = mobx.toJS(this.props.currentUser);
-    const matchingProfile = user.matchingProfile
-    matchingProfile.memberType = user.profile.memberType
+    const matchingProfile = user.matchingProfile;
+    matchingProfile.memberType = user.profile.memberType;
     writeMatchProfile(user.id, matchingProfile, user.profile.memberType, uid);
-    createPotentialMatches(user.id, uid)
     const { stepIndex } = this.state;
     this.setState({
       stepIndex: stepIndex + 1,
@@ -71,6 +73,10 @@ export default class MatchProfileStepperTeacher extends Component {
         this.translateMatchingProfile()
       );
     }
+    runMatchComparison(
+      this.props.currentUser.id,
+      this.props.currentUser.profile.memberType
+    );
     this.props.menus.closeMatchProfCont();
     this.props.updateProfile();
   };

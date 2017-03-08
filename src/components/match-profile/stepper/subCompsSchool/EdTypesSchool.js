@@ -59,37 +59,37 @@ export default class EdTypesSchool extends Component {
           label="No College"
           style={styles.checkbox}
           onCheck={this.handleNoChecked}
-          checked={this.props.currentUser.matchingProfile.orgTypes.includes(0)}
+          checked={this.props.currentUser.matchingProfile.edTypes.includes(0)}
         />
         <Checkbox
           label="Some College"
           style={styles.checkbox}
           onCheck={this.handleSomeChecked}
-          checked={this.props.currentUser.matchingProfile.orgTypes.includes(1)}
+          checked={this.props.currentUser.matchingProfile.edTypes.includes(1)}
         />
         <Checkbox
           label="Associate's Degree"
           style={styles.checkbox}
           onCheck={this.handleAssocChecked}
-          checked={this.props.currentUser.matchingProfile.orgTypes.includes(2)}
+          checked={this.props.currentUser.matchingProfile.edTypes.includes(2)}
         />
         <Checkbox
           label="Bachelor's Degree"
           style={styles.checkbox}
           onCheck={this.handleBachChecked}
-          checked={this.props.currentUser.matchingProfile.orgTypes.includes(3)}
+          checked={this.props.currentUser.matchingProfile.edTypes.includes(3)}
         />
         <Checkbox
           label="Master's Degree"
           style={styles.checkbox}
           onCheck={this.handleMastChecked}
-          checked={this.props.currentUser.matchingProfile.orgTypes.includes(3)}
+          checked={this.props.currentUser.matchingProfile.edTypes.includes(3)}
         />
         <Checkbox
           label="Doctorate"
           style={styles.checkbox}
           onCheck={this.handleDocChecked}
-          checked={this.props.currentUser.matchingProfile.orgTypes.includes(3)}
+          checked={this.props.currentUser.matchingProfile.edTypes.includes(3)}
         />
       </div>
     );

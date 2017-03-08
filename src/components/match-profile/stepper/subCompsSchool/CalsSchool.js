@@ -17,7 +17,7 @@ export default class CalsSchool extends Component {
       cals: [value],
       calsWgt: 10
     });
-  }
+  };
 
   render() {
     return (

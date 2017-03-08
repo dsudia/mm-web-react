@@ -8,7 +8,7 @@ export function writeInitialData(
   memberType,
   env = process.env.NODE_ENV
 ) {
-  firebase.database().ref(`${env}/users/profiles/${userId}`).set({
+  return firebase.database().ref(`${env}/users/profiles/${userId}`).set({
     firstName: firstName,
     lastName: lastName,
     displayName: displayName,
@@ -41,13 +41,26 @@ export function writeMatchProfile(
   uid,
   env = process.env.NODE_ENV
 ) {
-  firebase
+  return firebase
     .database()
     .ref(`${env}/matchingProfiles/${memberType}/${userId}/${uid}`)
     .set(matchProfile);
 }
 
-export function createPotentialMatches(userId, uid, memberType, env = process.env.NODE_ENV) {
-  firebase.database().ref(`${env}/potentialMatches/${userId}/${uid}`)
-  .set([0])
+export function getPotentialMatches(userId, uuid, env = process.env.NODE_ENV) {
+  return firebase
+    .database()
+    .ref(`${env}/potentialMatches/${userId}/${uuid}`)
+    .once("value");
+}
+
+export function getUserNameFromId(userId, env = process.env.NODE_ENV) {
+  return firebase
+    .database()
+    .ref(`${env}/users/profiles/${userId}`)
+    .once("value")
+    .then(data => {
+      const value = data.val();
+      return value.displayName;
+    });
 }

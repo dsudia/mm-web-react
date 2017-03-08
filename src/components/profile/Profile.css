@@ -1,8 +1,12 @@
-@media screen and (min-width: 850px) {
-    .large-flex {
-      display: flex;
-    }
-    .large-margin {
-      margin: 0 2rem;
-    }
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: center;
+}
+
+.flex-item {
+  margin: 0 3rem 3rem 0;
 }

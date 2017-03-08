@@ -9,13 +9,16 @@ import { $ as SizesSchool } from "./subCompsSchool/SizesSchool";
 import { $ as AgesSchool } from "./subCompsSchool/AgesSchool";
 import { $ as TrainingsSchool } from "./subCompsSchool/TrainingsSchool";
 import { $ as TraitsSchool } from "./subCompsSchool/TraitsSchool";
-import { $ as LocTypesSchool } from "./subCompsSchool/LocTypesSchool"
-import { $ as EdTypesSchool } from "./subCompsSchool/EdTypesSchool"
+import { $ as LocTypesSchool } from "./subCompsSchool/LocTypesSchool";
+import { $ as EdTypesSchool } from "./subCompsSchool/EdTypesSchool";
 import { inject, observer } from "mobx-react";
-import { createPotentialMatches, writeMatchProfile } from "../../../databaseCalls/userCalls";
+import { writeMatchProfile } from "../../../databaseCalls/userCalls";
 import * as translators from "../../profile/translators";
 import * as mobx from "mobx";
 import { v4 } from "uuid";
+import {
+  runMatchComparison
+} from "../../../databaseCalls/matchCompare/compare";
 
 class MatchProfileStepperSchool extends Component {
   state = {
@@ -54,10 +57,9 @@ class MatchProfileStepperSchool extends Component {
   handleFinish = () => {
     const uid = v4();
     const user = mobx.toJS(this.props.currentUser);
-    const matchingProfile = user.matchingProfile
-    matchingProfile.memberType = user.profile.memberType
+    const matchingProfile = user.matchingProfile;
+    matchingProfile.memberType = user.profile.memberType;
     writeMatchProfile(user.id, matchingProfile, user.profile.memberType, uid);
-    createPotentialMatches(user.id, uid);
     const { stepIndex } = this.state;
     this.setState({
       stepIndex: stepIndex + 1,
@@ -71,6 +73,10 @@ class MatchProfileStepperSchool extends Component {
         this.translateMatchingProfile()
       );
     }
+    runMatchComparison(
+      this.props.currentUser.id,
+      this.props.currentUser.profile.memberType
+    );
     this.props.menus.closeMatchProfCont();
     this.props.updateProfile();
   };
@@ -251,4 +257,6 @@ class MatchProfileStepperSchool extends Component {
   }
 }
 
-export const $ = inject("currentUser", "menus")(observer(MatchProfileStepperSchool));
+export const $ = inject("currentUser", "menus")(
+  observer(MatchProfileStepperSchool)
+);

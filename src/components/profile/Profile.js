@@ -19,6 +19,7 @@ import RaisedButton from "material-ui/RaisedButton";
 import {
   $ as MatchProfileContainer
 } from "../match-profile/container/MatchProfCont";
+import { $ as PotentialMatches } from "../potentialMatches/PotentialMatches";
 import firebase from "firebase";
 import { inject, observer } from "mobx-react";
 import { browserHistory } from "react-router";
@@ -52,8 +53,8 @@ class Profile extends Component {
             title={profile.username}
             avatar={<Avatar icon={<AccountCircle />} />}
           />
-          <CardText className="large-flex">
-            <List>
+          <CardText className="flex-container">
+            <List className="flex-item">
               <Subheader>My Info</Subheader>
               <ListItem
                 primaryText={profile.username}
@@ -80,7 +81,7 @@ class Profile extends Component {
             </List>
             <div>
               {!translatedMatchingProfile.ageRanges
-                ? <div>
+                ? <div className="flex-item">
                     <p>
                       Looking a little spare here, huh?
                     </p>
@@ -94,7 +95,7 @@ class Profile extends Component {
                     />
                   </div>
                 : <div>
-                    <List className="large-margin">
+                    <List className="flex-item">
                       <Subheader>Matching Profile</Subheader>
                       <ListItem
                         primaryText={translatedMatchingProfile.ageRanges}
@@ -127,6 +128,7 @@ class Profile extends Component {
                     </List>
                   </div>}
             </div>
+            <PotentialMatches className="flex-item" />
           </CardText>
           <CardActions>
             <RaisedButton label="Edit" />

@@ -8,7 +8,6 @@ export function runMatchComparison(
   env = process.env.NODE_ENV
 ) {
   let allUsers = [];
-  let currentId = "";
   let matchPercent = 0;
   let userProfile;
 
@@ -20,17 +19,23 @@ export function runMatchComparison(
   }
 
   return Promise.all([
-    firebase.database().ref(`${env}/matchingProfiles/${oppositeType}`).once("value"),
-    firebase.database().ref(`${env}/matchingProfiles/${memberType}/${userId}`).once("value")
+    firebase
+      .database()
+      .ref(`${env}/matchingProfiles/${oppositeType}`)
+      .once("value"),
+    firebase
+      .database()
+      .ref(`${env}/matchingProfiles/${memberType}/${userId}`)
+      .once("value")
   ]).spread((oppositeUsers, currentUser) => {
     userProfile = currentUser.val();
     allUsers = oppositeUsers.val();
     userProfile = Object.keys(userProfile).map(key => {
       return {
-        userId: key,
+        profileId: key,
         matchingProfile: userProfile[key]
-      }
-    })[0]
+      };
+    })[0];
     allUsers = Object.keys(allUsers).map(id => {
       return {
         userId: id,
@@ -38,160 +43,112 @@ export function runMatchComparison(
           return {
             profId: profId,
             matchingProfile: allUsers[id][profId]
-          }
+          };
         })
-      }
-    })
-    console.log(userProfile);
-    console.log(allUsers);
+      };
+    });
     return allUsers.forEach((user, index, array) => {
       return user.matchingProfiles.forEach((currentProfile, ind, arr) => {
         try {
           matchPercent = Number(
             match(userProfile.matchingProfile, currentProfile.matchingProfile)
-          )
+          ) *
+            100;
         } catch (err) {
-          console.log(err)
+          console.log(err);
         }
-      })
-    })
-    // return allUsers.forEach((currentProfile, ind, arr) => {
-    //   try {
-    //     matchPercent = Number(
-    //       matchAlgorithm(userProfile, currentProfile)
-    //     );
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // })
+        const thisUserObj = {
+          userId,
+          profileId: userProfile.profileId,
+          matchPercent
+        };
+        const currentProfileObj = {
+          userId: user.userId,
+          profileId: currentProfile.profId,
+          matchPercent
+        };
+        let thisUserPotentialMatches;
+        let currentProfilePotentialMatches;
+        return Promise.all([
+          firebase
+            .database()
+            .ref(`${env}/potentialMatches/${userId}/${userProfile.profileId}`)
+            .once("value", snapshot => {
+              const exists = snapshot.val() !== null;
+              if (!exists) {
+                return null;
+              }
+              thisUserPotentialMatches = snapshot.val();
+            }),
+          firebase
+            .database()
+            .ref(
+              `${env}/potentialMatches/${user.userId}/${currentProfile.profId}`
+            )
+            .once("value", snapshot => {
+              const exists = snapshot.val() !== null;
+              if (!exists) {
+                return null;
+              }
+              currentProfilePotentialMatches = snapshot.val();
+            })
+        ]).then(() => {
+          console.log(thisUserPotentialMatches);
+          console.log(currentProfilePotentialMatches);
+          if (thisUserPotentialMatches) {
+            thisUserPotentialMatches = Object.keys(
+              thisUserPotentialMatches
+            ).map(el => el);
+            thisUserPotentialMatches = thisUserPotentialMatches.filter(el => {
+              return el.userId !== userId &&
+                el.profileId !== currentProfile.profId &&
+                el.matchPercent !== matchPercent;
+            });
+          }
+          if (currentProfilePotentialMatches) {
+            currentProfilePotentialMatches = Object.keys(
+              currentProfilePotentialMatches
+            ).map(el => el);
+            currentProfilePotentialMatches = currentProfilePotentialMatches.filter(
+              el => {
+                return el.userId !== user.userId &&
+                  el.profileId !== userProfile.profileId &&
+                  el.matchPercent !== matchPercent;
+              }
+            );
+          }
+          console.log(matchPercent);
+          if (matchPercent >= 80) {
+            if (
+              !thisUserPotentialMatches ||
+                thisUserPotentialMatches && !thisUserPotentialMatches.length > 0
+            ) {
+              // write to this profile's potential matches
+              const userRef = firebase
+                .database()
+                .ref(
+                  `${env}/potentialMatches/${userId}/${userProfile.profileId}`
+                );
+              const userPotentialMatchRef = userRef.push();
+              userPotentialMatchRef.set(currentProfileObj);
+            }
+            if (
+              !currentProfilePotentialMatches ||
+                currentProfilePotentialMatches &&
+                  !currentProfilePotentialMatches.length > 0
+            ) {
+              // write to the currentProfile's potential matches
+              const currentRef = firebase
+                .database()
+                .ref(
+                  `${env}/potentialMatches/${user.userId}/${currentProfile.profId}`
+                );
+              const currentPotentialMatchRef = currentRef.push();
+              currentPotentialMatchRef.set(thisUserObj);
+            }
+          }
+        });
+      });
+    });
   });
 }
-
-// Run matches
-// router.post("/notify", (req, res, next) => {
-//   const userEmail = req.body.email;
-//   const update = req.body.update;
-//   let allUsers = [];
-//   console.log(userEmail);
-//   if (userEmail === undefined || update === undefined) {
-//     res.status(400).json({
-//       status: 400,
-//       message: "Please provide an email string and an update boolean"
-//     });
-//   }
-//   // run matching algorithm if update is true
-//   if (update === true) {
-//     let currentEmail = "";
-//     let matchPercent = 0;
-//     let userProfile;
-//     db.potentialMatches
-//       .findOne({
-//         email: userEmail
-//       })
-//       .then(profile => {
-//         if (profile === null) {
-//           throw err;
-//         }
-//         userProfile = profile;
-//         return db.potentialMatches.find().toArray().then(docs => {
-//           allUsers = docs;
-//           return allUsers.forEach((currentProfile, ind, arr) => {
-//             if (
-//               currentProfile.active === true &&
-//                 currentProfile.email !== userEmail
-//             ) {
-//               if (
-//                 userProfile.isTeacher === true &&
-//                   currentProfile.isTeacher === false ||
-//                   userProfile.isTeacher === false &&
-//                     currentProfile.isTeacher === true
-//               ) {
-//                 try {
-//                   matchPercent = Number(
-//                     matchAlgorithm(userProfile, currentProfile)
-//                   );
-//                 } catch (err) {
-//                   console.log(err);
-//                 }
-//                 if (matchPercent >= config.cutoff) {
-//                   var promises = [];
-//                   promises.push(
-//                     db.potentialMatches.findAndModify({
-//                       query: {
-//                         email: userEmail
-//                       },
-//                       update: {
-//                         $addToSet: {
-//                           matchSuggestions: {
-//                             email: currentProfile.email,
-//                             perc: matchPercent
-//                           }
-//                         }
-//                       },
-//                       new: true
-//                     })
-//                   );
-//                   promises.push(
-//                     db.potentialMatches.findAndModify({
-//                       query: {
-//                         email: currentProfile.email
-//                       },
-//                       update: {
-//                         $addToSet: {
-//                           matchSuggestions: {
-//                             email: userEmail,
-//                             perc: matchPercent
-//                           }
-//                         }
-//                       },
-//                       new: true
-//                     })
-//                   );
-//                   return Promise.all(promises);
-//                 }
-//               }
-//             }
-//           });
-//         });
-//       })
-//       .then(() => {
-//         res.status(200).json({
-//           status: 200,
-//           message: "Match suggestions updated for " + userEmail
-//         });
-//       })
-//       .catch(err => {
-//         res.status(400).json({
-//           status: 400,
-//           message: "Email does not match any profiles"
-//         });
-//       });
-//   } else {
-//     // remove deactivated users from all match arrays if update is false
-//     return db.potentialMatches
-//       .update(
-//         {},
-//         {
-//           $pull: {
-//             matchSuggestions: {
-//               email: userEmail,
-//               perc: {
-//                 $gt: 0
-//               }
-//             }
-//           }
-//         },
-//         {
-//           multi: true
-//         }
-//       )
-//       .then(() => {
-//         res.status(200).json({
-//           status: 200,
-//           message: userEmail + " removed from matchSuggestions"
-//         });
-//       });
-//   }
-// });
-
-// module.exports = router;

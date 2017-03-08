@@ -6,9 +6,12 @@ import firebase from "firebase";
 import { inject, observer } from "mobx-react";
 import { browserHistory } from "react-router";
 import * as translators from "../profile/translators";
-import { getMatchProfiles, getProfileData } from "../../databaseCalls/userCalls";
+import {
+  getMatchProfiles,
+  getProfileData
+} from "../../databaseCalls/userCalls";
 import validator from "validator";
-import { runMatchComparison } from "../../databaseCalls/matchCompare/compare"
+import { runMatchComparison } from "../../databaseCalls/matchCompare/compare";
 
 const styles = {
   title: {
@@ -81,7 +84,13 @@ class SignInForm extends Component {
                 userData.memberType
               ).then(matchProfileData => {
                 const matchProfile = matchProfileData.val();
-                const matchProfiles = Object.keys(matchProfile).map(key => matchProfile[key])
+                let matchProfiles;
+                if (matchProfile) {
+                  matchProfiles = Object.keys(matchProfile).map(key => {
+                    matchProfile[key].uuid = key;
+                    return matchProfile[key];
+                  });
+                }
                 this.props.currentUser.setProfile({
                   username: userData.displayName,
                   firstName: userData.firstName,
@@ -89,7 +98,6 @@ class SignInForm extends Component {
                   email: user.email,
                   memberType: userData.memberType
                 });
-                runMatchComparison(user.uid, userData.memberType)
                 if (matchProfile !== null) {
                   this.props.currentUser.setMatchingProfile(matchProfiles[0]);
                 } else {
@@ -100,6 +108,10 @@ class SignInForm extends Component {
                     calsWgt: 10,
                     orgTypes: [],
                     orgTypesWgt: 10,
+                    locTypes: [],
+                    locTypesWgt: 10,
+                    edTypes: [],
+                    edTypesWgt: 10,
                     sizes: [],
                     sizesWgt: 10,
                     trainings: [],
@@ -108,8 +120,9 @@ class SignInForm extends Component {
                     traitsWgt: 10,
                     states: [],
                     statesWgt: 10
-                  })
+                  });
                 }
+                runMatchComparison(user.uid, userData.memberType);
                 const exists = this.props.currentUser.matchingProfile !==
                   undefined;
                 if (exists) {

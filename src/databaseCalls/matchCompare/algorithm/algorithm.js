@@ -1,7 +1,7 @@
 import { matchState } from "./matchers/matchState";
 import { matchAge } from "./matchers/matchAge";
 import { matchTraining } from "./matchers/matchTraining";
-import { matchEd } from "./matchers/matchEd"
+import { matchEd } from "./matchers/matchEd";
 import { matchCal } from "./matchers/matchCal";
 import { matchLoc } from "./matchers/matchLoc";
 import { matchOrg } from "./matchers/matchOrg";
@@ -10,8 +10,6 @@ import { matchTraits } from "./matchers/matchTraits";
 import { matchPercentOneWay, matchPercentMutual } from "./calculators";
 
 export function match(memberOne, memberTwo) {
-  console.log(memberOne)
-  console.log(memberTwo)
   let memOne;
   let memTwo;
   if (memberOne.memberType === "teacher") {
@@ -44,7 +42,7 @@ export function match(memberOne, memberTwo) {
   const locMatch = matchLoc(memTwo.locTypes, memOne.locTypes);
   const orgMatch = matchOrg(memTwo.orgTypes, memOne.orgTypes);
   const sizeMatch = matchSize(memTwo.sizes, memOne.sizes);
-  const edMatch = matchEd(memOne.edTypes, memTwo.edtypes)
+  const edMatch = matchEd(memOne.edTypes, memTwo.edTypes);
 
   const matchPercentMemOne = matchPercentOneWay(
     ageMatch,
@@ -60,7 +58,7 @@ export function match(memberOne, memberTwo) {
     stateMatch,
     memOne.statesWgt,
     trainingMatch,
-    memOne.trainingWgt,
+    memOne.trainingsWgt,
     traitMatch,
     memOne.traitsWgt,
     edMatch,
@@ -81,7 +79,7 @@ export function match(memberOne, memberTwo) {
     stateMatch,
     memTwo.statesWgt,
     trainingMatch,
-    memTwo.trainingWgt,
+    memTwo.trainingsWgt,
     traitMatch,
     memTwo.traitsWgt,
     edMatch,
