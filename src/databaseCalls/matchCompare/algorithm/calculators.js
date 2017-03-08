@@ -4,10 +4,10 @@ export function someMatch(memOneArr, memTwoArr) {
     for (let i = 0; i < memOneArr.length; i++) {
       if (elOne === memOneArr[i]) {
         return elOne === memOneArr[i];
-      } else {
-        continue;
       }
+      continue;
     }
+    return false
   });
   return someMatch;
 }

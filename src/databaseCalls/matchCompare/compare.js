@@ -121,7 +121,7 @@ export function runMatchComparison(
           if (matchPercent >= 80) {
             if (
               !thisUserPotentialMatches ||
-                thisUserPotentialMatches && !thisUserPotentialMatches.length > 0
+                (thisUserPotentialMatches && !thisUserPotentialMatches.length > 0)
             ) {
               // write to this profile's potential matches
               const userRef = firebase
@@ -134,8 +134,8 @@ export function runMatchComparison(
             }
             if (
               !currentProfilePotentialMatches ||
-                currentProfilePotentialMatches &&
-                  !currentProfilePotentialMatches.length > 0
+                (currentProfilePotentialMatches &&
+                  !currentProfilePotentialMatches.length > 0)
             ) {
               // write to the currentProfile's potential matches
               const currentRef = firebase
