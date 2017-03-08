@@ -16,6 +16,12 @@
     "testcafe-browser-provider-nightmare": "^0.0.3",
     "testcafe-browser-provider-phantomjs": "^1.0.0"
   },
+  "lint-staged": {
+    "*.js": [
+      "prettier --tab-width 4 --write",
+      "git add"
+    ]
+  },
   "dependencies": {
     "firebase": "^3.6.4",
     "immutable": "^3.8.1",
@@ -34,6 +40,7 @@
     "validator": "^7.0.0"
   },
   "scripts": {
+    "precommit": "lint-staged",
     "start": "react-scripts start",
     "build": "prettier --tab-width 4 --write \"src/**/*.js\" && react-scripts build",
     "test": "CI=true react-scripts test --env=jsdom",
