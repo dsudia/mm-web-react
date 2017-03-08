@@ -7,12 +7,20 @@
     "@types/react-redux": "^4.4.36",
     "faker": "^3.1.0",
     "flow-bin": "^0.37.4",
+    "husky": "^0.13.2",
+    "lint-staged": "^3.3.1",
     "mobx-react-devtools": "^4.2.11",
     "prettier": "^0.16.0",
     "react-scripts": "0.9.0",
     "testcafe": "^0.12.1",
     "testcafe-browser-provider-nightmare": "^0.0.3",
     "testcafe-browser-provider-phantomjs": "^1.0.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --tab-width 4 --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "firebase": "^3.6.4",
@@ -32,6 +40,7 @@
     "validator": "^7.0.0"
   },
   "scripts": {
+    "precommit": "lint-staged",
     "start": "react-scripts start",
     "build": "prettier --write \"src/**/*.js\" && react-scripts build",
     "test": "CI=true react-scripts test --env=jsdom",
