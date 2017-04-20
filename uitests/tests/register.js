@@ -2,8 +2,6 @@ import * as faker from 'faker'
 import Page from '../poms/prototype.page'
 import Profile from '../poms/profile.page'
 
-
-
 fixture `register a user`
     .page `http://localhost:3000`
 
